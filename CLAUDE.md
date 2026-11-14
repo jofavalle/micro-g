@@ -114,7 +114,7 @@ duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
   productos comerciales. Nadie participa en relación con una afiliación a China o a una
   entidad de propiedad china. [Terms and Conditions][tyc], [Judging Guide][evaluacion] Como
   lectura prudente del equipo, que no es texto literal de las reglas: tampoco se usan servicios
-  de empresas de propiedad china.
+  de empresas de propiedad china, total o parcial; ante la duda, no se usa.
 - **Los enlaces se abren sin contraseña, login, permisos ni registro**, y lo publicado tiene que
   seguir funcionando hasta el anuncio de los ganadores globales, el 26 de enero de 2027. Ninguna
   clave va en el repositorio, que será público, ni en el código que llega al navegador; un
