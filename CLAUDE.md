@@ -43,7 +43,11 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 
 - `git add -A` ni `git add .`: los archivos se añaden por nombre, después de leer el diff.
 - Commit sin que la persona haya leído el diff: por eso `git commit` pide permiso a propósito, y
-  no se añade a la lista de lo permitido.
+  no se añade a la lista de lo permitido. En modo auto, la pregunta la garantiza la regla ask de
+  `.claude/settings.json`, que también cubre `git push` y `gh pr review`.
+- Que Claude apruebe o fusione un PR: fusionar lo hace siempre una persona desde GitHub, después
+  de aprobar. `gh pr merge` está denegado, pero fusionar por otra vía (como `gh api`) no lo
+  está, y la regla vale igual.
 - Borrados (`rm -r`, `git reset --hard`, `git clean`, `git branch -D`) ni `git push --force`.
   Si alguno hace falta, lo ejecuta una persona. `.claude/settings.json` niega sus formas
   habituales, pero es una red y no una garantía: la misma orden escrita de otra manera puede

@@ -16,5 +16,6 @@ Lo mecánico ya lo comprobó quien ejecutó la orden; quien revisa se queda con 
 4. **El diff entero**: `gh pr diff N`. Sobre todo lo que exige juicio: cifras, unidades, lo que
    dice el modelo. Y que no entren claves, rutas personales ni archivos de cada uno. Los checks
    de CI, en verde: `gh pr checks N`.
-5. **Decidir**: fusionar si todo cuadra, o comentar en el PR qué falta, de forma concreta, para
-   que se corrija en la misma rama.
+5. **Decidir**: si falta algo, comentar en el PR qué, de forma concreta, para que se corrija en
+   la misma rama. Si todo cuadra, decirlo y nada más: Claude no aprueba ni fusiona por su
+   cuenta. La persona que revisa aprueba en GitHub y después fusiona desde la web.
