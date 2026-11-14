@@ -61,8 +61,9 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 
 - Todo dato, código o texto de terceros se cita en el README, con su licencia.
 - El uso de IA se declara en cada PR: qué se pidió, con qué herramienta y modelo, y qué se
-  corrigió. Las órdenes y sus PR son el registro. Los commits no llevan atribución a la
-  herramienta (`attribution` vacío en `.claude/settings.json`): la declaración va en el PR.
+  corrigió. Además, cada uno lo anota en su archivo de `ai-log/`, en inglés; el formato está en
+  `ai-log/README.md`. Los commits no llevan atribución a la herramienta (`attribution` vacío en
+  `.claude/settings.json`): la declaración va en el PR y en `ai-log/`.
 
 ### Del proyecto
 
