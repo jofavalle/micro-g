@@ -19,7 +19,15 @@ CLAUDE.local.md
 **/.claude/first-run
 **/.claude/assistant-daemon-state.json
 
-# Claves. Si hace falta una plantilla, se versiona .env.example sin claves reales.
+# Claves. Si hace falta una plantilla, se versiona la .example sin claves reales.
 .env
 .env.*
 !.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+**/.streamlit/secrets.toml
+
+# Dependencias y estado local de herramientas: se regeneran y no se versionan.
+node_modules/
+.wrangler/

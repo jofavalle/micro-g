@@ -9,9 +9,10 @@ Sobre los archivos versionados comprueba:
 
 1. que no haya enlaces simbólicos: en el clon de otra persona están rotos, y Git para
    Windows los saca como archivos de texto que contienen la ruta;
-2. que no haya archivos de cada uno: CLAUDE.local.md, .env (.env.example sí), y lo
-   que Claude Code guarda dentro de .claude/ para una sola persona (la configuración
-   local, la memoria local de sus agentes, sus worktrees y su estado de ejecución);
+2. que no haya archivos de cada uno: CLAUDE.local.md, los de claves (.env, .dev.vars
+   y .streamlit/secrets.toml; sus plantillas .example sí), y lo que Claude Code guarda
+   dentro de .claude/ para una sola persona (la configuración local, la memoria local
+   de sus agentes, sus worktrees y su estado de ejecución);
 3. que ningún archivo lleve la ruta de un directorio personal (Linux, macOS, Windows,
    la carpeta de la WSL vista desde Windows), tampoco con las barras escapadas de un
    JSON, dentro de un binario ni en un texto en UTF-16. Lo comprimido no se abre;
@@ -63,6 +64,12 @@ LOCALES_CLAUDE = {
     "assistant-daemon-state.json",
 }
 
+# Archivos de claves. Los mismos que ignora el .gitignore: si uno entra con git add -f,
+# la higiene lo para. Los de la primera lista admiten variantes (.env.local) y una
+# plantilla .example sin claves reales; los de la segunda solo cuentan en su carpeta.
+CLAVES = (".env", ".dev.vars")
+CLAVES_EN_CARPETA = {(".streamlit", "secrets.toml")}
+
 CAPA = ("CLAUDE.md", ".claude/settings.json")
 
 
@@ -87,7 +94,10 @@ def es_de_cada_uno(ruta):
     nombre = partes[-1]
     if nombre == "CLAUDE.local.md":
         return True
-    if nombre == ".env" or (nombre.startswith(".env.") and nombre != ".env.example"):
+    for clave in CLAVES:
+        if nombre == clave or (nombre.startswith(clave + ".") and nombre != clave + ".example"):
+            return True
+    if len(partes) >= 2 and (partes[-2], nombre) in CLAVES_EN_CARPETA:
         return True
     for i, parte in enumerate(partes[:-1]):
         if parte != ".claude":

@@ -30,3 +30,9 @@ No hay trabajo hecho todavía.
 - **2026-11-14. Ni modelo ni atribución en la capa.** El `.claude/settings.json` del proyecto se
   impone al de cada uno: un modelo fijado ahí obligaría a todas las cuentas, así que cada uno lo
   elige con `/model`. La atribución va vacía y el uso de IA se declara en cada PR.
+- **2026-11-14. Commits y títulos de PR en inglés; fusión solo con merge commit.** El
+  repositorio será material enlazado de la entrega, que va entera en inglés, y un mensaje de
+  commit no se cambia sin reescribir el historial. Issues, cuerpos de PR y revisiones siguen en
+  español. El merge commit lleva el título del PR en su cuerpo y GitHub no admite dejarlo
+  vacío con la primera línea por defecto (lo rechazó con un 422), así que el título va en
+  inglés.
