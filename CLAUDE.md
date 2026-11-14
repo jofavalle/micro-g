@@ -65,8 +65,9 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 
 - Todo dato, código o texto de terceros se cita en el README, con su licencia.
 - El uso de IA se declara en cada PR: qué se pidió, con qué herramienta y modelo, y qué se
-  corrigió. Las órdenes y sus PR son el registro. Los commits no llevan atribución a la
-  herramienta (`attribution` vacío en `.claude/settings.json`): la declaración va en el PR.
+  corrigió. Además, cada uno lo anota en su archivo de `ai-log/`, en inglés; el formato está en
+  `ai-log/README.md`. Los commits no llevan atribución a la herramienta (`attribution` vacío en
+  `.claude/settings.json`): la declaración va en el PR y en `ai-log/`.
 
 ### Del proyecto
 
@@ -94,6 +95,8 @@ duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
     sintaxis de comentario del lenguaje:
     `AI-assisted: <tool> (<model>), reviewed by <github-user>`;
   - en los datos generados, un campo de metadatos con lo mismo;
+  - en los archivos que no admiten comentarios, como un JSON, la marca va en `ai-log/` y en el
+    PR;
   - y siempre, la sección "Uso de IA" del PR y una fila en `ai-log/`.
 - **Nada de marca de NASA en lo generado**: ni logos, ni banderas, ni identificadores de misión.
   [Submission Guide][entrega], [NASA Brand Guidelines][marca]
@@ -116,7 +119,7 @@ duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
   productos comerciales. Nadie participa en relación con una afiliación a China o a una
   entidad de propiedad china. [Terms and Conditions][tyc], [Judging Guide][evaluacion] Como
   lectura prudente del equipo, que no es texto literal de las reglas: tampoco se usan servicios
-  de empresas de propiedad china.
+  de empresas de propiedad china, total o parcial; ante la duda, no se usa.
 - **Los enlaces se abren sin contraseña, login, permisos ni registro**, y lo publicado tiene que
   seguir funcionando hasta el anuncio de los ganadores globales, el 26 de enero de 2027. Ninguna
   clave va en el repositorio, que será público, ni en el código que llega al navegador; un

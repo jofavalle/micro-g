@@ -8,16 +8,17 @@ acumula.
 ## Estado actual
 
 **2026-11-14.**
-Repositorio recién creado, con la capa de equipo y el esqueleto del arquetipo `general`.
-No hay trabajo hecho todavía.
+La capa del equipo recoge las reglas oficiales del reto, las denegaciones para la herramienta
+PowerShell y los archivos de claves (#3), y la denegación de `gh pr merge` (#5). El registro
+de uso de IA vive en `ai-log/`. Todavía no hay código del producto.
 
 ## Siguiente paso
 
 - **Cada integrante comprueba su clon:** abre `claude` en la raíz, mira con `/memory` que carga
-  este `CLAUDE.md` y con `/tomar-orden` que las skills están, y ejecuta `python3 .github/higiene.py`, que
-  tiene que pasar en su máquina.
-- **Resolver lo que quedó marcado como pendiente en el `CLAUDE.md`:** el comando de ejecución,
-  las convenciones propias del proyecto y sus trampas reales, que solo se conocen trabajando.
+  este `CLAUDE.md`, escribe `/` sin Enter para ver que las skills están en la lista, y ejecuta
+  la higiene (`py .github/higiene.py` en Windows, `python3 .github/higiene.py` en lo demás),
+  que tiene que pasar en su máquina.
+- **Cada integrante anota desde hoy su cuota y su uso de IA** en su archivo de `ai-log/`.
 
 ## Decisiones vigentes
 
