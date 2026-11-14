@@ -27,10 +27,14 @@ idea, enfoque ni código del producto.
   cerrar #1.
 - **Cada integrante:** después de cada `git pull`, sesión nueva de Claude Code; y su cuota y su
   uso de IA en `ai-log/`.
-- **Plazos.** La entrega cierra el domingo 15 a las 23:59, hora de San Salvador. Antes de
-  publicar el repositorio: pasar la capa al inglés, revisar el historial entero y activar la
-  protección de `main` con una aprobación obligatoria, que en un repositorio público es
-  gratuita.
+- **Plazos.** La entrega cierra el domingo 15 a las 23:59, en la hora del evento local del
+  equipo, que es la de San Salvador ([agenda del evento local][agenda];
+  [Project Submission Guide][entrega]). Antes de publicar el repositorio: pasar la capa al
+  inglés, revisar el historial entero y activar la protección de `main` con una aprobación
+  obligatoria, que en un repositorio público es gratuita.
+
+[agenda]: https://www.spaceappschallenge.org/2026/local-events/san-salvador/?tab=schedule
+[entrega]: https://www.spaceappschallenge.org/resources/project-submission-guide/
 
 ## Decisiones vigentes
 
