@@ -64,6 +64,60 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 - Commits: mensaje en español, un cambio lógico por commit.
 <PENDIENTE: las convenciones propias del proyecto que se aparten de lo estandar, cada una con su fecha y su motivo (nacido 2026-11-14)>
 
+#### Reglas del reto
+
+Resumen propio de las reglas oficiales de Space Apps 2026 que condicionan el trabajo. Ante la
+duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
+
+- **La idea de la solución la pone el equipo.** La IA está permitida como herramienta, pero la
+  guía de entrega dice que no se use para "come up with your idea of how to solve the
+  challenge". Si se le pide esa idea, Claude se detiene y remite al equipo; ayudar a construir
+  la idea que el equipo ya trae sí vale. [Submission Guide][entrega]
+- **Lo generado con IA se marca dentro del proyecto.** Código, datos y audio, en el texto
+  descriptivo y en los metadatos; imágenes y videos, con una marca de agua visible.
+  [Submission Guide][entrega] La convención del equipo:
+  - en cada archivo de código generado o asistido, una línea de cabecera en inglés, con la
+    sintaxis de comentario del lenguaje:
+    `AI-assisted: <tool> (<model>), reviewed by <github-user>`;
+  - en los datos generados, un campo de metadatos con lo mismo;
+  - y siempre, la sección "Uso de IA" del PR y una fila en `ai-log/`.
+- **Nada de marca de NASA en lo generado**: ni logos, ni banderas, ni identificadores de misión.
+  [Submission Guide][entrega], [NASA Brand Guidelines][marca]
+- **Inglés en la página del proyecto y en todo lo enlazado**: README, interfaz, documentación
+  del producto y diapositivas; un video puede hablarse en otro idioma con subtítulos en inglés.
+  El repositorio también es material enlazado: el código y sus comentarios van en inglés desde
+  el principio, y esta capa se traduce antes de publicarlo. [Judging Guide][evaluacion],
+  [Submission Guide][entrega]
+- **Todo se cita, también lo abierto**: código, texto, imágenes, datos y herramientas. Lo que no
+  es de NASA va con su licencia, y nada con copyright sin permiso. Lo original del proyecto
+  queda bajo una licencia OSI (si no se especifica, NASA lo distribuye bajo Apache 2.0); lo de
+  terceros tiene que ser libre o tener licencia OSI; y los datos de un sitio que no es del
+  gobierno de EE. UU. se usan con las condiciones de ese sitio. [Terms and Conditions][tyc],
+  [Judging Guide][evaluacion], [Resources del reto][recursos]
+- **Al menos un dato o recurso de NASA**: sin él no se opta a un premio global.
+  [Submission Guide][entrega]
+- **Lo que no se incluye**: información personal identificable; el nombre, la imagen o la voz
+  reconocibles de un menor de 18 años; información propietaria; información sujeta a control
+  de exportaciones, como la de ITAR o la de EAR; ni material que promocione servicios o
+  productos comerciales. Nadie participa en relación con una afiliación a China o a una
+  entidad de propiedad china. [Terms and Conditions][tyc], [Judging Guide][evaluacion] Como
+  lectura prudente del equipo, que no es texto literal de las reglas: tampoco se usan servicios
+  de empresas de propiedad china.
+- **Los enlaces se abren sin contraseña, login, permisos ni registro**, y lo publicado tiene que
+  seguir funcionando hasta el anuncio de los ganadores globales, el 26 de enero de 2027. Ninguna
+  clave va en el repositorio, que será público, ni en el código que llega al navegador; un
+  servicio externo con clave necesita límite de gasto y una clave que no caduque antes de esa
+  fecha. [Submission Guide][entrega], [Judging Guide][evaluacion]
+- **El demo**: un video de 30 segundos o menos, o hasta siete diapositivas contando la portada y
+  la introducción. Pasarse de cualquiera de los dos límites deja el proyecto fuera de la
+  evaluación global. [Submission Guide][entrega]
+
+[entrega]: https://www.spaceappschallenge.org/resources/project-submission-guide/
+[evaluacion]: https://www.spaceappschallenge.org/resources/judging-awards-guide/
+[tyc]: https://www.spaceappschallenge.org/legal/
+[recursos]: https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources
+[marca]: https://www.nasa.gov/nasa-brand-center/brand-guidelines/
+
 ## Gotchas
 
 - En Windows se trabaja en PowerShell 7, no en la Windows PowerShell que trae el sistema: esa
