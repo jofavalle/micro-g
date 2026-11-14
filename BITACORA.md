@@ -7,18 +7,30 @@ acumula.
 
 ## Estado actual
 
-**2026-11-14.**
-La capa del equipo recoge las reglas oficiales del reto, las denegaciones para la herramienta
-PowerShell y los archivos de claves (#3), y la denegación de `gh pr merge` (#5). El registro
-de uso de IA vive en `ai-log/`. Todavía no hay código del producto.
+**2026-11-14, hito de preparación cerrado.**
+El repositorio y la capa del equipo están listos: las reglas oficiales del reto, las
+denegaciones para PowerShell y los archivos de claves (#3); el registro de uso de IA en
+`ai-log/` (#8, #9); la denegación de `gh pr merge` y lo que el modo auto no garantiza antes de
+un commit (#5, #7); y el paso de `revisar-pr` que dice cómo se aprueba (#12). Todavía no hay
+idea, enfoque ni código del producto.
 
 ## Siguiente paso
 
-- **Cada integrante comprueba su clon:** abre `claude` en la raíz, mira con `/memory` que carga
-  este `CLAUDE.md`, escribe `/` sin Enter para ver que las skills están en la lista, y ejecuta
-  la higiene (`py .github/higiene.py` en Windows, `python3 .github/higiene.py` en lo demás),
-  que tiene que pasar en su máquina.
-- **Cada integrante anota desde hoy su cuota y su uso de IA** en su archivo de `ai-log/`.
+- **Planificación principal del producto, en la próxima sesión.** El equipo discute el
+  producto, el enfoque y la idea de solución, y lo que decida se escribe en una issue antes de
+  abrir órdenes. La idea la pone el equipo: Claude ayuda a ordenar la discusión y a convertir
+  las decisiones en órdenes, pero no la propone (ver "Reglas del reto" en `CLAUDE.md`).
+- **Con la idea decidida:** el stack y el servicio de despliegue, con su archivo local de claves
+  en el `.gitignore`, en las denegaciones de `Read` y en la higiene; la `LICENSE` (OSI, la elige
+  el equipo) y el `README.md` en inglés; y la primera orden del producto.
+- **jofavalle:** pegar en #1 su comprobación del primer día, como ya hicieron los otros tres, y
+  cerrar #1.
+- **Cada integrante:** después de cada `git pull`, sesión nueva de Claude Code; y su cuota y su
+  uso de IA en `ai-log/`.
+- **Plazos.** La entrega cierra el domingo 15 a las 23:59, hora de San Salvador. Antes de
+  publicar el repositorio: pasar la capa al inglés, revisar el historial entero y activar la
+  protección de `main` con una aprobación obligatoria, que en un repositorio público es
+  gratuita.
 
 ## Decisiones vigentes
 
@@ -37,3 +49,8 @@ de uso de IA vive en `ai-log/`. Todavía no hay código del producto.
   español. El merge commit lleva el título del PR en su cuerpo y GitHub no admite dejarlo
   vacío con la primera línea por defecto (lo rechazó con un 422), así que el título va en
   inglés.
+- **2026-11-14. Fusionar es cosa de una persona, después de aprobar.** Claude no aprueba ni
+  fusiona (`gh pr merge` está denegado), y en modo auto la regla ask no garantiza que el commit
+  pregunte (#4, #6): la red es la revisión humana, con la opción "Approve" marcada antes del
+  botón verde (#12). Mientras el repositorio sea privado GitHub no lo impone: de los siete PR
+  fusionados el 14 antes de #12, solo #5, #10 y #11 tenían aprobación.
