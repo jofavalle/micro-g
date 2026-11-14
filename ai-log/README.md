@@ -14,6 +14,8 @@ submission form, and it carries the mark for files that cannot hold a comment, s
 - Code files generated or assisted by AI also carry a header line, in the comment syntax of
   their language: `AI-assisted: <tool> (<model>), reviewed by <github-user>`.
 - Times are read from the clock, the commit or the PR, never written from memory.
+- Times are local, in San Salvador time (UTC-6). `gh` and the GitHub API give them in UTC,
+  so subtract six hours: a PR created at `16:54Z` goes in the log as 10:54.
 - No email addresses, account IDs or keys: the account type (for example, Pro or Max) is
   enough.
 
