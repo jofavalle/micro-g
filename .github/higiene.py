@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# AI-assisted: Claude Code (claude-opus-5-5), reviewed by jofavalle, cesarp03
 """Higiene del repositorio: lo que no debe entrar en un repositorio de equipo.
 
 Se ejecuta antes de abrir un PR y corre en CI en cada push. Sale con 1 si algo falla,

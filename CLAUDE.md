@@ -90,6 +90,8 @@ duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
     sintaxis de comentario del lenguaje:
     `AI-assisted: <tool> (<model>), reviewed by <github-user>`;
   - en los datos generados, un campo de metadatos con lo mismo;
+  - en los archivos que no admiten comentarios, como un JSON, la marca va en `ai-log/` y en el
+    PR;
   - y siempre, la sección "Uso de IA" del PR y una fila en `ai-log/`.
 - **Nada de marca de NASA en lo generado**: ni logos, ni banderas, ni identificadores de misión.
   [Submission Guide][entrega], [NASA Brand Guidelines][marca]
