@@ -69,7 +69,13 @@
       "Read(./**/.env)",
       "Read(./**/.env.*)",
       "Read(./.env)",
-      "Read(./.env.*)"
+      "Read(./.env.*)",
+      "Read(./**/.dev.vars)",
+      "Read(./**/.dev.vars.*)",
+      "Read(./.dev.vars)",
+      "Read(./.dev.vars.*)",
+      "Read(./**/.streamlit/secrets.toml)",
+      "Read(./.streamlit/secrets.toml)"
     ]
   }
 }
