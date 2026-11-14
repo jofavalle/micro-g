@@ -16,6 +16,14 @@ Lo mecánico ya lo comprobó quien ejecutó la orden; quien revisa se queda con 
 4. **El diff entero**: `gh pr diff N`. Sobre todo lo que exige juicio: cifras, unidades, lo que
    dice el modelo. Y que no entren claves, rutas personales ni archivos de cada uno. Los checks
    de CI, en verde: `gh pr checks N`.
-5. **Decidir**: si falta algo, comentar en el PR qué, de forma concreta, para que se corrija en
-   la misma rama. Si todo cuadra, decirlo y nada más: Claude no aprueba ni fusiona por su
-   cuenta. La persona que revisa aprueba en GitHub y después fusiona desde la web.
+5. **Redactar, no publicar**: Claude escribe la revisión y se la enseña a la persona, que la lee
+   entera. Claude no la publica por su cuenta (`gh pr comment`, `gh pr review`): la publica la
+   persona, o Claude con su OK después de leerla. La revisión termina con la herramienta y el
+   modelo, y con que la persona la leyó antes de publicarla.
+6. **Decidir**: si falta algo, se comenta en el PR qué, de forma concreta, para que se corrija
+   en la misma rama. Si todo cuadra, Claude lo dice y nada más: no aprueba ni fusiona. La
+   persona aprueba en GitHub: en la pestaña "Files changed", botón "Review changes" (en algunas
+   versiones de la interfaz, "Submit review"), marca la opción "Approve" y pulsa
+   "Submit review". Con la opción "Comment" marcada no se aprueba, aunque el texto diga
+   "Approve": el PR tiene que mostrar "Approved". Después fusiona desde la pestaña
+   "Conversation", con "Merge pull request" y "Confirm merge".
