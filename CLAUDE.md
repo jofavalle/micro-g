@@ -61,7 +61,13 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 
 ### Del proyecto
 
-- Commits: mensaje en español, un cambio lógico por commit.
+- **Commits y títulos de PR, en inglés** (2026-11-14), un cambio lógico por commit. El
+  repositorio será material enlazado de la entrega (ver "Reglas del reto"), y su portada muestra
+  junto a cada archivo el mensaje del último commit que lo tocó. Issues, cuerpos de PR y
+  revisiones siguen en español.
+- **Solo merge commit, sin squash ni rebase** (2026-11-14; GitHub lo impone). Un squash pondría
+  el título del PR como mensaje en `main`, y el merge commit lleva ese título en su cuerpo,
+  porque GitHub no admite dejarlo vacío: por eso el título del PR va en inglés.
 <PENDIENTE: las convenciones propias del proyecto que se aparten de lo estandar, cada una con su fecha y su motivo (nacido 2026-11-14)>
 
 #### Reglas del reto
