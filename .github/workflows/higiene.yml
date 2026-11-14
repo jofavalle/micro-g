@@ -1,0 +1,19 @@
+# La higiene del repositorio en cada push y en cada PR: así corre aunque nadie se acuerde
+# de ejecutarla. Lo que comprueba está en la cabecera de .github/higiene.py.
+name: higiene
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  higiene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: python3 .github/higiene.py
+        run: python3 .github/higiene.py

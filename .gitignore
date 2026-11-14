@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Lo de cada uno en Claude Code, en cualquier carpeta: no se versiona.
+CLAUDE.local.md
+**/.claude/settings.local.json
+# Y lo que Claude Code escribe al trabajar dentro de .claude/: la memoria local de sus
+# agentes, sus worktrees y su estado de ejecución.
+**/.claude/agent-memory-local
+**/.claude/worktrees/
+**/.claude/checkpoints/
+**/.claude/mailbox/
+**/.claude/routines/.state/
+**/.claude/scheduled_tasks.lock
+**/.claude/scheduled_tasks.json
+**/.claude/agent-registry.json
+**/.claude/first-run
+**/.claude/assistant-daemon-state.json
+
+# Claves. Si hace falta una plantilla, se versiona .env.example sin claves reales.
+.env
+.env.*
+!.env.example
