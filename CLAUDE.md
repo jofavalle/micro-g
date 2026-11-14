@@ -8,13 +8,14 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 
 ## Comandos
 
-- Ejecutar: <PENDIENTE: el comando de ejecucion, cuando el proyecto tenga uno (nacido 2026-11-14)>
-- Verificar: `python3 .github/higiene.py`
+- Ejecutar: todavía no hay producto; lo añade aquí el PR que cree el primero.
+- Verificar: `python3 .github/higiene.py` (en Windows, `py .github/higiene.py`)
 - Higiene del repositorio: `python3 .github/higiene.py` (en Windows, `py .github/higiene.py`).
   Corre también en CI en cada push y en cada PR.
 - Tablero: `gh issue list --label orden`. Cola de revisión: `gh pr list`.
 
-**La puerta de verificación es `python3 .github/higiene.py`.**
+**La puerta de verificación es `python3 .github/higiene.py`** (en Windows,
+`py .github/higiene.py`).
 
 ## Convenciones
 
@@ -68,7 +69,6 @@ equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno
 - **Solo merge commit, sin squash ni rebase** (2026-11-14; GitHub lo impone). Un squash pondría
   el título del PR como mensaje en `main`, y el merge commit lleva ese título en su cuerpo,
   porque GitHub no admite dejarlo vacío: por eso el título del PR va en inglés.
-<PENDIENTE: las convenciones propias del proyecto que se aparten de lo estandar, cada una con su fecha y su motivo (nacido 2026-11-14)>
 
 #### Reglas del reto
 
@@ -129,7 +129,13 @@ duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
 - En Windows se trabaja en PowerShell 7, no en la Windows PowerShell que trae el sistema: esa
   guarda con `>` en UTF-16, y la higiene lo rechaza. Se instala con
   `winget install --id Microsoft.PowerShell --source winget`.
-- Las reglas de `.claude/settings.json` se escriben para la herramienta Bash de Claude Code. Si en
-  una máquina los comandos pasan por otra herramienta, puede que no se apliquen: lo de "Lo que no
-  se hace" vale igual.
-<PENDIENTE: las trampas reales del proyecto. Si al cabo del tiempo no hay ninguna, se dice que no hay y por que (nacido 2026-11-14)>
+- En Windows, Claude Code ejecuta con la herramienta PowerShell cuando no hay Git para Windows,
+  y con Git instalado la tiene junto a Bash ([instalación][cc-instalacion]). Sus permisos son
+  reglas `PowerShell(...)` aparte ([permisos][cc-permisos]), y la documentación no dice que una
+  regla `Bash(...)` la cubra: toda denegación de `.claude/settings.json` se escribe en las dos
+  formas. Con otros asistentes no hay esa red, y lo de "Lo que no se hace" vale igual.
+- En Windows, `python3` a secas puede abrir el alias de la Microsoft Store en vez de Python: se
+  usa `py`.
+
+[cc-instalacion]: https://code.claude.com/docs/en/setup#install-on-native-windows
+[cc-permisos]: https://code.claude.com/docs/en/permissions#powershell
