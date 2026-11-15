@@ -70,12 +70,12 @@
       }
     },
     "measurements": {
-      "status": "verified",
-      "text": "Instantaneous scalar fields were used to describe particle accumulation and growth in the wakes.",
-      "quote": "Instantaneous scalar fields were used to describe particle accumulation and growth in the buoyant and non-buoyant wakes that form downstream of the hot vapor source.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "safety_finding": {

@@ -16,12 +16,12 @@
       }
     },
     "fuel": {
-      "status": "verified",
-      "text": "The investigation involves bi-component fuel droplets and pure fuel combustion.",
-      "quote": "Investigate the role of liquid-phase mixing on the burning characteristics of bi-component fuel droplets.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "sample_geometry": {

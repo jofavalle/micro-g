@@ -79,12 +79,12 @@
       }
     },
     "safety_finding": {
-      "status": "verified",
-      "text": "This research has the potential to improve spacecraft fire-safety modeling by resolving cool-flame and extinction behavior in microgravity.",
-      "quote": "Potential to improve spacecraft fire-safety modeling by resolving cool-flame/extinction behavior in microgravity",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Research Impacts/Earth Benefits"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {
