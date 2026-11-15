@@ -2,151 +2,154 @@
 
 Team project for the NASA Space Apps Challenge 2026, Flame in Freefall challenge, San Salvador local event.
 
-Esta capa (`CLAUDE.md`, `BITACORA.md` y `.claude/`) se versiona y es la misma para todo el
-equipo: un cambio en ella se propone por PR, como cualquier otro. Lo de cada uno va en
-`CLAUDE.local.md` o en `.claude/settings.local.json`, que no se versionan.
+This layer (`CLAUDE.md`, `BITACORA.md` and `.claude/`) is versioned and is the same for the whole
+team: a change to it is proposed by PR, like any other. Each person's own settings go in
+`CLAUDE.local.md` or in `.claude/settings.local.json`, which are not versioned.
 
-## Comandos
+## Commands
 
-- Ejecutar: todavía no hay producto; lo añade aquí el PR que cree el primero.
-- Verificar: `python3 .github/higiene.py` (en Windows, `py .github/higiene.py`)
-- Higiene del repositorio: `python3 .github/higiene.py` (en Windows, `py .github/higiene.py`).
-  Corre también en CI en cada push y en cada PR.
-- Tablero: `gh issue list --label orden`. Cola de revisión: `gh pr list`.
+- Run: there is no product yet; the PR that creates the first one adds it here.
+- Verify: `python3 .github/higiene.py` (on Windows, `py .github/higiene.py`)
+- Repository hygiene: `python3 .github/higiene.py` (on Windows, `py .github/higiene.py`).
+  It also runs in CI on every push and on every PR.
+- Board: `gh issue list --label orden`. Review queue: `gh pr list`.
 
-**La puerta de verificación es `python3 .github/higiene.py`** (en Windows,
+**The verification gate is `python3 .github/higiene.py`** (on Windows,
 `py .github/higiene.py`).
 
-## Convenciones
+## Conventions
 
-### Cómo se trabaja: órdenes, ramas y PR
+### How we work: orders, branches and PRs
 
-- **Una orden es una issue** con la etiqueta `orden` y la plantilla de `.github/ISSUE_TEMPLATE/`.
-  Tiene que bastar por sí sola: quien la ejecuta no estuvo cuando se decidió, y su sesión de
-  Claude tampoco. Su estado va en etiquetas: `lista`, `en-curso` y `en-revision`.
-- **Una orden se nombra por el número de su issue**, `#N`, y no por una numeración propia:
-  issues y PR comparten numeración en GitHub, y una "OT-02" escrita a mano acabaría siendo la
+- **An order is an issue** with the `orden` label and the template in `.github/ISSUE_TEMPLATE/`.
+  It has to stand on its own: whoever carries it out was not there when it was decided, and
+  neither was their Claude session. Its status lives in labels: `lista`, `en-curso` and
+  `en-revision`.
+- **An order is named by its issue number**, `#N`, and not by a numbering of its own:
+  issues and PRs share numbering on GitHub, and a hand-written "OT-02" would end up being
   issue #3.
-- **Una orden por sesión.** Al terminar, `/clear` o una sesión nueva. Para tomarla y devolverla
-  está `/tomar-orden`; para dejarla a medias, `/relevo`; para revisar un PR, `/revisar-pr`.
-- **Una rama por orden**, `<usuario>/orden-N`, desde `main` recién actualizado. A `main` no se
-  escribe directamente: todo entra por PR.
-- **El PR lleva evidencia** (`.github/pull_request_template.md`): el comando del criterio de
-  aceptación con su salida literal, y el uso de IA. Cierra su orden con `Closes #N`, en inglés:
-  GitHub no reconoce "Cierra #N", y la orden se quedaría abierta.
-- **Trabajo abierto limitado:** una orden en curso por persona, y como mucho tres PR esperando
-  revisión. Con la cola llena no se empieza otra orden: se prueba lo publicado.
-- **Lo que se acuerda de palabra se escribe en la issue.** La sesión de Claude y quien haga un
-  relevo no lo oyeron.
+- **One order per session.** When it is done, `/clear` or a new session. To take an order and
+  hand it back there is `/tomar-orden`; to leave it half-done, `/relevo`; to review a PR,
+  `/revisar-pr`.
+- **One branch per order**, `<user>/orden-N`, from a freshly updated `main`. Nothing is written
+  directly to `main`: everything comes in through a PR.
+- **The PR carries evidence** (`.github/pull_request_template.md`): the acceptance criterion's
+  command with its literal output, and the use of AI. It closes its order with `Closes #N`, in
+  English: GitHub does not recognize "Cierra #N", and the order would stay open.
+- **Limited open work:** one order in progress per person, and at most three PRs waiting for
+  review. With the queue full, no new order is started: what has been published gets tested.
+- **What is agreed out loud is written in the issue.** The Claude session and whoever takes
+  over in a handoff did not hear it.
 
-### Lo que no se hace
+### What we don't do
 
-- `git add -A` ni `git add .`: los archivos se añaden por nombre, después de leer el diff.
-- Commit sin que la persona haya leído el diff. En modo normal, `git commit` pregunta porque no
-  está en la lista de lo permitido. En modo auto no hay garantía: en la revisión del PR #5,
-  `git commit` se ejecutó sin preguntar aunque está en las reglas ask de `.claude/settings.json`,
-  y lo mismo hay que suponer de `git push`, que está en la misma lista y no se probó. Por eso,
-  antes de cada commit, Claude enseña el diff y espera el OK de la persona: es una instrucción,
-  no un permiso que lo imponga. Las reglas ask se quedan, porque no estorban.
-- Que Claude apruebe o fusione un PR. La red que sí funciona es la deny de `gh pr merge`, que
-  bloquea en Bash y en PowerShell, más la revisión humana: quien revisa no aprueba sin leer el
-  diff y la evidencia, y fusiona desde GitHub después de aprobar. Fusionar por otra vía (como
-  `gh api`) no está denegado, y la regla vale igual.
-- Borrados (`rm -r`, `git reset --hard`, `git clean`, `git branch -D`) ni `git push --force`.
-  Si alguno hace falta, lo ejecuta una persona. `.claude/settings.json` niega sus formas
-  habituales, pero es una red y no una garantía: la misma orden escrita de otra manera puede
-  pasar, y la regla vale igual.
-- Claves en el código: van en `.env`, que no se versiona. Si hace falta una plantilla, se
-  versiona `.env.example`, sin claves reales.
-- Rutas absolutas de un directorio personal: siempre rutas relativas. La higiene las rechaza.
-- Que el modelo lea datos enteros: un script los resume, y el modelo lee el resumen.
+- `git add -A` or `git add .`: files are added by name, after reading the diff.
+- Committing without the person having read the diff. In normal mode, `git commit` asks because
+  it is not on the allow list. In auto mode there is no guarantee: in the review of PR #5,
+  `git commit` ran without asking even though it is in the ask rules of `.claude/settings.json`,
+  and the same has to be assumed of `git push`, which is on the same list and was not tested.
+  That is why, before every commit, Claude shows the diff and waits for the person's OK: it is an
+  instruction, not a permission that enforces it. The ask rules stay, because they do no harm.
+- Claude approving or merging a PR. The safety net that does work is the deny rule on
+  `gh pr merge`, which blocks it in Bash and in PowerShell, plus human review: the reviewer does
+  not approve without reading the diff and the evidence, and merges from GitHub after approving.
+  Merging by another route (such as `gh api`) is not denied, and the rule applies all the same.
+- Deletions (`rm -r`, `git reset --hard`, `git clean`, `git branch -D`) or `git push --force`.
+  If one of them is needed, a person runs it. `.claude/settings.json` denies their usual forms,
+  but it is a safety net and not a guarantee: the same command written another way can get
+  through, and the rule applies all the same.
+- Keys in the code: they go in `.env`, which is not versioned. If a template is needed,
+  `.env.example` is versioned, with no real keys.
+- Absolute paths from a personal directory: always relative paths. The hygiene check rejects
+  them.
+- The model reading whole datasets: a script summarizes them, and the model reads the summary.
 
-### Fuentes, licencias e IA
+### Sources, licenses and AI
 
-- Todo dato, código o texto de terceros se cita en el README, con su licencia.
-- El uso de IA se declara en cada PR: qué se pidió, con qué herramienta y modelo, y qué se
-  corrigió. Además, cada uno lo anota en su archivo de `ai-log/`, en inglés; el formato está en
-  `ai-log/README.md`. Los commits no llevan atribución a la herramienta (`attribution` vacío en
-  `.claude/settings.json`): la declaración va en el PR y en `ai-log/`.
+- All third-party data, code or text is cited in the README, with its license.
+- AI use is declared in every PR: what was asked, with which tool and model, and what was
+  corrected. In addition, each person records it in their own file in `ai-log/`, in English; the
+  format is in `ai-log/README.md`. Commits carry no attribution to the tool (`attribution` empty
+  in `.claude/settings.json`): the declaration goes in the PR and in `ai-log/`.
 
-### Del proyecto
+### Project-specific
 
-- **Commits y títulos de PR, en inglés** (2026-11-14), un cambio lógico por commit. El
-  repositorio será material enlazado de la entrega (ver "Reglas del reto"), y su portada muestra
-  junto a cada archivo el mensaje del último commit que lo tocó. Issues, cuerpos de PR y
-  revisiones siguen en español.
-- **Solo merge commit, sin squash ni rebase** (2026-11-14; GitHub lo impone). Un squash pondría
-  el título del PR como mensaje en `main`, y el merge commit lleva ese título en su cuerpo,
-  porque GitHub no admite dejarlo vacío: por eso el título del PR va en inglés.
+- **Commits and PR titles in English** (2026-11-14), one logical change per commit. The
+  repository will be linked material of the submission (see "Challenge rules"), and its front
+  page shows, next to each file, the message of the last commit that touched it. Issues, PR
+  bodies and reviews stay in Spanish.
+- **Merge commit only, no squash or rebase** (2026-11-14; GitHub enforces it). A squash would
+  put the PR title as the message on `main`, and the merge commit carries that title in its body,
+  because GitHub does not allow leaving it empty: that is why the PR title is in English.
 
-#### Reglas del reto
+#### Challenge rules
 
-Resumen propio de las reglas oficiales de Space Apps 2026 que condicionan el trabajo. Ante la
-duda, manda la fuente que cita cada punto; sus URL van al final de esta lista.
+Our own summary of the official Space Apps 2026 rules that shape the work. When in doubt, the
+source cited by each point prevails; their URLs are at the end of this list.
 
-- **La idea de la solución la pone el equipo.** La IA está permitida como herramienta, pero la
-  guía de entrega dice que no se use para "come up with your idea of how to solve the
-  challenge". Si se le pide esa idea, Claude se detiene y remite al equipo; ayudar a construir
-  la idea que el equipo ya trae sí vale. [Submission Guide][entrega]
-- **Lo generado con IA se marca dentro del proyecto.** Código, datos y audio, en el texto
-  descriptivo y en los metadatos; imágenes y videos, con una marca de agua visible.
-  [Submission Guide][entrega] La convención del equipo:
-  - en cada archivo de código generado o asistido, una línea de cabecera en inglés, con la
-    sintaxis de comentario del lenguaje:
+- **The idea for the solution comes from the team.** AI is allowed as a tool, but the
+  submission guide says not to use it to "come up with your idea of how to solve the
+  challenge". If asked for that idea, Claude stops and refers the request to the team; helping
+  build the idea the team already brings is allowed. [Submission Guide][submission]
+- **AI-generated content is marked inside the project.** Code, data and audio, in the
+  descriptive text and in the metadata; images and videos, with a visible watermark.
+  [Submission Guide][submission] The team's convention:
+  - in each generated or assisted code file, a header line in English, in the language's
+    comment syntax:
     `AI-assisted: <tool> (<model>), reviewed by <github-user>`;
-  - en los datos generados, un campo de metadatos con lo mismo;
-  - en los archivos que no admiten comentarios, como un JSON, la marca va en `ai-log/` y en el
-    PR;
-  - y siempre, la sección "Uso de IA" del PR y una fila en `ai-log/`.
-- **Nada de marca de NASA en lo generado**: ni logos, ni banderas, ni identificadores de misión.
-  [Submission Guide][entrega], [NASA Brand Guidelines][marca]
-- **Inglés en la página del proyecto y en todo lo enlazado**: README, interfaz, documentación
-  del producto y diapositivas; un video puede hablarse en otro idioma con subtítulos en inglés.
-  El repositorio también es material enlazado: el código y sus comentarios van en inglés desde
-  el principio, y esta capa se traduce antes de publicarlo. [Judging Guide][evaluacion],
-  [Submission Guide][entrega]
-- **Todo se cita, también lo abierto**: código, texto, imágenes, datos y herramientas. Lo que no
-  es de NASA va con su licencia, y nada con copyright sin permiso. Lo original del proyecto
-  queda bajo una licencia OSI (si no se especifica, NASA lo distribuye bajo Apache 2.0); lo de
-  terceros tiene que ser libre o tener licencia OSI; y los datos de un sitio que no es del
-  gobierno de EE. UU. se usan con las condiciones de ese sitio. [Terms and Conditions][tyc],
-  [Judging Guide][evaluacion], [Resources del reto][recursos]
-- **Al menos un dato o recurso de NASA**: sin él no se opta a un premio global.
-  [Submission Guide][entrega]
-- **Lo que no se incluye**: información personal identificable; el nombre, la imagen o la voz
-  reconocibles de un menor de 18 años; información propietaria; información sujeta a control
-  de exportaciones, como la de ITAR o la de EAR; ni material que promocione servicios o
-  productos comerciales. Nadie participa en relación con una afiliación a China o a una
-  entidad de propiedad china. [Terms and Conditions][tyc], [Judging Guide][evaluacion] Como
-  lectura prudente del equipo, que no es texto literal de las reglas: tampoco se usan servicios
-  de empresas de propiedad china, total o parcial; ante la duda, no se usa.
-- **Los enlaces se abren sin contraseña, login, permisos ni registro**, y lo publicado tiene que
-  seguir funcionando hasta el anuncio de los ganadores globales, el 26 de enero de 2027. Ninguna
-  clave va en el repositorio, que será público, ni en el código que llega al navegador; un
-  servicio externo con clave necesita límite de gasto y una clave que no caduque antes de esa
-  fecha. [Submission Guide][entrega], [Judging Guide][evaluacion]
-- **El demo**: un video de 30 segundos o menos, o hasta siete diapositivas contando la portada y
-  la introducción. Pasarse de cualquiera de los dos límites deja el proyecto fuera de la
-  evaluación global. [Submission Guide][entrega]
+  - in generated data, a metadata field with the same;
+  - in files that do not allow comments, such as a JSON file, the mark goes in `ai-log/` and in
+    the PR;
+  - and always, the PR's "Use of AI" section and a row in `ai-log/`.
+- **No NASA branding in anything generated**: no logos, no flags, no mission identifiers.
+  [Submission Guide][submission], [NASA Brand Guidelines][brand]
+- **English on the project page and in everything linked**: README, interface, product
+  documentation and slides; a video may be spoken in another language with English subtitles.
+  The repository is also linked material: the code and its comments are in English from the
+  start, and this layer is translated before it is published. [Judging Guide][judging],
+  [Submission Guide][submission]
+- **Everything is cited, open material too**: code, text, images, data and tools. Whatever is
+  not NASA's goes with its license, and nothing copyrighted without permission. The project's
+  original work is under an OSI license (if none is specified, NASA distributes it under
+  Apache 2.0); third-party material has to be free or have an OSI license; and data from a site
+  that does not belong to the U.S. government is used under that site's terms.
+  [Terms and Conditions][terms], [Judging Guide][judging], [Challenge resources][resources]
+- **At least one NASA dataset or resource**: without it, the project is not eligible for a
+  global award. [Submission Guide][submission]
+- **What is not included**: personally identifiable information; the recognizable name, image
+  or voice of a minor under 18; proprietary information; information subject to export control,
+  such as ITAR or EAR information; or material that promotes commercial services or products.
+  No one takes part in connection with an affiliation with China or with a Chinese-owned
+  entity. [Terms and Conditions][terms], [Judging Guide][judging] As a cautious reading by the
+  team, which is not literal text from the rules: we do not use services from companies that are
+  Chinese-owned, wholly or partly, either; when in doubt, it is not used.
+- **Links open without a password, login, permissions or registration**, and what is published
+  has to keep working until the announcement of the global winners, on January 26, 2027. No key
+  goes in the repository, which will be public, nor in the code that reaches the browser; an
+  external service with a key needs a spending limit and a key that does not expire before that
+  date. [Submission Guide][submission], [Judging Guide][judging]
+- **The demo**: a video of 30 seconds or less, or up to seven slides counting the title slide
+  and the introduction. Going over either of the two limits leaves the project out of global
+  judging. [Submission Guide][submission]
 
-[entrega]: https://www.spaceappschallenge.org/resources/project-submission-guide/
-[evaluacion]: https://www.spaceappschallenge.org/resources/judging-awards-guide/
-[tyc]: https://www.spaceappschallenge.org/legal/
-[recursos]: https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources
-[marca]: https://www.nasa.gov/nasa-brand-center/brand-guidelines/
+[submission]: https://www.spaceappschallenge.org/resources/project-submission-guide/
+[judging]: https://www.spaceappschallenge.org/resources/judging-awards-guide/
+[terms]: https://www.spaceappschallenge.org/legal/
+[resources]: https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources
+[brand]: https://www.nasa.gov/nasa-brand-center/brand-guidelines/
 
 ## Gotchas
 
-- En Windows se trabaja en PowerShell 7, no en la Windows PowerShell que trae el sistema: esa
-  guarda con `>` en UTF-16, y la higiene lo rechaza. Se instala con
+- On Windows we work in PowerShell 7, not in the Windows PowerShell that ships with the system:
+  that one saves with `>` in UTF-16, and the hygiene check rejects it. It is installed with
   `winget install --id Microsoft.PowerShell --source winget`.
-- En Windows, Claude Code ejecuta con la herramienta PowerShell cuando no hay Git para Windows,
-  y con Git instalado la tiene junto a Bash ([instalación][cc-instalacion]). Sus permisos son
-  reglas `PowerShell(...)` aparte ([permisos][cc-permisos]), y la documentación no dice que una
-  regla `Bash(...)` la cubra: toda denegación de `.claude/settings.json` se escribe en las dos
-  formas. Con otros asistentes no hay esa red, y lo de "Lo que no se hace" vale igual.
-- En Windows, `python3` a secas puede abrir el alias de la Microsoft Store en vez de Python: se
-  usa `py`.
+- On Windows, Claude Code runs commands with the PowerShell tool when Git for Windows is not
+  installed, and with Git installed it has that tool alongside Bash ([installation][cc-install]).
+  Its permissions are separate `PowerShell(...)` rules ([permissions][cc-permissions]), and the
+  documentation does not say that a `Bash(...)` rule covers it: every deny rule in
+  `.claude/settings.json` is written in both forms. With other assistants there is no such
+  safety net, and "What we don't do" applies all the same.
+- On Windows, bare `python3` may open the Microsoft Store alias instead of Python: use `py`.
 
-[cc-instalacion]: https://code.claude.com/docs/en/setup#install-on-native-windows
-[cc-permisos]: https://code.claude.com/docs/en/permissions#powershell
+[cc-install]: https://code.claude.com/docs/en/setup#install-on-native-windows
+[cc-permissions]: https://code.claude.com/docs/en/permissions#powershell

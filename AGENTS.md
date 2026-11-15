@@ -1,17 +1,17 @@
-# Instrucciones para asistentes de IA
+# Instructions for AI assistants
 
-Este archivo es para los asistentes que no son Claude Code (Codex, OpenCode, Devin u otros).
-Claude Code lee `CLAUDE.md` por su cuenta.
+This file is for assistants that are not Claude Code (Codex, OpenCode, Devin or others).
+Claude Code reads `CLAUDE.md` on its own.
 
-1. **Lee `CLAUDE.md` antes de trabajar.** Son las reglas del equipo, valen para cualquier
-   asistente y mandan sobre lo que diga este archivo.
-2. **Las skills de `.claude/skills/`** (`tomar-orden`, `relevo` y `revisar-pr`) son comandos de
-   Claude Code. Con otro asistente, lee su `SKILL.md` y sigue los pasos con las herramientas que
-   tengas; no supongas que esos comandos existen.
-3. **Las denegaciones de `.claude/settings.json` solo las aplica Claude Code.** Contigo no hay
-   esa red: lo de "Lo que no se hace" en `CLAUDE.md` rige igual, y quien te usa revisa cada
-   orden antes de aprobarla.
-4. **Una orden por sesión**, en su rama y sin tocar nada fuera de su alcance.
-5. **Ningún commit sin enseñar antes el diff y la evidencia** a la persona que te usa. Ni
-   subagentes ni tareas en paralelo, salvo que esa persona los pida: gastan su cuota.
-6. **No leas secretos** (`.env` y parecidos) ni los copies a ningún archivo.
+1. **Read `CLAUDE.md` before working.** It holds the team's rules, which apply to any assistant
+   and take precedence over what this file says.
+2. **The skills in `.claude/skills/`** (`tomar-orden`, `relevo` and `revisar-pr`) are Claude Code
+   commands. With another assistant, read their `SKILL.md` and follow the steps with the tools
+   you have; do not assume those commands exist.
+3. **The deny rules in `.claude/settings.json` are applied only by Claude Code.** With you there
+   is no such safety net: "What we don't do" in `CLAUDE.md` applies all the same, and whoever
+   uses you reviews each order before approving it.
+4. **One order per session**, on its branch and without touching anything outside its scope.
+5. **No commit without first showing the diff and the evidence** to the person using you. No
+   subagents or parallel tasks either, unless that person asks for them: they spend their quota.
+6. **Do not read secrets** (`.env` and the like) or copy them into any file.
