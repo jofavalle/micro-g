@@ -14,8 +14,9 @@ Each field the LLM marks `verified` is checked with tools/verify_cards.check_fie
 What fails is printed as `dropped: <accession>: <field>: <reason>`, counted in
 `dropped` and published as `not_stated`. A field that verifies but that a person
 rejected in review (REJECTED) is dropped the same way, with `rejected by review:
-<reason>`, only while its cache entry keeps the SHA-256 that was reviewed; if the
-entry changed, the rejection is not applied and `stale:` is printed.
+<reason>`, only while the answer for that field keeps the SHA-256 that was reviewed
+(the hash of the field's JSON, not of the prompt); if the answer changed, the
+rejection is not applied and `stale:` is printed.
 
 It writes site/data/cards/<accession>.json and site/data/verification.json (keeping
 its `manual_sample`, if there is one).
@@ -63,21 +64,23 @@ FIELDS = {
     "earth_benefits": "Applications or benefits on Earth.",
 }
 
-# Fields that pass verification but that a person found wrong, with the SHA-256 of the
-# cache entry that was reviewed. Decided by jofavalle in PR #42:
+# Fields that pass verification but that a person found wrong. Each entry keeps the
+# SHA-256 of the reviewed answer for that field (field_sha256), not the SHA-256 of the
+# prompt: a new answer asked with the same prompt has another hash, and is not rejected.
+# Decided by jofavalle in PR #42:
 # https://github.com/jofavalle/micro-g/pull/42#pullrequestreview-5911194385
 REJECTED = {
     ("PSI-26", "objective"): (
-        "adb1a7ed63c4c4cbf818e45d6099619fa3fc6b1859615fa97dfd1bf84301dd04",
+        "6c9f523d9d14d93d75807f983097fcd8c22b885cb342487db8142e52a62c97a1",
         "text adds the second objective, which is not in the quote"),
     ("PSI-69", "fuel"): (
-        "a03ee19a3f547fe005f255517295de45d64df64fdc8a157cd1119f4973349f70",
+        "b5d620db3dd2c94e9f951e937143cb9aa346247b8e7bad25bd2d927e92d65014",
         "names no fuel"),
     ("PSI-101", "flow"): (
-        "17c645412a06c8d87692ad6ed49c12d4852ce487aad2c7b767a77dcbd04d480d",
+        "6a4895a05d40cf206fffcb95eac6567f8df15eded2f7f371fc896cdf077eb2a2",
         "no value or range for the flow"),
     ("PSI-142", "pressure"): (
-        "595e4171fbcb5bdd7cc37afe3c94ff775129870f02c8f99895c8b16c2019b137",
+        "397b747923cc2888a6d21f83be70669d13d23766f9842e7930235d1b1f59c546",
         "pressure of a simulation, not of a test"),
 }
 
@@ -142,6 +145,11 @@ def prompt_for(record):
     return PROMPT.format(fields=fields, accession=record["Accession"], record=body)
 
 
+def field_sha256(raw):
+    """SHA-256 of one field of the LLM answer, as REJECTED stores it."""
+    return hashlib.sha256(json.dumps(raw, sort_keys=True).encode("utf-8")).hexdigest()
+
+
 def write_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
@@ -196,11 +204,11 @@ def build_card(record, entry, counts):
         rejected = REJECTED.get((record["Accession"], name))
         if not reason and rejected:
             sha, why = rejected
-            if sha == entry["sha256"]:
+            if sha == field_sha256(raw):
                 reason = f"rejected by review: {why}"
             else:
                 print(f"stale: {record['Accession']}: {name}: review rejection not applied,"
-                      " the cache entry changed since it was reviewed")
+                      " the answer for this field changed since it was reviewed")
         if reason:
             counts["dropped"] += 1
             print(f"dropped: {record['Accession']}: {name}: {reason}")
