@@ -1,3 +1,4 @@
+<!-- AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz -->
 # Data contract
 
 The site is static: it reads precomputed JSON from `site/data/`. This document is the
@@ -34,7 +35,7 @@ site/data/
   catalog.json
   cards/<accession>.json      one per catalog entry, and no other
   verification.json
-  quant/<accession>.json      zero or more; each one for a catalog entry
+  quant/<accession>.json      zero or more; each one pointed to by its catalog entry
 ```
 
 ### `catalog.json`
@@ -64,6 +65,7 @@ Each entry of `investigations`:
 | `n_files` | count | Files in its PSI record |
 | `psi_url` | string, `https://` | Public page of the record in PSI |
 | `card` | string | Exactly `cards/<accession>.json`, and the file exists |
+| `quant` | `null` or string | `null` if it has no quantitative table; otherwise exactly `quant/<accession>.json`, and the file exists. The interface links the quantitative view only from this key, so it never requests a file that is not there |
 
 The order of the list does not matter: the interface sorts by `level`, then by
 `has_per_test_tables` (true first).
@@ -105,7 +107,8 @@ The numbers of the verification panel.
 | `checked` | count | Fields the verification script checked; equals `passed + dropped` |
 | `passed` | count | Fields whose quote and numbers were found in the source |
 | `dropped` | count | Fields that failed and were not published as `verified` |
-| `manual_sample.n` | count | Fields reviewed by hand |
+| `manual_sample` | `null` or object | `null` while the manual review is pending; the interface shows it as pending |
+| `manual_sample.n` | count | Fields reviewed by hand; at most `passed` |
 | `manual_sample.correct` | count | Of those, how many were correct; at most `n` |
 | `manual_sample.reviewed_by` | string | GitHub user who reviewed them |
 
@@ -115,11 +118,9 @@ A clean table of one investigation, computed by code from PSI files.
 
 | Key | Type | Meaning |
 |---|---|---|
-| `accession` | string | Same as the file name, and in the catalog |
+| `accession` | string | Same as the file name; its catalog entry has `quant` pointing to this file |
 | `note` | string, optional | Free note, e.g. that the rows are invented in the fixture |
 | `table.columns` | non-empty list | Each with `name` (unique, not empty), `unit` (may be `""` for none) and `description` |
 | `table.rows` | list | Each row is a list with one value per column: number, string or `null` |
 | `source_files` | non-empty list | Each with `key` (the PSI file key) and `sha256` (64 lowercase hex characters) |
 | `fit` | `null` or object | The fitted relation. Its shape is fixed on Sunday, when the relation is chosen; until then the validator only checks that it is `null` or an object |
-
-<!-- AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz -->

@@ -3,8 +3,8 @@
   "passed": 21,
   "dropped": 2,
   "manual_sample": {
-    "n": 30,
-    "correct": 28,
+    "n": 10,
+    "correct": 9,
     "reviewed_by": "example-reviewer"
   }
 }

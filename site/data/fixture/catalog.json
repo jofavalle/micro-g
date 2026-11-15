@@ -19,7 +19,8 @@
       "tags": ["gas_measurements"],
       "n_files": 42,
       "psi_url": "https://example.org/psi/EXAMPLE-1",
-      "card": "cards/EXAMPLE-1.json"
+      "card": "cards/EXAMPLE-1.json",
+      "quant": "quant/EXAMPLE-1.json"
     },
     {
       "accession": "EXAMPLE-2",
@@ -35,7 +36,8 @@
       "tags": [],
       "n_files": 7,
       "psi_url": "https://example.org/psi/EXAMPLE-2",
-      "card": "cards/EXAMPLE-2.json"
+      "card": "cards/EXAMPLE-2.json",
+      "quant": null
     },
     {
       "accession": "EXAMPLE-3",
@@ -51,7 +53,8 @@
       "tags": [],
       "n_files": 0,
       "psi_url": "https://example.org/psi/EXAMPLE-3",
-      "card": "cards/EXAMPLE-3.json"
+      "card": "cards/EXAMPLE-3.json",
+      "quant": null
     }
   ]
 }

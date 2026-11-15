@@ -5,9 +5,10 @@
 Checks required keys, unknown keys, types and allowed values of catalog.json,
 cards/<accession>.json, verification.json and quant/<accession>.json; that every
 catalog entry's card exists and every card belongs to a catalog entry; that every
-quant file belongs to a catalog entry; and that no `verified` field has an empty
-quote. Prints every problem as `error: <file>: <key>: <message>` and exits with 1,
-or prints `ok: <n> files` and exits with 0.
+catalog entry's quant, when not null, exists, and every quant file is pointed to by
+its catalog entry; and that no `verified` field has an empty quote. Prints every
+problem as `error: <file>: <key>: <message>` and exits with 1, or prints
+`ok: <n> files` and exits with 0.
 
 Standard library only.
 
@@ -86,6 +87,11 @@ def is_int(value):
     return isinstance(value, int) and not isinstance(value, bool)
 
 
+def one_of(value, allowed):
+    """True if value is a string in allowed; a list or object is never an allowed value."""
+    return isinstance(value, str) and value in allowed
+
+
 def check_keys(report, rel, prefix, obj, required, optional=()):
     """Check that obj is an object with exactly the required keys (plus optional)."""
     if not isinstance(obj, dict):
@@ -134,9 +140,9 @@ def check_subset(report, rel, key, value, allowed):
         report.error(rel, key, "must be a list")
         return
     for i, item in enumerate(value):
-        if item not in allowed:
+        if not one_of(item, allowed):
             report.error(rel, join(key, i), f"must be one of {sorted(allowed)}")
-    if len(set(map(str, value))) != len(value):
+    if len(set(map(repr, value))) != len(value):
         report.error(rel, key, "must not repeat values")
 
 
@@ -145,7 +151,7 @@ def check_catalog(report, catalog):
     if catalog is None or not check_keys(
         report, rel, "", catalog, ("generated", "source", "investigations")
     ):
-        return []
+        return [], set()
 
     generated = catalog.get("generated")
     if check_str(report, rel, "generated", generated):
@@ -170,13 +176,14 @@ def check_catalog(report, catalog):
     if not isinstance(entries, list) or not entries:
         if "investigations" in catalog:
             report.error(rel, "investigations", "must be a non-empty list")
-        return []
+        return [], set()
 
     accessions = []
+    with_quant = set()
     required = (
         "accession", "acronym", "title", "project_type", "hardware_family", "level",
         "level_reason", "pillars", "fuel_phase", "has_per_test_tables", "tags",
-        "n_files", "psi_url", "card",
+        "n_files", "psi_url", "card", "quant",
     )
     for i, entry in enumerate(entries):
         p = f"investigations[{i}]"
@@ -193,7 +200,7 @@ def check_catalog(report, catalog):
         for key in ("acronym", "title", "project_type", "level_reason"):
             if key in entry:
                 check_str(report, rel, f"{p}.{key}", entry[key])
-        if "hardware_family" in entry and entry["hardware_family"] not in HARDWARE_FAMILIES:
+        if "hardware_family" in entry and not one_of(entry["hardware_family"], HARDWARE_FAMILIES):
             report.error(
                 rel, f"{p}.hardware_family", f"must be one of {sorted(HARDWARE_FAMILIES)}"
             )
@@ -226,7 +233,15 @@ def check_catalog(report, catalog):
                 report.error(rel, f"{p}.card", f"must be 'cards/{accession}.json'")
             elif not (report.root / card).is_file():
                 report.error(rel, f"{p}.card", f"{card} does not exist")
-    return accessions
+        quant = entry.get("quant")
+        if "quant" in entry and quant is not None and check_str(report, rel, f"{p}.quant", quant):
+            if isinstance(accession, str) and quant != f"quant/{accession}.json":
+                report.error(rel, f"{p}.quant", f"must be null or 'quant/{accession}.json'")
+            elif not (report.root / quant).is_file():
+                report.error(rel, f"{p}.quant", f"{quant} does not exist")
+            elif isinstance(accession, str):
+                with_quant.add(accession)
+    return accessions, with_quant
 
 
 def check_card(report, rel, card, accession):
@@ -258,7 +273,7 @@ def check_card(report, rel, card, accession):
         ):
             continue
         status = field.get("status")
-        if status not in STATUSES:
+        if not one_of(status, STATUSES):
             report.error(rel, f"{p}.status", f"must be one of {sorted(STATUSES)}")
         for key in ("text", "quote"):
             if key not in field:
@@ -272,7 +287,7 @@ def check_card(report, rel, card, accession):
                 report.error(rel, f"{p}.{key}", "must be empty when status is not_stated")
         source = field.get("source")
         if "source" in field and check_keys(report, rel, f"{p}.source", source, ("kind", "ref")):
-            if "kind" in source and source["kind"] not in SOURCE_KINDS:
+            if "kind" in source and not one_of(source["kind"], SOURCE_KINDS):
                 report.error(rel, f"{p}.source.kind", f"must be one of {sorted(SOURCE_KINDS)}")
             if "ref" in source:
                 check_str(report, rel, f"{p}.source.ref", source["ref"])
@@ -290,7 +305,8 @@ def check_verification(report, data):
         report.error(rel, "checked", "must equal passed + dropped")
 
     sample = data.get("manual_sample")
-    if "manual_sample" in data and check_keys(
+    # null while the manual review is pending: the interface shows it as pending.
+    if "manual_sample" in data and sample is not None and check_keys(
         report, rel, "manual_sample", sample, ("n", "correct", "reviewed_by")
     ):
         n_ok = "n" in sample and check_count(report, rel, "manual_sample.n", sample["n"])
@@ -299,6 +315,9 @@ def check_verification(report, data):
         )
         if n_ok and c_ok and sample["correct"] > sample["n"]:
             report.error(rel, "manual_sample.correct", "must not be greater than n")
+        if n_ok and "passed" in counts and is_int(counts["passed"]) \
+                and sample["n"] > counts["passed"]:
+            report.error(rel, "manual_sample.n", "must not be greater than passed")
         if "reviewed_by" in sample:
             check_str(report, rel, "manual_sample.reviewed_by", sample["reviewed_by"])
 
@@ -384,7 +403,7 @@ def main(argv):
 
     catalog = load(report, "catalog.json")
     checked += catalog is not None
-    accessions = check_catalog(report, catalog)
+    accessions, with_quant = check_catalog(report, catalog)
     # Without a readable catalog, every card and quant file would look orphaned:
     # that error is already reported once, on catalog.json.
     known = accessions.__contains__ if catalog is not None else (lambda _: True)
@@ -409,6 +428,8 @@ def main(argv):
         rel = f"quant/{path.name}"
         if not known(path.stem):
             report.error(rel, None, "quant file has no entry in catalog.json")
+        elif catalog is not None and path.stem not in with_quant:
+            report.error(rel, None, "its catalog entry's quant does not point to this file")
         data = load(report, rel)
         checked += data is not None
         check_quant(report, rel, data, path.stem)
