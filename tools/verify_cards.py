@@ -36,8 +36,9 @@ if hasattr(sys.stdout, "reconfigure"):
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "site" / "data"
 DEFAULT_SOURCE = ROOT / "data" / "psi" / "investigations.json"
-# Not preceded by a letter or by a letter and a hyphen: "CO2" and "PSI-2" are not numbers.
-NUMBER = re.compile(r"(?<![A-Za-z])(?<![A-Za-z]-)\d+(?:[.,]\d+)*")
+# Not preceded by a letter or digit, or by a letter and a hyphen: "CO2", "C12H26", "PSI-2" and
+# "PSI-26" are not numbers, and no tail of an identifier ("6" of "PSI-26") is taken as one.
+NUMBER = re.compile(r"(?<![A-Za-z\d])(?<![A-Za-z]-)\d+(?:[.,]\d+)*")
 MIN_QUOTE_WORDS = 4
 SOURCE_KIND = "psi_record"
 
