@@ -88,7 +88,7 @@ Rules:
 export async function onRequestPost({ request, env }) {
   const question = await readQuestion(request);
   if (question === null) return failure("bad_request", 400);
-  if (!env.LLM_API_KEY) return failure("unavailable", 502);
+  if (!apiKey(env)) return failure("unavailable", 502);
   let corpus;
   try {
     corpus = await loadCorpus(request, env);
@@ -110,8 +110,17 @@ export async function onRequestPost({ request, env }) {
 // before the PR is opened.
 function diagnostic(env, info) {
   if (!info) return undefined;
-  const text = JSON.stringify(info);
-  return JSON.parse(env.LLM_API_KEY ? text.split(env.LLM_API_KEY).join("[key]") : text);
+  let text = JSON.stringify(info);
+  for (const key of [env.LLM_API_KEY, apiKey(env)]) {
+    if (key) text = text.split(key).join("[key]");
+  }
+  return JSON.parse(text);
+}
+
+// The key as tools/llm.py reads it: without spaces or quotes around it.
+function apiKey(env) {
+  const key = String(env.LLM_API_KEY || "").trim();
+  return /^(["']).*\1$/.test(key) ? key.slice(1, -1).trim() : key;
 }
 
 // Fixed cases of the self-test, with what the check has to do with each.
@@ -155,14 +164,20 @@ async function probe(env, corpus) {
     chart_string: withProps({ chart: { type: "string", enum: CHART_KEYS } }),
     no_null: withProps({ list: { ...plainLevel, type: "object" }, chart: { type: "string", enum: CHART_KEYS } }),
   };
-  const results = {};
+  // Only yes or no: nothing of the key itself.
+  const results = {
+    key_shape: {
+      had_spaces_or_quotes_around: String(env.LLM_API_KEY || "") !== apiKey(env),
+      google_api_key_format: /^AIza[0-9A-Za-z_-]{35}$/.test(apiKey(env)),
+    },
+  };
   for (const [name, schema] of Object.entries(variants)) {
     try {
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-goog-api-key": env.LLM_API_KEY,
+          "x-goog-api-key": apiKey(env),
           "Api-Revision": API_REVISION,
           "User-Agent": USER_AGENT,
         },
@@ -506,7 +521,7 @@ async function askModel(env, corpus, question) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-goog-api-key": env.LLM_API_KEY,
+      "x-goog-api-key": apiKey(env),
       "Api-Revision": API_REVISION,
       "User-Agent": USER_AGENT,
     },
