@@ -147,4 +147,5 @@ No Space Agency Partner data was used. Data, tools and their licenses or conditi
   exploration only, <https://pypi.org/project/openpyxl/>, <https://pypi.org/project/xlrd/>.
 
 The original work of the project is licensed under the Apache License, Version 2.0. The full
-table of sources, with every license page, is in the `README.md` of the repository.
+table of sources, with every license page, is in the `README.md` of the repository,
+<https://github.com/jofavalle/micro-g>.
