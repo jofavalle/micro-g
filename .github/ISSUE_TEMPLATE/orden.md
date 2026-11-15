@@ -1,33 +1,33 @@
 ---
-name: Orden de trabajo
-about: Una tarea que se puede ejecutar sin preguntarle nada a quien la escribió
-title: "Orden: verbo y resultado"
+name: Work order
+about: A task that can be executed without asking anything of whoever wrote it
+title: "Order: verb and result"
 labels: orden, lista
 ---
 
-**Objetivo.** Una frase con un verbo y un resultado que se pueda comprobar.
+**Objective.** One sentence with a verb and a result that can be checked.
 
-**Tamaño.** S (cabe en media ventana de uso) o M (dos etapas, con punto de relevo).
+**Size.** S (fits in half a usage window) or M (two stages, with a handoff point).
 
-**Leer antes.** Las rutas que hacen falta, y ninguna más.
+**Read first.** The paths that are needed, and no more.
 
-**No tocar.** Lo que queda fuera: archivos, carpetas y dependencias. Dos órdenes en curso no
-editan el mismo archivo.
+**Do not touch.** What stays out: files, folders and dependencies. Two orders in progress do
+not edit the same file.
 
-**Restricciones.** Versiones y bibliotecas permitidas, dónde va la salida, rutas relativas.
+**Constraints.** Allowed versions and libraries, where the output goes, relative paths.
 
-**Criterio de aceptación.**
-- Comando:
-- Debe imprimir:
-- Control independiente: una comprobación que no repita el cálculo y que fallaría si la regla
-  se aplicara mal.
+**Acceptance criterion.**
+- Command:
+- Must print:
+- Independent check: a check that does not repeat the calculation and that would fail if
+  the rule were applied wrongly.
 
-**Punto de relevo** (solo en M). Qué queda hecho al terminar la etapa 1, y con qué mensaje de
-commit se marca.
+**Handoff point** (only in M). What is done at the end of stage 1, and with what commit
+message it is marked.
 
-**Frase de arranque.** Para pegar en Claude Code, abierto en la raíz del clon, cambiando N por
-el número de esta issue:
+**Starting prompt.** To paste into Claude Code, opened at the root of the clone, replacing N
+with the number of this issue:
 
-> Toma la orden #N con /tomar-orden y resuélvela siguiendo sus restricciones. Al terminar,
-> ejecuta el comando del criterio de aceptación, enséñame su salida literal y el diff, y espera
-> a que lo lea antes del commit.
+> Take order #N with /tomar-orden and resolve it following its constraints. When done, run
+> the acceptance criterion command, show me its literal output and the diff, and wait for
+> me to read it before the commit.

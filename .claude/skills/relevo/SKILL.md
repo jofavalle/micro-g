@@ -1,20 +1,22 @@
 ---
 name: relevo
-description: Deja una orden a medias lista para que otra persona la continúe sin preguntar nada. Úsala cuando se acabe la ventana de uso, alguien tenga que irse o diga "relevo", "lo dejo aquí" o "que lo siga otro".
+description: Leaves a half-finished order ready for another person to continue without asking anything. Use it when the usage window runs out, someone has to leave, or says "relevo", "lo dejo aquí" or "que lo siga otro".
 ---
 
-# Relevo de una orden a medias
+# Handoff of a half-finished order
 
-La prueba de un buen relevo es que quien lo toma no tenga que preguntarle nada a quien lo dejó.
+The test of a good handoff is that whoever takes it over does not have to ask anything of
+whoever left it.
 
-1. **Guardar lo hecho**, aunque esté incompleto: añadir los archivos por nombre, commit con un
-   mensaje que lo diga ("Orden #N: etapa 1; falta la 2") y `git push -u origin HEAD`.
-2. **La nota de relevo**, como comentario en la issue (`gh issue comment N`), con:
-   - el nombre de la rama;
-   - qué está hecho y qué falta;
-   - el último comando que se ejecutó y su salida;
-   - lo que se decidió por el camino y la orden no recoge.
-3. **Soltar la orden**:
+1. **Save what is done**, even if incomplete: add the files by name, commit with a message
+   that says so ("Order #N: stage 1; stage 2 pending") and `git push -u origin HEAD`.
+2. **The handoff note**, as a comment on the issue (`gh issue comment N`), with:
+   - the branch name;
+   - what is done and what is missing;
+   - the last command that was run and its output;
+   - what was decided along the way that the order does not record.
+3. **Release the order**:
    `gh issue edit N --remove-assignee "@me" --remove-label en-curso --add-label lista`.
 
-Quien la retome usa `/tomar-orden`, y en su paso 3 trae esta rama en vez de crear una.
+Whoever picks it up uses `/tomar-orden`, and in its step 3 brings in this branch instead of
+creating one.
