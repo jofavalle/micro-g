@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15T08:14:20Z",
+  "generated": "2026-11-15T15:39:31Z",
   "source": {
     "url": "https://psi.nasa.gov/geode-py/ws/repo/search",
     "snapshot_date": "2026-11-15"
@@ -341,7 +341,7 @@
       "n_files": 8851,
       "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
       "card": "cards/PSI-69.json",
-      "quant": null
+      "quant": "quant/PSI-69.json"
     },
     {
       "accession": "PSI-98",
