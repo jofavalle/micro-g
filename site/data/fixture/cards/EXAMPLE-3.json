@@ -1,0 +1,70 @@
+{
+  "accession": "EXAMPLE-3",
+  "generated_by": {
+    "tool": "hand-written fixture",
+    "model": "none",
+    "date": "2026-11-14"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "Example: compare the soot produced by gas flames in low gravity.",
+      "quote": "Example passage, not from PSI: the soot of gas jet flames is compared.",
+      "source": {"kind": "psi_record", "ref": "Objectives"}
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Example: ethylene.",
+      "quote": "Example passage, not from PSI: ethylene fuel.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Example: fuel flow rate.",
+      "quote": "Example passage, not from PSI: the fuel flow rate was varied.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Example: soot volume fraction.",
+      "quote": "Example passage, not from PSI: soot volume fraction was measured.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Results"}
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Example: cleaner burners.",
+      "quote": "Example passage, not from PSI: may lead to cleaner burners.",
+      "source": {"kind": "psi_record", "ref": "Earth Benefits"}
+    }
+  }
+}

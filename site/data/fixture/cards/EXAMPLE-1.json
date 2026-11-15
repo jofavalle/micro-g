@@ -1,0 +1,70 @@
+{
+  "accession": "EXAMPLE-1",
+  "generated_by": {
+    "tool": "hand-written fixture",
+    "model": "none",
+    "date": "2026-11-14"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "Example: measure how a flame spreads over a thin solid sample.",
+      "quote": "Example passage, not from PSI: the objective is to measure flame spread over thin solids.",
+      "source": {"kind": "psi_record", "ref": "Objectives"}
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Example: a cotton-fiberglass fabric.",
+      "quote": "Example passage, not from PSI: the sample is a cotton-fiberglass fabric.",
+      "source": {"kind": "nasa_page", "ref": "https://example.org/nasa/example-1"}
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Example: flat sheet, 10 cm by 40 cm.",
+      "quote": "Example passage, not from PSI: flat sheets 10 cm wide and 40 cm long.",
+      "source": {"kind": "researchers_guide", "ref": "p. 12"}
+    },
+    "oxygen": {
+      "status": "verified",
+      "text": "Example: 21 % oxygen by volume.",
+      "quote": "Example passage, not from PSI: tests run at 21 % oxygen.",
+      "source": {"kind": "researchers_guide", "ref": "p. 12"}
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Example: forced flow of 20 cm/s.",
+      "quote": "Example passage, not from PSI: a forced flow of 20 cm/s.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Example: flow speed and sample thickness.",
+      "quote": "Example passage, not from PSI: flow speed and thickness were varied.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Example: flame spread rate and carbon monoxide concentration.",
+      "quote": "Example passage, not from PSI: spread rate and CO concentration were recorded.",
+      "source": {"kind": "nasa_page", "ref": "https://example.org/nasa/example-1"}
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "Example: larger samples burned faster than ground tests predicted.",
+      "quote": "Example passage, not from PSI: larger samples burned faster than predicted from ground tests.",
+      "source": {"kind": "psi_record", "ref": "Results"}
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Example: informs fire-resistant materials on Earth.",
+      "quote": "Example passage, not from PSI: results inform fire-resistant materials.",
+      "source": {"kind": "psi_record", "ref": "Earth Benefits"}
+    }
+  }
+}
