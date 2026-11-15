@@ -26,7 +26,8 @@ in which phase, and whether the concern is to prevent, detect or suppress a fire
 findings of the matching investigations, with their citations. It matters because the
 conditions and results of these investigations are spread across long text records and test
 files; the dashboard puts what each one found next to its source, so that whoever designs a
-mission or an experiment can check it.
+mission or an experiment can check it. This project is not affiliated with NASA and is not
+endorsed by it.
 
 ## Link to Project Demo
 
@@ -34,8 +35,7 @@ TODO(#75)
 
 ## Link to Final Project
 
-- Site: <https://micro-g.pages.dev/>
-- Repository: <https://github.com/jofavalle/micro-g>
+<https://micro-g.pages.dev/>
 
 ## Detailed Project Description
 
@@ -131,7 +131,8 @@ No Space Agency Partner data was used. Data, tools and their licenses or conditi
   <https://www.nasa.gov/nasa-brand-center/images-and-media/>. No NASA insignia, logo or image
   is used.
 - **Gemini API (Google)**: Gemini API Additional Terms of Service,
-  <https://aistudio.google.com/docs/terms>.
+  <https://aistudio.google.com/docs/terms>, and Google APIs Terms of Service,
+  <https://developers.google.com/terms>.
 - **Claude Code and Claude in Chrome (Anthropic)**: Anthropic's Consumer Terms of Service,
   <https://www.anthropic.com/legal/consumer-terms>, or Commercial Terms of Service,
   <https://www.anthropic.com/legal/commercial-terms>, depending on the account.
