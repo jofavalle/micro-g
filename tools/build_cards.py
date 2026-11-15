@@ -12,8 +12,13 @@ so with the cache this script runs without a key and without network.
 
 Each field the LLM marks `verified` is checked with tools/verify_cards.check_field.
 What fails is printed as `dropped: <accession>: <field>: <reason>`, counted in
-`dropped` and published as `not_stated`. It writes site/data/cards/<accession>.json
-and site/data/verification.json (keeping its `manual_sample`, if there is one).
+`dropped` and published as `not_stated`. A field that verifies but that a person
+rejected in review (REJECTED) is dropped the same way, with `rejected by review:
+<reason>`, only while its cache entry keeps the SHA-256 that was reviewed; if the
+entry changed, the rejection is not applied and `stale:` is printed.
+
+It writes site/data/cards/<accession>.json and site/data/verification.json (keeping
+its `manual_sample`, if there is one).
 
 Standard library only.
 
@@ -56,6 +61,24 @@ FIELDS = {
     "measurements": "What was measured, and with which sensors or diagnostics.",
     "safety_finding": "The finding most relevant to fire safety in spacecraft or habitats.",
     "earth_benefits": "Applications or benefits on Earth.",
+}
+
+# Fields that pass verification but that a person found wrong, with the SHA-256 of the
+# cache entry that was reviewed. Decided by jofavalle in PR #42:
+# https://github.com/jofavalle/micro-g/pull/42#pullrequestreview-5911194385
+REJECTED = {
+    ("PSI-26", "objective"): (
+        "adb1a7ed63c4c4cbf818e45d6099619fa3fc6b1859615fa97dfd1bf84301dd04",
+        "text adds the second objective, which is not in the quote"),
+    ("PSI-69", "fuel"): (
+        "a03ee19a3f547fe005f255517295de45d64df64fdc8a157cd1119f4973349f70",
+        "names no fuel"),
+    ("PSI-101", "flow"): (
+        "17c645412a06c8d87692ad6ed49c12d4852ce487aad2c7b767a77dcbd04d480d",
+        "no value or range for the flow"),
+    ("PSI-142", "pressure"): (
+        "595e4171fbcb5bdd7cc37afe3c94ff775129870f02c8f99895c8b16c2019b137",
+        "pressure of a simulation, not of a test"),
 }
 
 PROMPT = """You extract facts from a NASA Physical Sciences Informatics (PSI) record of a
@@ -170,6 +193,14 @@ def build_card(record, entry, counts):
         reason = check_field(field, record)
         if not reason and field["source"]["ref"] not in allowed_sources(name):
             reason = f"source field {field['source']['ref']!r} not allowed for {name}"
+        rejected = REJECTED.get((record["Accession"], name))
+        if not reason and rejected:
+            sha, why = rejected
+            if sha == entry["sha256"]:
+                reason = f"rejected by review: {why}"
+            else:
+                print(f"stale: {record['Accession']}: {name}: review rejection not applied,"
+                      " the cache entry changed since it was reviewed")
         if reason:
             counts["dropped"] += 1
             print(f"dropped: {record['Accession']}: {name}: {reason}")
