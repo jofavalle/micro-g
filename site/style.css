@@ -1,4 +1,4 @@
-/* AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz */
+/* AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz, PabloBernal-CPU */
 
 :root {
   --bg: #ffffff;
@@ -64,7 +64,8 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 
 .site-header,
 .verification,
-.view {
+.view,
+.site-gaps {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -375,6 +376,11 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 
 .error p { margin: 0.25rem 0; }
 .error-title { font-weight: 700; }
+
+/* Known gaps, at the foot of every view (the box comes from .gap) */
+
+.site-gaps { margin-bottom: 1.5rem; }
+.site-gaps h2 { margin: 0 0 0.25rem; font-size: 1rem; }
 
 @media (max-width: 800px) {
   .catalog { grid-template-columns: minmax(0, 1fr); }
