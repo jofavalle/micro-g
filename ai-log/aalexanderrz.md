@@ -18,6 +18,7 @@ Format and rules in [README.md](README.md).
 | 2026-11-15 02:41 | Claude Code, Pro | 36% (end of session, after the push and the reply to the review) | 7% | not read | not read | #24, PR #42 |
 | 2026-11-15 07:20 | Claude Code, Pro | 0% (given at the start of the session) | 7% | 2026-11-15 12:00 | 2026-11-17 15:00 | #24, PR #42 |
 | 2026-11-15 08:27 | Claude Code, Pro | 11% (end of session, after the push and the reply to jofavalle's review) | 8% | 2026-11-15 12:00 | 2026-11-17 15:00 | #24, PR #42 |
+| 2026-11-15 10:11 | Claude Code, Pro | 44% (end of session, after cesarp03 confirmed the manual sample; the 08:27 reading was not the end: the session went on with the sample) | 13% | 2026-11-15 12:00 | 2026-11-17 15:00 | #24, PR #42 |
 
 ## AI use
 
