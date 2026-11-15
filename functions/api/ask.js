@@ -99,10 +99,19 @@ export async function onRequestPost({ request, env }) {
     const { answer, model } = await askModel(env, corpus, question);
     return reply(200, checkAnswer(corpus, answer, model));
   } catch (err) {
-    if (err instanceof AskError) return failure(err.reason, err.status);
+    if (err instanceof AskError) return failure(err.reason, err.status, diagnostic(env, err.detail));
     if (err && err.name === "TimeoutError") return failure("unavailable", 504);
-    return failure("unavailable", 502);
+    return failure("unavailable", 502, diagnostic(env, { thrown: `${err && err.name}: ${err && err.message}` }));
   }
+}
+
+// TEMPORARY (order #87, first deploy of the preview): why the call to Gemini
+// failed, with the key replaced by "[key]" wherever it appears. It is removed
+// before the PR is opened.
+function diagnostic(env, info) {
+  if (!info) return undefined;
+  const text = JSON.stringify(info);
+  return JSON.parse(env.LLM_API_KEY ? text.split(env.LLM_API_KEY).join("[key]") : text);
 }
 
 // Fixed cases of the self-test, with what the check has to do with each.
@@ -147,10 +156,11 @@ export async function onRequestGet({ request, env }) {
 // ---------------------------------------------------------------- responses
 
 class AskError extends Error {
-  constructor(reason, status) {
+  constructor(reason, status, detail) {
     super(reason);
     this.reason = reason;
     this.status = status;
+    this.detail = detail;
   }
 }
 
@@ -177,8 +187,8 @@ function reply(status, body) {
   });
 }
 
-function failure(reason, status) {
-  return reply(status, { status: "error", reason });
+function failure(reason, status, detail) {
+  return reply(status, { status: "error", reason, detail });
 }
 
 // ---------------------------------------------------------------- input
@@ -465,17 +475,30 @@ async function askModel(env, corpus, question) {
     }),
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
-  if (response.status === 429) throw new AskError("quota", 429);
-  if (!response.ok) throw new AskError("unavailable", 502);
+  if (!response.ok) {
+    let error = null;
+    try {
+      error = (await response.json()).error;
+    } catch {
+      error = null;
+    }
+    const detail = {
+      upstream: response.status,
+      error_status: isObject(error) ? error.status : null,
+      message: isObject(error) ? String(error.message).slice(0, 600) : null,
+    };
+    if (response.status === 429) throw new AskError("quota", 429, detail);
+    throw new AskError("unavailable", 502, detail);
+  }
   const interaction = await response.json();
   if (!isObject(interaction) || interaction.status !== "completed") {
-    throw new AskError("unavailable", 502);
+    throw new AskError("unavailable", 502, { interaction_status: isObject(interaction) ? interaction.status : null });
   }
   let answer;
   try {
     answer = JSON.parse(outputText(interaction));
   } catch {
-    throw new AskError("unavailable", 502);
+    throw new AskError("unavailable", 502, { output_start: outputText(interaction).slice(0, 300) });
   }
   return { answer, model: typeof interaction.model === "string" ? interaction.model : model };
 }
