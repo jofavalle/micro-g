@@ -134,6 +134,16 @@ function cardHref(accession) {
   return `#/investigation/${encodeURIComponent(accession)}`;
 }
 
+function quantHref(accession) {
+  return `#/quant/${encodeURIComponent(accession)}`;
+}
+
+// The catalog says which investigations have a quantitative table, so the
+// interface never requests a file that is not there.
+function hasQuant(entry) {
+  return typeof entry.quant === "string" && entry.quant !== "";
+}
+
 function errorBox(title, err) {
   const detail = err instanceof DataError
     ? [el("code", {}, err.url), `: ${err.reason}.`]
@@ -358,17 +368,321 @@ function entryRow(entry) {
         el("span", { class: "accession" }, String(entry.accession)),
         ` · ${entry.n_files} files in PSI · `,
         el("a", { href: cardHref(entry.accession) }, "Open card"),
+        hasQuant(entry) ? [" · ", el("a", { href: quantHref(entry.accession) }, "Quantitative data")] : null,
         psi ? [" · ", el("a", { href: psi, rel: "noopener" }, "PSI record")] : null)));
 }
 
-// ---------------------------------------------------------------- views not built yet
+// ---------------------------------------------------------------- shared by card and quant views
 
-function renderPending(view, what) {
-  view.replaceChildren(
-    el("p", {}, el("a", { href: "#/" }, "← Back to the catalog")),
-    el("h1", {}, what),
-    el("p", {}, "This view is not built yet: it comes in stage 2 of order #25."));
+function findEntry(catalog, accession) {
+  const entry = catalog.investigations.find((e) => e.accession === accession);
+  if (!entry) throw new Error(`There is no investigation "${accession}" in the catalog.`);
+  return entry;
 }
+
+function backLinks(entry, extra) {
+  return el("p", { class: "back" },
+    el("a", { href: "#/" }, "← Catalog"),
+    extra ? [" · ", el("a", { href: cardHref(entry.accession) }, `Card of ${entry.acronym}`)] : null);
+}
+
+function entryHeading(entry, suffix) {
+  return el("h1", {},
+    String(entry.acronym),
+    el("span", { class: "entry-title" }, suffix || String(entry.title)));
+}
+
+// ---------------------------------------------------------------- card view
+
+const CARD_FIELDS = [
+  ["objective", "Objective"],
+  ["fuel", "Fuel"],
+  ["sample_geometry", "Sample geometry"],
+  ["oxygen", "Oxygen"],
+  ["flow", "Flow"],
+  ["pressure", "Pressure"],
+  ["variables", "Variables"],
+  ["measurements", "Measurements"],
+  ["safety_finding", "Safety finding"],
+  ["earth_benefits", "Earth benefits"],
+];
+
+// The NASA resource that source.kind "researchers_guide" refers to.
+const GUIDE_TITLE = "A Researcher's Guide to International Space Station Combustion Science";
+const GUIDE_URL = "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/";
+
+const checkCard = (d) =>
+  !isObject(d) ? "not an object"
+    : !isObject(d.fields) ? "no fields object"
+      : !isObject(d.generated_by) ? "no generated_by object"
+        : null;
+
+async function renderCard(view, isCurrent, accession) {
+  const catalog = await loadCatalog();
+  const entry = findEntry(catalog, accession);
+  const card = await load(typeof entry.card === "string" ? entry.card : `cards/${accession}.json`, checkCard);
+  if (!isCurrent()) return;
+
+  const psi = safeUrl(entry.psi_url);
+  const gen = card.generated_by;
+  view.replaceChildren(
+    backLinks(entry, false),
+    entryHeading(entry),
+    el("p", { class: "card-meta" },
+      el("span", { class: "accession" }, String(entry.accession)),
+      ` · Level ${entry.level}: ${levelLabel(entry.level)}`,
+      hasQuant(entry) ? [" · ", el("a", { href: quantHref(entry.accession) }, "Quantitative data")] : null,
+      psi ? [" · ", el("a", { href: psi, rel: "noopener" }, "PSI record")] : null),
+    el("p", { class: "reason" },
+      el("span", { class: "reason-label" }, `Why level ${entry.level}: `),
+      String(entry.level_reason)),
+    el("p", { class: "generated-by" },
+      `AI-generated card: drafted by ${gen.tool} (model: ${gen.model}) on ${gen.date}. `,
+      "Each field shows the passage it comes from and where that passage is; read the passage before relying on the summary."),
+    el("div", { class: "fields" }, CARD_FIELDS.map(([key, label]) => cardField(label, card.fields[key], entry))));
+}
+
+function cardField(label, field, entry) {
+  const ok = isObject(field) && field.status === "verified";
+  const source = isObject(field) && isObject(field.source) ? field.source : null;
+  return el("section", { class: ok ? "field" : "field field-not-stated" },
+    el("h2", {}, label),
+    el("div", { class: "field-body" },
+      ok
+        ? [
+          el("p", { class: "field-text" }, String(field.text)),
+          el("blockquote", { class: "quote" }, String(field.quote)),
+          el("p", { class: "field-source" }, "Source: ", sourceLabel(source, entry)),
+        ]
+        : [
+          el("p", { class: "not-stated" }, "Not stated in source"),
+          source ? el("p", { class: "field-source" }, "Looked for in: ", sourceLabel(source, entry)) : null,
+        ]));
+}
+
+function sourceLabel(source, entry) {
+  if (!source) return "unknown";
+  const ref = String(source.ref);
+  if (source.kind === "psi_record") {
+    const psi = safeUrl(entry.psi_url);
+    return [psi ? el("a", { href: psi, rel: "noopener" }, "PSI record") : "PSI record", `, field "${ref}"`];
+  }
+  if (source.kind === "researchers_guide") {
+    return [el("a", { href: GUIDE_URL, rel: "noopener" }, GUIDE_TITLE), `, ${ref}`];
+  }
+  if (source.kind === "nasa_page") {
+    const url = safeUrl(ref);
+    return ["NASA page ", url ? el("a", { href: url, rel: "noopener" }, url) : ref];
+  }
+  return ref;
+}
+
+// ---------------------------------------------------------------- quantitative view
+
+const checkQuant = (d) =>
+  !isObject(d) ? "not an object"
+    : !isObject(d.table) ? "no table object"
+      : !Array.isArray(d.table.columns) || d.table.columns.some((c) => !isObject(c)) ? "table.columns is not a list of objects"
+        : !Array.isArray(d.table.rows) || d.table.rows.some((r) => !Array.isArray(r)) ? "table.rows is not a list of lists"
+          : null;
+
+function columnLabel(column) {
+  return column.unit ? `${column.name} (${column.unit})` : String(column.name);
+}
+
+async function renderQuant(view, isCurrent, accession) {
+  const catalog = await loadCatalog();
+  const entry = findEntry(catalog, accession);
+  if (!hasQuant(entry)) throw new Error(`${entry.acronym} has no quantitative table in the catalog.`);
+  const data = await load(entry.quant, checkQuant);
+  if (!isCurrent()) return;
+
+  const { columns, rows } = data.table;
+  view.replaceChildren(
+    backLinks(entry, true),
+    entryHeading(entry, "Quantitative data"),
+    typeof data.note === "string" && data.note ? el("p", { class: "note" }, data.note) : null,
+    el("section", { class: "quant-section" },
+      el("div", { class: "section-head" },
+        el("h2", {}, `Table (${rows.length} rows)`),
+        el("button", {
+          type: "button",
+          class: "button",
+          onclick: () => downloadCsv(`${entry.accession}.csv`, toCsv(columns, rows)),
+        }, "Download CSV")),
+      dataTable(columns, rows),
+      el("dl", { class: "column-notes" },
+        columns.map((c) => [el("dt", {}, columnLabel(c)), el("dd", {}, String(c.description))]))),
+    el("section", { class: "quant-section" },
+      el("h2", {}, "Chart"),
+      chartPanel(columns, rows, data.fit)),
+    el("section", { class: "quant-section" },
+      el("h2", {}, "Source files in PSI"),
+      el("ul", { class: "source-files" },
+        asList(data.source_files).map((f) =>
+          el("li", {}, el("code", {}, String(f.key)), " · SHA-256 ", el("code", {}, String(f.sha256)))))));
+}
+
+function dataTable(columns, rows) {
+  return el("div", { class: "table-wrap" },
+    el("table", { class: "data-table" },
+      el("thead", {}, el("tr", {}, columns.map((c) =>
+        el("th", { scope: "col", title: String(c.description) },
+          String(c.name),
+          c.unit ? el("span", { class: "unit" }, String(c.unit)) : null)))),
+      el("tbody", {}, rows.map((row) => el("tr", {}, columns.map((c, j) => {
+        const value = row[j];
+        return value === null || value === undefined
+          ? el("td", { class: "missing", title: "No value" }, "–")
+          : el("td", { class: typeof value === "number" ? "num" : null }, String(value));
+      }))))));
+}
+
+// RFC 4180: fields with a comma, a quote or a line break go in quotes.
+function toCsv(columns, rows) {
+  const cell = (v) => {
+    if (v === null || v === undefined) return "";
+    const s = String(v);
+    return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  return [columns.map(columnLabel), ...rows]
+    .map((r) => r.map(cell).join(","))
+    .join("\r\n") + "\r\n";
+}
+
+function downloadCsv(filename, text) {
+  const url = URL.createObjectURL(new Blob([text], { type: "text/csv;charset=utf-8" }));
+  const link = el("a", { href: url, download: filename });
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ---------------------------------------------------------------- chart (hand-drawn SVG, no library)
+
+// A column can be plotted if every value is a number or null, with at least two numbers.
+function numericColumns(columns, rows) {
+  return columns
+    .map((c, j) => ({ column: c, index: j }))
+    .filter(({ index }) => {
+      const values = rows.map((r) => r[index]);
+      return values.every((v) => v === null || v === undefined || (typeof v === "number" && Number.isFinite(v)))
+        && values.filter((v) => typeof v === "number").length >= 2;
+    });
+}
+
+function chartPanel(columns, rows, fit) {
+  const numeric = numericColumns(columns, rows);
+  if (numeric.length < 2) {
+    return el("p", { class: "empty" }, "The table needs at least two numeric columns to draw a chart.");
+  }
+  let x = numeric[0].index;
+  let y = numeric[numeric.length - 1].index;
+  const holder = el("div", { class: "chart-holder" });
+
+  const axisSelect = (label, current, onPick) =>
+    el("label", { class: "axis-pick" }, `${label} `,
+      el("select", { onchange: (e) => onPick(Number(e.target.value)) },
+        numeric.map(({ column, index }) =>
+          el("option", { value: String(index), selected: index === current }, columnLabel(column)))));
+
+  function draw() {
+    holder.replaceChildren(scatterChart(columns, rows, x, y));
+  }
+
+  const panel = el("div", {},
+    el("div", { class: "axis-controls" },
+      axisSelect("Horizontal axis", x, (i) => { x = i; draw(); }),
+      axisSelect("Vertical axis", y, (i) => { y = i; draw(); })),
+    holder,
+    el("p", { class: "chart-note" },
+      fit === null || fit === undefined
+        ? "No fitted relation yet: the chart shows only the measured points."
+        : "A fitted relation exists in the data file, but this view does not draw it yet: the chart shows only the measured points."));
+  draw();
+  return panel;
+}
+
+// Axis range with round tick values. The data range is widened by 5 % on each
+// side first, so no point sits on an axis line.
+function niceScale(min, max, target = 6) {
+  const pad = min === max ? Math.abs(min) * 0.1 || 1 : (max - min) * 0.05;
+  min -= pad;
+  max += pad;
+  const rough = (max - min) / target;
+  const magnitude = 10 ** Math.floor(Math.log10(rough));
+  const ratio = rough / magnitude;
+  const step = (ratio < 1.5 ? 1 : ratio < 3 ? 2 : ratio < 7 ? 5 : 10) * magnitude;
+  const lo = Math.floor(min / step) * step;
+  const hi = Math.ceil(max / step) * step;
+  const decimals = Math.max(0, -Math.floor(Math.log10(step)));
+  const ticks = [];
+  for (let i = 0; lo + i * step <= hi + step / 2; i++) ticks.push(lo + i * step);
+  return { lo, hi, ticks, format: (v) => v.toFixed(decimals) };
+}
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+function svg(tag, attrs, ...children) {
+  const node = document.createElementNS(SVG_NS, tag);
+  for (const [key, value] of Object.entries(attrs || {})) node.setAttribute(key, value);
+  for (const child of children.flat(Infinity)) {
+    if (child === null || child === undefined || child === false) continue;
+    node.append(child instanceof Node ? child : String(child));
+  }
+  return node;
+}
+
+function scatterChart(columns, rows, xi, yi) {
+  const W = 720, H = 420, M = { top: 16, right: 24, bottom: 56, left: 72 };
+  const points = rows
+    .map((r) => ({ x: r[xi], y: r[yi], row: r }))
+    .filter((p) => typeof p.x === "number" && typeof p.y === "number");
+  const skipped = rows.length - points.length;
+  if (points.length === 0) {
+    return el("p", { class: "empty" }, "No row has a value in both columns.");
+  }
+  const sx = niceScale(Math.min(...points.map((p) => p.x)), Math.max(...points.map((p) => p.x)));
+  const sy = niceScale(Math.min(...points.map((p) => p.y)), Math.max(...points.map((p) => p.y)));
+  const px = (v) => M.left + ((v - sx.lo) / (sx.hi - sx.lo)) * (W - M.left - M.right);
+  const py = (v) => H - M.bottom - ((v - sy.lo) / (sy.hi - sy.lo)) * (H - M.top - M.bottom);
+  const labelIndex = columns.findIndex((c, j) => rows.some((r) => typeof r[j] === "string"));
+  const xLabel = columnLabel(columns[xi]);
+  const yLabel = columnLabel(columns[yi]);
+
+  const chart = svg("svg", {
+    class: "chart",
+    viewBox: `0 0 ${W} ${H}`,
+    role: "img",
+    "aria-label": `Scatter plot of ${yLabel} against ${xLabel}, ${points.length} points`,
+  },
+  sx.ticks.map((t) => svg("g", { class: "tick" },
+    svg("line", { x1: px(t), x2: px(t), y1: M.top, y2: H - M.bottom, class: "grid" }),
+    svg("text", { x: px(t), y: H - M.bottom + 18, "text-anchor": "middle" }, sx.format(t)))),
+  sy.ticks.map((t) => svg("g", { class: "tick" },
+    svg("line", { x1: M.left, x2: W - M.right, y1: py(t), y2: py(t), class: "grid" }),
+    svg("text", { x: M.left - 8, y: py(t) + 4, "text-anchor": "end" }, sy.format(t)))),
+  svg("line", { x1: M.left, x2: W - M.right, y1: H - M.bottom, y2: H - M.bottom, class: "axis" }),
+  svg("line", { x1: M.left, x2: M.left, y1: M.top, y2: H - M.bottom, class: "axis" }),
+  svg("text", { class: "axis-label", x: (M.left + W - M.right) / 2, y: H - 12, "text-anchor": "middle" }, xLabel),
+  svg("text", {
+    class: "axis-label",
+    transform: `translate(18 ${(M.top + H - M.bottom) / 2}) rotate(-90)`,
+    "text-anchor": "middle",
+  }, yLabel),
+  points.map((p) => svg("circle", { class: "point", cx: px(p.x), cy: py(p.y), r: 5 },
+    svg("title", {},
+      `${labelIndex >= 0 ? `${p.row[labelIndex]}: ` : ""}${xLabel} = ${p.x}, ${yLabel} = ${p.y}`))));
+
+  return el("figure", { class: "chart-figure" },
+    chart,
+    el("figcaption", {},
+      `${points.length} points plotted.`,
+      skipped ? ` ${skipped} ${skipped === 1 ? "row has" : "rows have"} no value in one of the two columns and ${skipped === 1 ? "is" : "are"} left out.` : ""));
+}
+
+// ---------------------------------------------------------------- other views
 
 function renderNotFound(view) {
   view.replaceChildren(
@@ -389,12 +703,14 @@ async function route() {
   view.replaceChildren(el("p", { class: "loading" }, "Loading…"));
   try {
     if (parts.length === 0) await renderCatalog(view, isCurrent);
-    else if (parts[0] === "investigation" && parts.length === 2) renderPending(view, `Card of ${parts[1]}`);
-    else if (parts[0] === "quant" && parts.length === 2) renderPending(view, `Quantitative data of ${parts[1]}`);
+    else if (parts[0] === "investigation" && parts.length === 2) await renderCard(view, isCurrent, parts[1]);
+    else if (parts[0] === "quant" && parts.length === 2) await renderQuant(view, isCurrent, parts[1]);
     else renderNotFound(view);
   } catch (err) {
     if (isCurrent()) view.replaceChildren(errorBox("This view could not be loaded.", err));
   }
+  // On navigation (not on the first load), start the new view at the top.
+  if (isCurrent() && token > 1) window.scrollTo(0, 0);
 }
 
 function showFixtureBanner() {

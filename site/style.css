@@ -229,6 +229,110 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .empty,
 .loading { color: var(--muted); }
 
+/* Card and quantitative views */
+
+.back { margin: 0.5rem 0 0; }
+.view h1 { margin: 0.5rem 0 0.25rem; }
+.view h1 .entry-title { font-size: 1.1rem; color: var(--muted); }
+.card-meta { margin: 0 0 0.5rem; color: var(--muted); }
+
+.generated-by,
+.note {
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+}
+
+.fields { margin-top: 1rem; }
+
+.field {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.field h2 { margin: 0; font-size: 1rem; }
+.field-text { margin: 0; }
+
+.quote {
+  margin: 0.4rem 0;
+  padding: 0.25rem 0.75rem;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.field-source { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.not-stated { margin: 0; font-weight: 600; color: var(--muted); }
+
+.quant-section { margin-top: 1.5rem; }
+.quant-section h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.button,
+.axis-pick select {
+  font: inherit;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.button { cursor: pointer; }
+
+.table-wrap { overflow-x: auto; }
+
+.data-table {
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.3rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.data-table th { vertical-align: bottom; }
+.data-table .unit { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; }
+.data-table td.num { text-align: right; }
+.data-table td.missing { color: var(--muted); text-align: center; }
+
+.column-notes {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.2rem 1rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.column-notes dt { font-weight: 600; }
+.column-notes dd { margin: 0; color: var(--muted); }
+
+.axis-controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 0.5rem; }
+
+.chart-figure { margin: 0; max-width: 760px; }
+.chart { width: 100%; height: auto; color: var(--text); }
+.chart text { fill: currentColor; font-size: 13px; }
+.chart .axis-label { font-weight: 600; }
+.chart .axis { stroke: currentColor; }
+.chart .grid { stroke: var(--border); }
+.chart .point { fill: var(--accent); fill-opacity: 0.85; stroke: var(--bg); stroke-width: 1.5; }
+.chart-figure figcaption,
+.chart-note { color: var(--muted); font-size: 0.9rem; }
+
+.source-files { margin: 0; padding-left: 1.2rem; }
+
 .error {
   margin: 1rem 0;
   padding: 0.75rem 1rem;
@@ -242,4 +346,5 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 @media (max-width: 800px) {
   .catalog { grid-template-columns: minmax(0, 1fr); }
   .filters { position: static; }
+  .field { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
 }
