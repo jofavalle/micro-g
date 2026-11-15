@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz
+# AI-assisted: Claude Code (claude-opus-5-5, claude-fable-5-2), reviewed by aalexanderrz, cesarp03
 """Validate a data folder against the data contract (docs/data-contract.md).
 
 Checks required keys, unknown keys, types and allowed values of catalog.json,
@@ -324,7 +324,8 @@ def check_verification(report, data):
 
 def check_quant(report, rel, data, accession):
     if data is None or not check_keys(
-        report, rel, "", data, ("accession", "table", "source_files", "fit"), ("note",)
+        report, rel, "", data, ("accession", "table", "source_files", "fit"),
+        ("note", "fit_note")
     ):
         return
     if data.get("accession") != accession and "accession" in data:
@@ -388,6 +389,11 @@ def check_quant(report, rel, data, accession):
 
     if "fit" in data and data["fit"] is not None and not isinstance(data["fit"], dict):
         report.error(rel, "fit", "must be null or an object")
+    # fit_note says why there is no fitted relation: it has no place next to one.
+    if "fit_note" in data:
+        check_str(report, rel, "fit_note", data["fit_note"])
+        if data.get("fit") is not None:
+            report.error(rel, "fit_note", "is only allowed when fit is null")
 
 
 def main(argv):

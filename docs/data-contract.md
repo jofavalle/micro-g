@@ -1,4 +1,4 @@
-<!-- AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz -->
+<!-- AI-assisted: Claude Code (claude-opus-5-5, claude-fable-5-2), reviewed by aalexanderrz, cesarp03 -->
 # Data contract
 
 The site is static: it reads precomputed JSON from `site/data/`. This document is the
@@ -123,4 +123,5 @@ A clean table of one investigation, computed by code from PSI files.
 | `table.columns` | non-empty list | Each with `name` (unique, not empty), `unit` (may be `""` for none) and `description` |
 | `table.rows` | list | Each row is a list with one value per column: number, string or `null` |
 | `source_files` | non-empty list | Each with `key` (the PSI file key) and `sha256` (64 lowercase hex characters) |
-| `fit` | `null` or object | The fitted relation. Its shape is fixed on Sunday, when the relation is chosen; until then the validator only checks that it is `null` or an object |
+| `fit` | `null` or object | The fitted relation. No fitted relation is published, so the shape of the object is not defined: the validator only checks that it is `null` or an object |
+| `fit_note` | string, optional | Why there is no fitted relation; not empty. Only allowed when `fit` is `null`. The script that builds the table writes it from the rows, with its figures; the interface shows it next to the chart |

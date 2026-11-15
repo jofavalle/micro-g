@@ -1,4 +1,4 @@
-// AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz
+// AI-assisted: Claude Code (claude-opus-5-5, claude-fable-5-2), reviewed by cesarp03, aalexanderrz, jofavalle, PabloBernal-CPU
 // Static interface over the JSON files described in docs/data-contract.md.
 // No framework and no build step. Every value from the data files is inserted
 // with textContent, never as HTML.
@@ -538,7 +538,7 @@ async function renderQuant(view, isCurrent, accession) {
         columns.map((c) => [el("dt", {}, columnLabel(c)), el("dd", {}, String(c.description))]))),
     el("section", { class: "quant-section" },
       el("h2", {}, "Chart"),
-      chartPanel(columns, rows, data.fit)),
+      chartPanel(columns, rows, data.fit, data.fit_note)),
     el("section", { class: "quant-section" },
       el("h2", {}, "Source files in PSI"),
       el("ul", { class: "source-files" },
@@ -595,7 +595,10 @@ function numericColumns(columns, rows) {
     });
 }
 
-function chartPanel(columns, rows, fit) {
+// fitNote is the reason there is no fitted relation, as the data file gives it.
+function chartPanel(columns, rows, fit, fitNote) {
+  const noFit = fit === null || fit === undefined;
+  const reason = noFit && typeof fitNote === "string" && fitNote.trim() ? fitNote : null;
   const numeric = numericColumns(columns, rows);
   if (numeric.length < 2) {
     return el("p", { class: "empty" }, "The table needs at least two numeric columns to draw a chart.");
@@ -619,9 +622,10 @@ function chartPanel(columns, rows, fit) {
       axisSelect("Horizontal axis", x, (i) => { x = i; draw(); }),
       axisSelect("Vertical axis", y, (i) => { y = i; draw(); })),
     holder,
+    reason ? el("p", { class: "note" }, reason) : null,
     el("p", { class: "chart-note" },
-      fit === null || fit === undefined
-        ? "No fitted relation yet: the chart shows only the measured points."
+      reason ? "The chart shows only the measured points."
+        : noFit ? "No fitted relation: the chart shows only the measured points."
         : "A fitted relation exists in the data file, but this view does not draw it yet: the chart shows only the measured points."));
   draw();
   return panel;

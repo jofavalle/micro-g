@@ -20,7 +20,11 @@ sheets that have it, and the distinct values of the fuel and fiber labels. It is
 labels of LABELS were chosen: the sheets themselves are not read by a person or a model.
 
 --verify does not use the network: it rereads the written table, checks it and prints the
-count of tests per condition: fuel, support, pressure and O2 mole fraction.
+count of tests per condition: fuel, support, pressure and O2 mole fraction. It also writes
+`fit_note` again from the rows, and fails if it is not the one in the file.
+
+No relation is fitted: `fit` is null, and `fit_note` says why, with the figures of that
+count. They are computed here, never typed.
 
 Standard library only.
 
@@ -62,6 +66,12 @@ RETRY_WAIT_S = 5.0
 
 SHEET_SUFFIX = "_TestSheet.txt"
 EXPECTED_SHEETS = 272  # counted on the listing on 2026-11-14 (issue #19)
+
+# The rule the team wrote before counting the tests (point 3 of issue #16): a relation is
+# fitted on one condition with at least MIN_LEVELS levels of x_co2, each with MIN_TESTS
+# or more tests with d_ext > 0.
+MIN_LEVELS = 3
+MIN_TESTS = 3
 
 # Lines and labels longer than this are free text, not labels: the census does not
 # print them, because free text can name people.
@@ -451,7 +461,7 @@ def build_row(sheet, problems, remarks, odd_dates):
     return [row[name] for name in COLUMN_NAMES]
 
 
-def render(note, rows, sources):
+def render(note, rows, sources, fit_note):
     """The JSON text, with one row per line."""
     def dumps(value):
         return json.dumps(value, ensure_ascii=False, allow_nan=False)
@@ -472,7 +482,8 @@ def render(note, rows, sources):
         '  "source_files": [',
         ",\n".join(f"    {dumps(source)}" for source in sources),
         "  ],",
-        '  "fit": null',
+        '  "fit": null,',
+        f'  "fit_note": {dumps(fit_note)}',
         "}",
     ]
     return "\n".join(lines) + "\n"
@@ -493,6 +504,11 @@ def build(listed, sheets, excluded, fetched):
         print(f"failed: {len(problems)} problems; nothing written")
         return 1
     sources = [{"key": sheet["key"], "sha256": sheet["sha256"]} for sheet in sheets]
+    fit_note, error = fit_note_text(rows)
+    if error:
+        print(f"error: {error}")
+        print("failed: nothing written")
+        return 1
 
     note = (
         f"FLEX (Flame Extinguishment Experiment, {ACCESSION}): one row per `{SHEET_SUFFIX}` "
@@ -510,7 +526,7 @@ def build(listed, sheets, excluded, fetched):
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT, "w", encoding="utf-8", newline="\n") as f:
-        f.write(render(note, rows, sources))
+        f.write(render(note, rows, sources, fit_note))
     print(f"{ACCESSION}: {listed} listed, {len(rows)} parsed, {len(excluded)} excluded")
     for name, reason in excluded:
         print(f"  excluded: {name}: {reason}")
@@ -530,40 +546,125 @@ def fmt(value):
     return f"{value:g}" if isinstance(value, float) else str(value)
 
 
-def recount(rows):
-    """Markdown table: one line per combination of fuel, support, pressure and x_o2."""
+def condition_counts(rows, pressure_digits=None):
+    """The count of each condition (fuel, support, pressure and x_o2), the best one first.
+
+    Each one is a dict: key, sheets, with_dext, zero_dext, d0_range and levels, which maps
+    each level of x_co2 with MIN_TESTS or more tests with d_ext > 0 to that number of tests.
+
+    The pressure of a sheet is the measured one, so 1.00 and 1.01 atm are two conditions.
+    With pressure_digits, the pressure is rounded to that many decimals before grouping.
+    """
     at = {name: i for i, name in enumerate(COLUMN_NAMES)}
     groups = defaultdict(list)
     for row in rows:
-        key = tuple(row[at[name]] for name in ("fuel", "support", "pressure", "x_o2"))
-        groups[key].append(row)
+        key = [row[at[name]] for name in ("fuel", "support", "pressure", "x_o2")]
+        if pressure_digits is not None and key[2] is not None:
+            key[2] = round(key[2], pressure_digits)
+        groups[tuple(key)].append(row)
 
     table = []
     for key, members in groups.items():
         # A d_ext of 0 is not an extinction at a finite diameter: it is counted in its
         # own column and does not make a level.
         with_dext = [row for row in members if (row[at["d_ext"]] or 0) > 0]
-        zero_dext = sum(row[at["d_ext"]] == 0 for row in members)
-        levels = Counter(
+        tests = Counter(
             round(row[at["x_co2"]], 2) for row in with_dext if row[at["x_co2"]] is not None)
-        full_levels = sum(count >= 3 for count in levels.values())
         d0 = [row[at["d0"]] for row in members if row[at["d0"]] is not None]
-        d0_range = f"{fmt(min(d0))} to {fmt(max(d0))}" if d0 else "null"
-        table.append((key, len(members), len(with_dext), full_levels, d0_range, zero_dext))
-    table.sort(key=lambda r: (-r[3], -r[2], -r[1], [fmt(v) for v in r[0]]))
+        table.append({
+            "key": key,
+            "sheets": len(members),
+            "with_dext": len(with_dext),
+            "zero_dext": sum(row[at["d_ext"]] == 0 for row in members),
+            "levels": {level: n for level, n in sorted(tests.items()) if n >= MIN_TESTS},
+            "d0_range": f"{fmt(min(d0))} to {fmt(max(d0))}" if d0 else "null",
+        })
+    table.sort(key=lambda c: (
+        -len(c["levels"]), -c["with_dext"], -c["sheets"], [fmt(v) for v in c["key"]]))
+    return table
 
+
+def recount(rows):
+    """Markdown table: one line per combination of fuel, support, pressure and x_o2."""
+    table = condition_counts(rows)
     lines = [
         "| fuel | support | pressure (atm) | x_o2 | sheets | d_ext > 0 | d_ext = 0 "
-        "| x_co2 levels with 3+ tests with d_ext > 0 | d0 range (mm) |",
+        f"| x_co2 levels with {MIN_TESTS}+ tests with d_ext > 0 | d0 range (mm) |",
         "|---|---|---|---|---|---|---|---|---|",
     ]
-    for key, sheets, with_dext, full_levels, d0_range, zero_dext in table:
-        cells = [fmt(v) for v in key] + [
-            str(sheets), str(with_dext), str(zero_dext), str(full_levels), d0_range]
+    for c in table:
+        cells = [fmt(v) for v in c["key"]] + [
+            str(c["sheets"]), str(c["with_dext"]), str(c["zero_dext"]), str(len(c["levels"])),
+            c["d0_range"]]
         lines.append("| " + " | ".join(cells) + " |")
-    total = sum(r[1] for r in table)
+    total = sum(c["sheets"] for c in table)
     lines.append(f"total: {total} sheets in {len(table)} conditions")
     return lines, total
+
+
+# ---------------------------------------------------------------- why there is no fit
+
+def plural(n, word):
+    return f"{n} {word}" if n == 1 else f"{n} {word}s"
+
+
+def fit_note_text(rows):
+    """Why no relation is fitted, written from the count: (text, None) or (None, error).
+
+    Every figure comes from condition_counts. It is an error if a condition meets the
+    rule, with the pressure as measured or rounded to 0.1 atm: the text says that none
+    does, and it would be false.
+    """
+    at = {name: i for i, name in enumerate(COLUMN_NAMES)}
+    exact = condition_counts(rows)
+    rounded = condition_counts(rows, pressure_digits=1)
+    for table, how in ((exact, "as measured"), (rounded, "rounded to 0.1 atm")):
+        meeting = sum(len(c["levels"]) >= MIN_LEVELS for c in table)
+        if meeting:
+            return None, (
+                f"{plural(meeting, 'condition')} with the pressure {how} "
+                f"{'has' if meeting == 1 else 'have'} {MIN_LEVELS} levels of x_co2 with "
+                f"{MIN_TESTS} or more tests with d_ext > 0: fit_note cannot say that none does")
+
+    text = (
+        "No relation is fitted. The rule the team wrote before counting the tests asks for "
+        "one condition (fuel, support, pressure and x_o2 held fixed) with at least "
+        f"{MIN_LEVELS} levels of x_co2, each with {MIN_TESTS} or more tests that extinguished "
+        f"at a finite diameter (d_ext > 0). None of the {len(exact)} conditions in this table "
+        f"has {MIN_LEVELS} such levels"
+    )
+    best = exact[0] if exact else None
+    top = len(best["levels"]) if best else 0
+    if top == 0:
+        text += ", and none has even one."
+    else:
+        fuel, support, pressure, x_o2 = (fmt(v) for v in best["key"])
+        levels = list(best["levels"].items())
+        tests = [f"{plural(levels[0][1], 'test')} at x_co2 {fmt(levels[0][0])}"] + [
+            f"{n} at {fmt(level)}" for level, n in levels[1:]]
+        ties = sum(len(c["levels"]) == top for c in exact)
+        which = "the best one" if ties == 1 else (
+            f"{ties} have {top}, and the one of them with the most tests with d_ext > 0")
+        text += (
+            f"; {which} ({fuel}, {support}, {pressure} atm, x_o2 {x_o2}) has "
+            f"{top}: {join_names(tests)}.")
+
+    top_rounded = len(rounded[0]["levels"]) if rounded else 0
+    text += f" With pressure rounded to 0.1 atm there are {plural(len(rounded), 'condition')}"
+    if top_rounded == 0:
+        text += f", and none has a level with {MIN_TESTS} or more such tests."
+    else:
+        reach = sum(len(c["levels"]) == top_rounded for c in rounded)
+        text += (
+            f": {reach} {'reaches' if reach == 1 else 'reach'} "
+            f"{plural(top_rounded, 'level')} and none reaches {MIN_LEVELS}.")
+
+    d_ext = [row[at["d_ext"]] for row in rows]
+    text += (
+        f" Of the {plural(len(rows), 'test')}, {sum((v or 0) > 0 for v in d_ext)} report "
+        f"d_ext > 0, {sum(v == 0 for v in d_ext)} report 0 and "
+        f"{sum(v is None for v in d_ext)} report none.")
+    return text, None
 
 
 # ---------------------------------------------------------------- verify
@@ -657,6 +758,14 @@ def verify():
             problems.append("in note, parsed + excluded must equal listed")
         if listed != EXPECTED_SHEETS:
             problems.append(f"note says {listed} listed; {EXPECTED_SHEETS} were expected")
+
+    # Only on rows that passed the checks above: the count reads their values.
+    if not problems:
+        fit_note, error = fit_note_text(rows)
+        if error:
+            problems.append(error)
+        elif data.get("fit_note") != fit_note:
+            problems.append("fit_note is not the text this script writes from the rows")
 
     if problems:
         for line in problems:

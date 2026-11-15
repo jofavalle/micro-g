@@ -22,5 +22,6 @@
       "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
     }
   ],
-  "fit": null
+  "fit": null,
+  "fit_note": "Fixture: this reason is invented, like the rows. No relation is fitted to the five invented tests."
 }
