@@ -44,6 +44,27 @@ def model_name():
     return os.environ.get("LLM_MODEL") or MODEL
 
 
+def _env_value(line, name):
+    """Value of `name` in one .env line, or None.
+
+    Accepts `NAME=value`, `export NAME=value`, quoted values, and a trailing
+    ` # comment` after an unquoted value.
+    """
+    line = line.strip()
+    if line.startswith("export "):
+        line = line[len("export "):].lstrip()
+    key, sep, value = line.partition("=")
+    if not sep or key.strip() != name:
+        return None
+    value = value.strip()
+    if value[:1] in ('"', "'"):
+        end = value.find(value[0], 1)
+        value = value[1:end] if end > 0 else value[1:]
+    else:
+        value = value.split(" #", 1)[0].split("\t#", 1)[0].strip()
+    return value or None
+
+
 def _api_key():
     key = os.environ.get("LLM_API_KEY")
     if key:
@@ -51,11 +72,9 @@ def _api_key():
     env = ROOT / ".env"
     if env.is_file():
         for line in env.read_text(encoding="utf-8").splitlines():
-            name, sep, value = line.partition("=")
-            if sep and name.strip() == "LLM_API_KEY":
-                value = value.strip().strip('"').strip("'")
-                if value:
-                    return value
+            value = _env_value(line, "LLM_API_KEY")
+            if value:
+                return value
     raise LLMError("LLM_API_KEY is not set (environment or .env)")
 
 
