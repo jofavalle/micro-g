@@ -1,0 +1,219 @@
+{
+  "generated_by": {
+    "tool": "Gemini API through /api/ask (functions/api/ask.js), on the preview https://7249a8b8.micro-g.pages.dev (commit 3256599)",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "answers": [
+    {
+      "question": "Identify investigations most relevant to the fire safety needs of habitable crew environments, including spacecraft, space stations, bases on the lunar and Martian surfaces, and pressurized rovers.",
+      "response": {
+        "status": "ok",
+        "model": "gemini-3.5-flash-lite",
+        "generated": "2026-11-15T23:49:42Z",
+        "findings": [],
+        "suggestions": [],
+        "list": {
+          "level": [
+            1
+          ],
+          "pillars": [],
+          "fuel_phase": [],
+          "tags": [],
+          "hardware_family": []
+        },
+        "chart": null,
+        "gaps": [
+          "partial_gravity"
+        ],
+        "check": {
+          "received": 0,
+          "kept": 0,
+          "dropped": 0
+        }
+      }
+    },
+    {
+      "question": "Extract data that supports predictive modeling of flammability and fire scenarios in space exploration.",
+      "response": {
+        "status": "ok",
+        "model": "gemini-3.5-flash-lite",
+        "generated": "2026-11-15T23:49:52Z",
+        "findings": [
+          {
+            "text": "BASS-II helps engineers select the safest materials and improve firefighting methods on future space missions.",
+            "citations": [
+              {
+                "accession": "PSI-25",
+                "field": "safety_finding"
+              }
+            ]
+          },
+          {
+            "text": "Cool Flames Investigation will support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+            "citations": [
+              {
+                "accession": "PSI-39",
+                "field": "safety_finding"
+              }
+            ]
+          },
+          {
+            "text": "The objective of this research was to develop and validate new flamelet generated manifold modeling techniques for concurrent flame spread in microgravity.",
+            "citations": [
+              {
+                "accession": "PSI-62",
+                "field": "objective"
+              }
+            ]
+          },
+          {
+            "text": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits.",
+            "citations": [
+              {
+                "accession": "PSI-99",
+                "field": "objective"
+              }
+            ]
+          },
+          {
+            "text": "The objectives of this investigation were to determine how rapidly a large scale fire grows in low-gravity and investigate the low-g flammability limits compared to those obtained in NASA normal gravity material flammability screening test.",
+            "citations": [
+              {
+                "accession": "PSI-100",
+                "field": "objective"
+              }
+            ]
+          }
+        ],
+        "suggestions": [
+          {
+            "text": "Engineers may use flow and fuel variation data from large-scale and small-scale microgravity experiments to validate predictive models for spacecraft material selection.",
+            "based_on": [
+              {
+                "accession": "PSI-98",
+                "field": "objective"
+              },
+              {
+                "accession": "PSI-62",
+                "field": "objective"
+              }
+            ]
+          }
+        ],
+        "list": {
+          "level": [
+            1
+          ],
+          "pillars": [
+            "prevention"
+          ],
+          "fuel_phase": [
+            "solid"
+          ],
+          "tags": [
+            "flame_spread",
+            "flammability_limits",
+            "large_scale_fire",
+            "modeling"
+          ],
+          "hardware_family": []
+        },
+        "chart": "level",
+        "gaps": [],
+        "check": {
+          "received": 6,
+          "kept": 6,
+          "dropped": 0
+        }
+      }
+    },
+    {
+      "question": "Highlight research that informs the development of next-generation fire safety controls and equipment.",
+      "response": {
+        "status": "ok",
+        "model": "gemini-3.5-flash-lite",
+        "generated": "2026-11-15T23:50:02Z",
+        "findings": [
+          {
+            "text": "BASS-II helps engineers select the safest materials and improve firefighting methods on future space missions.",
+            "citations": [
+              {
+                "accession": "PSI-25",
+                "field": "safety_finding"
+              }
+            ]
+          },
+          {
+            "text": "DAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity, impacting the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
+            "citations": [
+              {
+                "accession": "PSI-47",
+                "field": "objective"
+              },
+              {
+                "accession": "PSI-47",
+                "field": "safety_finding"
+              }
+            ]
+          },
+          {
+            "text": "Cool Flames Investigation (CFI) will support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+            "citations": [
+              {
+                "accession": "PSI-39",
+                "field": "safety_finding"
+              }
+            ]
+          }
+        ],
+        "suggestions": [
+          {
+            "text": "Engineers may use microgravity data on solid fuel ignition and spread rates to design more effective detection and suppression equipment for spacecraft environments.",
+            "based_on": [
+              {
+                "accession": "PSI-25",
+                "field": "safety_finding"
+              },
+              {
+                "accession": "PSI-47",
+                "field": "safety_finding"
+              }
+            ]
+          }
+        ],
+        "list": {
+          "level": [
+            1
+          ],
+          "pillars": [
+            "prevention",
+            "suppression",
+            "detection"
+          ],
+          "fuel_phase": [
+            "solid",
+            "liquid",
+            "gas"
+          ],
+          "tags": [
+            "smoke",
+            "detector_validation",
+            "flame_spread"
+          ],
+          "hardware_family": [
+            "MSG",
+            "other"
+          ]
+        },
+        "chart": "pillars",
+        "gaps": [],
+        "check": {
+          "received": 4,
+          "kept": 4,
+          "dropped": 0
+        }
+      }
+    }
+  ]
+}
