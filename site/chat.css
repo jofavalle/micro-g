@@ -1,0 +1,224 @@
+/* AI-assisted: Claude Code (claude-opus-5-5), reviewed by PabloBernal-CPU */
+/* The chat of the home page (site/chat.js). It uses the colour variables of
+   style.css, with fallbacks that work on a light or a dark page. The chat is in
+   the flow of the page: nothing in it is fixed or sticky, so a long answer
+   scrolls with the page. */
+
+.ask {
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+}
+
+.ask[hidden] { display: none; }
+
+.ask-title { margin: 0 0 0.25rem; font-size: 1.2rem; }
+.ask-lead { margin: 0 0 0.75rem; color: var(--muted, currentColor); }
+
+.ask-form {
+  padding: 0.75rem;
+  border: 1px solid var(--border, currentColor);
+  border-radius: 6px;
+  background: var(--surface, transparent);
+}
+
+.ask-label { display: block; margin-bottom: 0.35rem; font-weight: 600; }
+
+.ask-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.ask-input {
+  flex: 1 1 18rem;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border, currentColor);
+  border-radius: 4px;
+  background: var(--bg, transparent);
+  color: inherit;
+  font: inherit;
+  resize: vertical;
+}
+
+.ask-send,
+.ask-prompt {
+  border: 1px solid var(--border, currentColor);
+  border-radius: 4px;
+  background: var(--surface, transparent);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ask-send {
+  flex: 0 0 auto;
+  padding: 0.5rem 1.25rem;
+  border-color: transparent;
+  background: var(--accent, currentColor);
+  color: var(--bg, Canvas);
+  font-weight: 600;
+}
+
+.ask-send:disabled,
+.ask-prompt:disabled { cursor: progress; opacity: 0.6; }
+
+.ask-input:focus-visible,
+.ask-send:focus-visible,
+.ask-prompt:focus-visible,
+.ask-citation summary:focus-visible {
+  outline: 2px solid var(--accent, currentColor);
+  outline-offset: 2px;
+}
+
+.ask-privacy { margin: 0.5rem 0 0; color: var(--muted, currentColor); font-size: 0.9rem; }
+
+.ask-prompts { margin-top: 0.75rem; }
+.ask-prompts-title { margin: 0 0 0.35rem; font-weight: 600; }
+
+.ask-prompt-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ask-prompt {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.ask-prompt-label {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--accent, currentColor);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The answer */
+
+.ask-answer:not(:empty) { margin-top: 1rem; }
+
+.ask-question-line { margin: 0 0 0.5rem; font-style: italic; overflow-wrap: anywhere; }
+.ask-question-label { font-style: normal; font-weight: 600; }
+
+.ask-block { margin-top: 1rem; }
+
+.ask-block h3 {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border, currentColor);
+  font-size: 1.05rem;
+}
+
+.ask-sentences { margin: 0; padding-left: 1.2rem; }
+.ask-sentence + .ask-sentence { margin-top: 0.75rem; }
+.ask-sentence-text { margin: 0 0 0.25rem; }
+
+.ask-citations {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ask-citation summary {
+  color: var(--link, currentColor);
+  font-size: 0.92rem;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.ask-citation[open] summary { margin-bottom: 0.25rem; }
+
+.ask-passage {
+  padding: 0.25rem 0 0.5rem 0.75rem;
+  border-left: 3px solid var(--border, currentColor);
+}
+
+.ask-card-link { margin: 0.25rem 0 0; font-size: 0.9rem; }
+
+.ask-suggestions {
+  padding: 0.75rem;
+  border: 1px dashed var(--border, currentColor);
+  border-radius: 6px;
+}
+
+.ask-notice,
+.ask-saved-note {
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--warn-bg, transparent);
+  color: var(--warn-text, currentColor);
+}
+
+.ask-filters,
+.ask-chart-note { margin: 0 0 0.5rem; color: var(--muted, currentColor); font-size: 0.92rem; }
+
+.ask-bars {
+  display: grid;
+  gap: 0.3rem;
+  max-width: 44rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ask-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) 2.5rem;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ask-bar-label { overflow-wrap: anywhere; }
+
+.ask-bar-track {
+  display: block;
+  height: 0.9rem;
+  border: 1px solid var(--border, currentColor);
+  border-radius: 2px;
+  background: var(--surface, transparent);
+}
+
+.ask-bar-fill { display: block; height: 100%; background: var(--accent, currentColor); }
+.ask-bar-value { text-align: right; font-variant-numeric: tabular-nums; }
+
+.ask-gap {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--muted, currentColor);
+  background: var(--surface, transparent);
+}
+
+.ask-gap p { margin: 0; }
+
+.ask-footer {
+  margin: 1rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border, currentColor);
+  color: var(--muted, currentColor);
+  font-size: 0.85rem;
+}
+
+.ask-saved-offer { margin-top: 0.5rem; }
+.ask-saved-offer > p { margin: 0 0 0.35rem; }
+
+@media (max-width: 480px) {
+  .ask-send { flex: 1 1 100%; }
+  .ask-bar { grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) 2rem; }
+}
