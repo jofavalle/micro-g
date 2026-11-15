@@ -24,6 +24,7 @@ Format and rules in [README.md](README.md).
 | 2026-11-15 12:28 | Claude Code, Pro | 11% (session that drafted the AI-use row of #57) | 25% (all models); 20% (Fable) | 2026-11-15 17:10 | 2026-11-20 07:00 (all models); 2026-11-20 06:59 (Fable) | #57, PR #64 |
 | 2026-11-15 12:40 | Claude Code, Pro | 15% (end of session, after opening PR #67) | 25% (all models); 20% (Fable) | 2026-11-15 17:10 | 2026-11-20 07:00 | #57, PR #67 |
 | 2026-11-15, before 12:53 | Claude Code, Pro | 19% (given before the review of PR #61 was posted) | 26% (all models); 20% (Fable) | 2026-11-15 17:10 | 2026-11-20 07:00 (all models); 2026-11-20 06:59 (Fable) | PR #63, PR #61 |
+| 2026-11-15 13:27 | Claude Code, Pro | 22% (end of session, after PR #68 was merged) | 26% (all models); 20% (Fable) | 2026-11-15 17:10 | 2026-11-20 07:00 | PR #68 |
 
 ## AI use
 
