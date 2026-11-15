@@ -1,5 +1,6 @@
-# La higiene del repositorio en cada push y en cada PR: así corre aunque nadie se acuerde
-# de ejecutarla. Lo que comprueba está en la cabecera de .github/higiene.py.
+# AI-assisted: Claude Code (claude-opus-5-5), reviewed by PabloBernal-CPU
+# Repository hygiene on every push and every PR: this way it runs even if nobody
+# remembers to run it. What it checks is in the header of .github/higiene.py.
 name: higiene
 
 on:
