@@ -1,28 +1,30 @@
 ---
 name: tomar-orden
-description: Toma una orden de trabajo (una issue con la etiqueta orden), la ejecuta en su rama y la devuelve con un PR con evidencia. Úsala cuando alguien diga que toma, empieza o continúa la orden #N, o pegue la frase de arranque de una orden.
+description: Takes a work order (an issue with the orden label), executes it on its branch and returns it with a PR with evidence. Use it when someone says they take, start or continue order #N, or pastes the starting prompt of an order.
 ---
 
-# Tomar una orden
+# Take an order
 
-Una orden es una issue con la etiqueta `orden`, y se nombra por su número: la orden #N es la
-issue N. Tiene que bastar por sí sola; si falta algo para ejecutarla, se pregunta en la issue y
-no se adivina.
+An order is an issue with the `orden` label, and it is named by its number: order #N is
+issue N. It has to be self-sufficient; if something is missing to execute it, ask on the
+issue and do not guess.
 
-1. **Leer la orden entera**, con sus comentarios: `gh issue view N --comments`. Si hay una nota
-   de relevo, es la continuación del trabajo de otra persona: se lee también su rama.
-2. **Marcarla como tomada**: `gh issue comment N --body "la tomo"` y
+1. **Read the whole order**, with its comments: `gh issue view N --comments`. If there is a
+   handoff note, it is the continuation of another person's work: read their branch too.
+2. **Mark it as taken**: `gh issue comment N --body "la tomo"` and
    `gh issue edit N --add-assignee "@me" --remove-label lista --add-label en-curso`.
-3. **La rama.** Orden nueva: `git switch main`, `git pull` y `git switch -c <usuario>/orden-N`.
-   Relevo: `git fetch` y `git switch` a la rama que dice la nota.
-4. **Ejecutar solo lo que pide la orden**, y nada de lo que dice "no tocar". Lo que aparezca
-   fuera de alcance se anota en la issue para una orden nueva.
-5. **Comprobar** con el comando del criterio de aceptación y con su control, y leer la salida.
-   Si no cuadra, no se devuelve: se corrige o se explica en la issue.
-6. **Enseñar el diff y la salida** a la persona, y esperar a que los lea.
-7. **Devolver**: añadir los archivos por nombre (nunca `git add -A` ni `git add .`), commit,
-   `git push -u origin HEAD` y `gh pr create` con la plantilla del PR, que pide la salida
-   literal del criterio y el uso de IA. La descripción lleva `Closes #N`, con el número de la
-   issue y en inglés. Después, `gh issue edit N --remove-label en-curso --add-label en-revision`.
+3. **The branch.** New order: `git switch main`, `git pull` and
+   `git switch -c <user>/orden-N`. Handoff: `git fetch` and `git switch` to the branch the
+   note names.
+4. **Execute only what the order asks**, and nothing of what it says "do not touch".
+   Whatever comes up out of scope is noted on the issue for a new order.
+5. **Check** with the acceptance criterion command and its check, and read the output. If
+   it does not match, it is not returned: fix it or explain it on the issue.
+6. **Show the diff and the output** to the person, and wait for them to read them.
+7. **Return**: add the files by name (never `git add -A` or `git add .`), commit,
+   `git push -u origin HEAD` and `gh pr create` with the PR template, which asks for the
+   literal output of the criterion and the use of AI. The description carries `Closes #N`,
+   with the issue number and in English. Then,
+   `gh issue edit N --remove-label en-curso --add-label en-revision`.
 
-Si la ventana de uso se acaba a mitad, en lugar de los pasos 6 y 7 va `/relevo`.
+If the usage window runs out midway, `/relevo` goes instead of steps 6 and 7.

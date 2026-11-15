@@ -1,19 +1,19 @@
 Closes #N
 
-<!-- N es el número de la issue de la orden, el mismo de la rama <usuario>/orden-N. "Closes" va
-en inglés: GitHub no reconoce "Cierra" y la orden se quedaría abierta. -->
+<!-- N is the number of the order's issue, the same as in the branch <user>/orden-N. "Closes"
+goes in English: GitHub does not recognize "Cierra" and the order would stay open. -->
 
-**Qué se hizo.** Dos líneas.
+**What was done.** Two lines.
 
-**Evidencia.** El comando del criterio de aceptación y su salida, copiada tal cual, sin
-resumirla:
+**Evidence.** The acceptance criterion command and its output, copied as is, without
+summarizing it:
 
 ```
-$ comando
-(salida literal)
+$ command
+(literal output)
 ```
 
-**Uso de IA.** Herramienta, modelo y nivel de esfuerzo. Qué propuso que no se aceptó, y por qué.
-Si no se corrigió nada, qué se comprobó para saberlo.
+**Use of AI.** Tool, model and effort level. What it proposed that was not accepted, and why.
+If nothing was corrected, what was checked to know so.
 
-**Cuota** (opcional). Uso de la sesión y semanal antes y después (`/status` en Claude Code).
+**Quota** (optional). Session and weekly usage before and after (`/status` in Claude Code).

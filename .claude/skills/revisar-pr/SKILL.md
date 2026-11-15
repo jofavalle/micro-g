@@ -1,29 +1,30 @@
 ---
 name: revisar-pr
-description: Revisa el PR de una orden antes de fusionarlo, contra la orden y su criterio de aceptación. Úsala cuando haya que revisar, aprobar o fusionar un PR, o mirar la cola de revisión.
+description: Reviews the PR of an order before merging it, against the order and its acceptance criterion. Use it when a PR has to be reviewed, approved or merged, or when looking at the review queue.
 ---
 
-# Revisar un PR
+# Review a PR
 
-Lo mecánico ya lo comprobó quien ejecutó la orden; quien revisa se queda con lo que exige juicio.
+The mechanical part was already checked by whoever executed the order; the reviewer keeps
+what requires judgment.
 
-1. **La cola**: `gh pr list`. Con tres o más esperando, se revisa antes de publicar órdenes
-   nuevas.
-2. **Contra la orden**: `gh pr view N` y la issue que cierra. ¿Hace lo que pide, y nada de lo
-   que dice "no tocar"?
-3. **La evidencia**: la salida del criterio de aceptación tiene que estar en el PR, literal. Si
-   hay dudas, se repite el comando en su rama (`gh pr checkout N`) y se compara.
-4. **El diff entero**: `gh pr diff N`. Sobre todo lo que exige juicio: cifras, unidades, lo que
-   dice el modelo. Y que no entren claves, rutas personales ni archivos de cada uno. Los checks
-   de CI, en verde: `gh pr checks N`.
-5. **Redactar, no publicar**: Claude escribe la revisión y se la enseña a la persona, que la lee
-   entera. Claude no la publica por su cuenta (`gh pr comment`, `gh pr review`): la publica la
-   persona, o Claude con su OK después de leerla. La revisión termina con la herramienta y el
-   modelo, y con que la persona la leyó antes de publicarla.
-6. **Decidir**: si falta algo, se comenta en el PR qué, de forma concreta, para que se corrija
-   en la misma rama. Si todo cuadra, Claude lo dice y nada más: no aprueba ni fusiona. La
-   persona aprueba en GitHub: en la pestaña "Files changed", botón "Review changes" (en algunas
-   versiones de la interfaz, "Submit review"), marca la opción "Approve" y pulsa
-   "Submit review". Con la opción "Comment" marcada no se aprueba, aunque el texto diga
-   "Approve": el PR tiene que mostrar "Approved". Después fusiona desde la pestaña
-   "Conversation", con "Merge pull request" y "Confirm merge".
+1. **The queue**: `gh pr list`. With three or more waiting, review before publishing new
+   orders.
+2. **Against the order**: `gh pr view N` and the issue it closes. Does it do what it asks,
+   and nothing of what it says "do not touch"?
+3. **The evidence**: the output of the acceptance criterion has to be in the PR, literally.
+   If in doubt, repeat the command on its branch (`gh pr checkout N`) and compare.
+4. **The whole diff**: `gh pr diff N`. Above all, what requires judgment: figures, units,
+   what the model says. And that no keys, personal paths or per-person files get in. The CI
+   checks, green: `gh pr checks N`.
+5. **Draft, do not publish**: Claude writes the review and shows it to the person, who reads
+   it in full. Claude does not publish it on its own (`gh pr comment`, `gh pr review`): the
+   person publishes it, or Claude with their OK after reading it. The review ends with the
+   tool and the model, and with the fact that the person read it before publishing it.
+6. **Decide**: if something is missing, comment on the PR what it is, concretely, so it is
+   fixed on the same branch. If everything checks out, Claude says so and nothing more: it
+   does not approve or merge. The person approves on GitHub: in the "Files changed" tab, the
+   "Review changes" button (in some versions of the interface, "Submit review"), select the
+   "Approve" option and press "Submit review". With the "Comment" option selected it is not
+   approved, even if the text says "Approve": the PR has to show "Approved". Then they merge
+   from the "Conversation" tab, with "Merge pull request" and "Confirm merge".
