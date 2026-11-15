@@ -82,6 +82,19 @@ REJECTED = {
     ("PSI-142", "pressure"): (
         "397b747923cc2888a6d21f83be70669d13d23766f9842e7930235d1b1f59c546",
         "pressure of a simulation, not of a test"),
+    # Found wrong in the manual sample of PR #42. Verdicts of fields 1-15 by aalexanderrz:
+    # https://github.com/jofavalle/micro-g/pull/42#issuecomment-6897202889
+    # and of fields 16-30 by cesarp03:
+    # https://github.com/jofavalle/micro-g/pull/42#issuecomment-6897203383
+    ("PSI-117", "safety_finding"): (
+        "4520cd6a8f9bea5030c974d223bd734eaf4078e12ceba126f325e1dbf66aa90b",
+        "a promise of impact (potential), not a finding"),
+    ("PSI-115", "measurements"): (
+        "2f2259b898890c52be27fbedf45bc2cec7a7ef53b49b61aae6c24030af2f60b4",
+        "a simulation result, not something measured"),
+    ("PSI-68", "fuel"): (
+        "47a85d83ece26554a74bc05ce07d6f68f708350a889b87243247b8cef36b73ab",
+        "text adds \"pure fuel combustion\" from another sentence and names no fuel"),
 }
 
 PROMPT = """You extract facts from a NASA Physical Sciences Informatics (PSI) record of a
