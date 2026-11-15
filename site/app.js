@@ -4,9 +4,9 @@
 // with textContent, never as HTML.
 "use strict";
 
-// Folder of the data files, relative to the page. Development uses the
-// hand-written examples; switch to "data/" when the real files are published.
-const DATA_ROOT = "data/fixture/";
+// Folder of the data files, relative to the page: the real files built by
+// tools/. For development with the hand-written examples, use "data/fixture/".
+const DATA_ROOT = "data/";
 const USING_FIXTURE = DATA_ROOT.endsWith("fixture/");
 
 // Allowed values from the data contract, in display order.
