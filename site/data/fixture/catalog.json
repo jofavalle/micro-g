@@ -1,0 +1,57 @@
+{
+  "generated": "2026-11-14T00:00:00Z",
+  "source": {
+    "url": "https://example.org/psi/snapshot",
+    "snapshot_date": "2026-11-14"
+  },
+  "investigations": [
+    {
+      "accession": "EXAMPLE-1",
+      "acronym": "EXA-ONE",
+      "title": "Example investigation one (fixture, not real data)",
+      "project_type": "Example project type",
+      "hardware_family": "Saffire/Cygnus",
+      "level": 1,
+      "level_reason": "Example reason: studies fire safety in a crewed-vehicle atmosphere.",
+      "pillars": ["prevention", "detection"],
+      "fuel_phase": ["solid"],
+      "has_per_test_tables": true,
+      "tags": ["gas_measurements"],
+      "n_files": 42,
+      "psi_url": "https://example.org/psi/EXAMPLE-1",
+      "card": "cards/EXAMPLE-1.json"
+    },
+    {
+      "accession": "EXAMPLE-2",
+      "acronym": "EXA-TWO",
+      "title": "Example investigation two (fixture, not real data)",
+      "project_type": "Example project type",
+      "hardware_family": "MDCA/CIR",
+      "level": 2,
+      "level_reason": "Example reason: gives the physical basis of droplet combustion.",
+      "pillars": [],
+      "fuel_phase": ["liquid"],
+      "has_per_test_tables": false,
+      "tags": [],
+      "n_files": 7,
+      "psi_url": "https://example.org/psi/EXAMPLE-2",
+      "card": "cards/EXAMPLE-2.json"
+    },
+    {
+      "accession": "EXAMPLE-3",
+      "acronym": "EXA-THREE",
+      "title": "Example investigation three (fixture, not real data)",
+      "project_type": "Example project type",
+      "hardware_family": "other",
+      "level": 3,
+      "level_reason": "Example reason: studies combustion efficiency, not fire safety.",
+      "pillars": ["suppression"],
+      "fuel_phase": ["gas"],
+      "has_per_test_tables": false,
+      "tags": [],
+      "n_files": 0,
+      "psi_url": "https://example.org/psi/EXAMPLE-3",
+      "card": "cards/EXAMPLE-3.json"
+    }
+  ]
+}

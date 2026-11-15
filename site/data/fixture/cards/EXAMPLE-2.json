@@ -1,0 +1,70 @@
+{
+  "accession": "EXAMPLE-2",
+  "generated_by": {
+    "tool": "hand-written fixture",
+    "model": "none",
+    "date": "2026-11-14"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "Example: study how a single fuel droplet burns and extinguishes.",
+      "quote": "Example passage, not from PSI: the goal is to study burning and extinction of isolated droplets.",
+      "source": {"kind": "psi_record", "ref": "Objectives"}
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Example: n-heptane droplets.",
+      "quote": "Example passage, not from PSI: n-heptane droplets were used.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Example: free-floating droplets of 2 mm to 5 mm diameter.",
+      "quote": "Example passage, not from PSI: droplet diameters from 2 to 5 mm.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "Example: 1 atm.",
+      "quote": "Example passage, not from PSI: all runs at 1 atm.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Example: initial droplet diameter.",
+      "quote": "Example passage, not from PSI: the initial diameter was varied.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Example: droplet diameter over time.",
+      "quote": "Example passage, not from PSI: droplet diameter was imaged over time.",
+      "source": {"kind": "psi_record", "ref": "Approach"}
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {"kind": "psi_record", "ref": "Results"}
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Example: better models of fuel sprays in engines.",
+      "quote": "Example passage, not from PSI: improved models of fuel sprays.",
+      "source": {"kind": "psi_record", "ref": "Earth Benefits"}
+    }
+  }
+}

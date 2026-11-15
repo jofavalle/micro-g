@@ -1,0 +1,10 @@
+{
+  "checked": 23,
+  "passed": 21,
+  "dropped": 2,
+  "manual_sample": {
+    "n": 30,
+    "correct": 28,
+    "reviewed_by": "example-reviewer"
+  }
+}

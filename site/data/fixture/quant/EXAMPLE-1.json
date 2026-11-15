@@ -1,0 +1,26 @@
+{
+  "accession": "EXAMPLE-1",
+  "note": "Fixture: the five rows, the file key and its hash are invented. They are not real data.",
+  "table": {
+    "columns": [
+      {"name": "test_id", "unit": "", "description": "Test identifier"},
+      {"name": "flow_speed", "unit": "cm/s", "description": "Forced flow speed"},
+      {"name": "oxygen", "unit": "% vol", "description": "Oxygen concentration"},
+      {"name": "spread_rate", "unit": "mm/s", "description": "Flame spread rate"}
+    ],
+    "rows": [
+      ["T01", 5, 21, 0.8],
+      ["T02", 10, 21, 1.4],
+      ["T03", 15, 21, 1.9],
+      ["T04", 20, 21, 2.3],
+      ["T05", 25, 21, null]
+    ]
+  },
+  "source_files": [
+    {
+      "key": "example/not-a-real-file.csv",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "fit": null
+}
