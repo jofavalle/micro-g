@@ -24,6 +24,7 @@ Format and rules in [README.md](README.md).
 | 2026-11-15 12:12 | Claude Code, Pro | 73% (given at the start of the session; time of the first clock reading, the "la tomo" comment on #58) | 13% | not read | not read | #58 |
 | 2026-11-15 12:19 | Claude Code, Pro | 75% (end of session, after opening PR #61) | 17% | not read | not read | #58, PR #61 |
 | 2026-11-15 13:09 | Claude Code, Pro | 80% (end of session, after posting the review of PR #65; same session as the 12:19 reading, which was not the end) | 18% | not read | not read | #47, PR #65 |
+| 2026-11-15 13:16 | Claude Code, Pro | 9% (read with `/status` at the end of the session, after opening PR #70; lower than the 80% given at 13:09, cause not checked) | 18% | 2026-11-15 17:20 | 2026-11-17 15:00 | #47, PR #65 |
 
 ## AI use
 
