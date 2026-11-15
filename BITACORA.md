@@ -7,8 +7,9 @@ longer in force is deleted, not piled up.
 
 ## Current state
 
-**2026-11-15, 12:10: the product is published with real data.** The site at
-<https://micro-g.pages.dev/> reads the files of `site/data/` since PR #55.
+**2026-11-15, 13:25: build milestone closed.** The product is published with real data at
+<https://micro-g.pages.dev/> since PR #55, the `README.md` is written and the whole layer is
+in English. No order is open and the review queue is empty.
 
 - **What is published:** the catalog of the 24 combustion investigations of NASA's PSI
   repository, ordered by the three levels the team assigned by hand (#23); one card per
@@ -23,12 +24,12 @@ longer in force is deleted, not piled up.
   #16, shows that no FLEX condition has three levels of CO2 with three or more tests, which is
   the rule the team wrote. #16 leaves two ways out: CFI (`PSI-39`), or delivering the table
   without a fit and saying why.
-- **Still open from the cut line:** the `README.md` (#47, in review in PR #65) and the demo
-  video.
-- **The layer is being translated to English** before the repository goes public, in three
-  orders. At 12:50, `CLAUDE.md`, `CONTRIBUTING.md` and `AGENTS.md` (#57) and the hygiene gate
-  (#59) are merged, and the skills, the agent and the templates (#58) are in review in PR
-  #61. This file already is.
+- **The `README.md` is merged** (#47): what the dashboard is, how to run and regenerate it,
+  and every source and third-party tool with its license or conditions of use, read on the
+  source's own pages.
+- **The layer is in English** (#57, #58, #59). Since #59 the success line of the hygiene
+  gate is `hygiene ok: N tracked files`.
+- **Still open from the cut line:** only the demo video.
 
 ## Next step
 
@@ -36,14 +37,15 @@ longer in force is deleted, not piled up.
   quantitative view says "No fitted relation yet" without the reason, and the `AI-assisted`
   header of that file does not name the model and the reviewers of PR #55.
 - **The board:** `gh issue list --label orden` lists the open orders and `gh pr list` the
-  review queue. At 12:50 no order is waiting for an owner: what is open is in review, so
-  the next thing to do is to review.
+  review queue. At 13:25 both are empty: until point 3 of #16 is decided there is no order
+  to take.
 - **Demo:** a video of 30 seconds or less, recorded from the published URL, by aalexanderrz.
   The team chooses the example situation it shows (point 6 of #16).
 - **Before the repository goes public, at 16:00:**
-  - the three translation orders merged;
-  - the whole history reviewed again, after the last merge, and the text of issues and PRs
-    read for anything personal;
+  - the whole history reviewed again, after the last merge. A first pass at 12:05 found no
+    personal paths, no bytecode, no keys and no force pushes, and a scan of the text of
+    issues and PRs found no email addresses, paths or keys: only the account identifier in
+    the links of the Cloudflare bot comments;
   - each member confirms that the name and the email address on their own commits can be
     public: removing them later means rewriting the history and recreating the repository,
     which loses the issues and the PRs;
