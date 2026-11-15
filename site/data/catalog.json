@@ -1,0 +1,631 @@
+{
+  "generated": "2026-11-15T07:50:30Z",
+  "source": {
+    "url": "https://psi.nasa.gov/geode-py/ws/repo/search",
+    "snapshot_date": "2026-11-15"
+  },
+  "investigations": [
+    {
+      "accession": "PSI-10",
+      "acronym": "ACME/Flame Design",
+      "title": "Advanced Combustion via Microgravity Experiments / Flame Design",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "ACME/CIR",
+      "level": 3,
+      "level_reason": "Research Impacts/Earth Benefits names only higher efficiency and lower pollutant emissions in terrestrial combustors (e.g. coal power plants), with no fire-safety application.",
+      "pillars": [],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "soot",
+        "extinction_limits",
+        "oxygen_per_test",
+        "efficiency_emissions"
+      ],
+      "n_files": 3807,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+      "card": "cards/PSI-10.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-20",
+      "acronym": "ACME BRE",
+      "title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "ACME/CIR",
+      "level": 1,
+      "level_reason": "Research Impacts/Earth Benefits says BRE yielded data relevant to spacecraft fire safety: flames kept burning without air flow in the elevated-oxygen atmospheres considered for future spacecraft.",
+      "pillars": [
+        "prevention",
+        "suppression"
+      ],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "extinction_limits",
+        "flammability_limits",
+        "spacecraft_atmospheres",
+        "oxygen_per_test",
+        "nasa_std_6001"
+      ],
+      "n_files": 2551,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+      "card": "cards/PSI-20.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-21",
+      "acronym": "ACME CLD Flame",
+      "title": "Advanced Combustion via Microgravity Experiments / Coflow Laminar Diffusion Flame",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "ACME/CIR",
+      "level": 2,
+      "level_reason": "Objectives characterize extinction limits and sooting of weak coflow diffusion flames, and Research Impacts/Earth Benefits says understanding flame extinction is critical in the suppression of fires.",
+      "pillars": [
+        "suppression"
+      ],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "soot",
+        "extinction_limits"
+      ],
+      "n_files": 4851,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21",
+      "card": "cards/PSI-21.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-22",
+      "acronym": "ACME E-FIELD Flames",
+      "title": "Advanced Combustion via Microgravity Experiments Electric-Field Effects on Laminar Diffusion Flames",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "ACME/CIR",
+      "level": 3,
+      "level_reason": "Research Impacts/Earth Benefits states it is not being conducted to serve any space applications and names cleaner, more efficient terrestrial combustion.",
+      "pillars": [],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "soot",
+        "electric_field",
+        "partial_gravity_proxy",
+        "efficiency_emissions"
+      ],
+      "n_files": 3277,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+      "card": "cards/PSI-22.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-23",
+      "acronym": "ACME s-Flame",
+      "title": "Advanced Combustion via Microgravity Experiments-Structure and Response of Spherical Diffusion Flames",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "ACME/CIR",
+      "level": 3,
+      "level_reason": "Research Impacts/Earth Benefits names engine power, efficiency and emissions plus fundamental flame chemistry, with no fire-safety application.",
+      "pillars": [],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "extinction_limits",
+        "efficiency_emissions"
+      ],
+      "n_files": 6815,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+      "card": "cards/PSI-23.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-25",
+      "acronym": "BASS-II",
+      "title": "Burning and Suppression of Solids - II",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MSG",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Research Impacts/Earth Benefits says its primary goal is improved spacecraft fire safety, helping select the safest materials and improve firefighting methods.",
+      "pillars": [
+        "prevention",
+        "suppression"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "flame_spread",
+        "extinction_limits",
+        "gas_measurements",
+        "carbon_monoxide",
+        "oxygen_per_test",
+        "nasa_std_6001"
+      ],
+      "n_files": 712,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+      "card": "cards/PSI-25.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-26",
+      "acronym": "BASS",
+      "title": "Burning and Suppression of Solids",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MSG",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and its Objectives compare NASA-STD-6001 Test 1 with flammability in microgravity and test an inert gaseous extinguishing agent like the one used on ISS.",
+      "pillars": [
+        "prevention",
+        "suppression"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "flame_spread",
+        "suppressant_agents",
+        "nasa_std_6001"
+      ],
+      "n_files": 211,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+      "card": "cards/PSI-26.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-39",
+      "acronym": "CFI",
+      "title": "Cool Flames Investigation",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MDCA/CIR",
+      "level": 2,
+      "level_reason": "Objectives study droplet extinction and cool-flame behavior versus pressure and helium dilution; Research Impacts/Earth Benefits is mostly about engines and fuels but also cites safer spacecraft systems.",
+      "pillars": [
+        "prevention"
+      ],
+      "fuel_phase": [
+        "liquid"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "droplet",
+        "cool_flames",
+        "extinction_limits",
+        "soot",
+        "oxygen_per_test"
+      ],
+      "n_files": 3134,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+      "card": "cards/PSI-39.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-47",
+      "acronym": "DAFT / DAFT-2",
+      "title": "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "other",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and its Research Impacts/Earth Benefits test that the P-Trak smoke-particle counter used by SAME works in microgravity, for future fire and smoke detection systems.",
+      "pillars": [
+        "detection"
+      ],
+      "fuel_phase": [],
+      "has_per_test_tables": false,
+      "tags": [
+        "smoke",
+        "detector_validation"
+      ],
+      "n_files": 356,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+      "card": "cards/PSI-47.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-60",
+      "acronym": "SPICE Data Analysis",
+      "title": "Computational and Experimental Analysis of SPICE Data Sets",
+      "project_type": "Ground Investigation",
+      "hardware_family": "other",
+      "level": 2,
+      "level_reason": "Ground study whose Objectives derive temperature and soot fields from SPICE data to explain soot formation in 0 g versus 1 g; Research Impacts/Earth Benefits links it to safer fire detection and suppression.",
+      "pillars": [
+        "detection",
+        "suppression"
+      ],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "soot",
+        "smoke",
+        "ground_study",
+        "modeling",
+        "reuses_psi_data"
+      ],
+      "n_files": 1,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-60",
+      "card": "cards/PSI-60.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-62",
+      "acronym": "BASS Flame Spread Modeling",
+      "title": "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography",
+      "project_type": "Ground Investigation",
+      "hardware_family": "other",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and its Objectives aim to predict flammability limits of spacecraft materials by modeling concurrent flame spread benchmarked on BASS and BASS-II.",
+      "pillars": [
+        "prevention"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "flame_spread",
+        "flammability_limits",
+        "ground_study",
+        "modeling",
+        "reuses_psi_data"
+      ],
+      "n_files": 1,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-62",
+      "card": "cards/PSI-62.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-68",
+      "acronym": "FLEX-2",
+      "title": "Flame Extinguishment Experiment - 2",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MDCA/CIR",
+      "level": 2,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Objectives cover droplet extinction and flammability limits, though Research Impacts/Earth Benefits is about efficiency and emissions in transportation.",
+      "pillars": [
+        "prevention"
+      ],
+      "fuel_phase": [
+        "liquid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "droplet",
+        "extinction_limits",
+        "flammability_limits",
+        "soot",
+        "efficiency_emissions"
+      ],
+      "n_files": 10701,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+      "card": "cards/PSI-68.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-69",
+      "acronym": "FLEX",
+      "title": "Flame Extinguishment Experiment",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MDCA/CIR",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Objectives map flammability limits of liquid fuels and measure the effectiveness of CO2, He and SF6 as fire suppressants in microgravity.",
+      "pillars": [
+        "prevention",
+        "suppression"
+      ],
+      "fuel_phase": [
+        "liquid"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "droplet",
+        "suppressant_agents",
+        "flammability_limits",
+        "extinction_limits",
+        "cool_flames",
+        "soot",
+        "oxygen_per_test"
+      ],
+      "n_files": 8851,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+      "card": "cards/PSI-69.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-98",
+      "acronym": "SAFFIRE-I",
+      "title": "Spacecraft Fire Safety Experiment-I",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "Saffire/Cygnus",
+      "level": 1,
+      "level_reason": "Objectives determine how fast a large-scale fire grows in low gravity and compare low-g flammability limits with NASA's normal-gravity material screening test.",
+      "pillars": [
+        "prevention",
+        "detection"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "large_scale_fire",
+        "flame_spread",
+        "flammability_limits",
+        "smoldering",
+        "smoke",
+        "gas_measurements",
+        "nasa_std_6001"
+      ],
+      "n_files": 86,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+      "card": "cards/PSI-98.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-99",
+      "acronym": "SAFFIRE-II",
+      "title": "Spacecraft Fire Experiment-II",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "Saffire/Cygnus",
+      "level": 1,
+      "level_reason": "Objectives determine how fast a large-scale fire grows in low gravity and compare low-g flammability limits with NASA's material screening test, even though its SubResearch Area says Surface Combustion.",
+      "pillars": [
+        "prevention",
+        "detection"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "large_scale_fire",
+        "flammability_limits",
+        "smoldering",
+        "smoke",
+        "gas_measurements",
+        "nasa_std_6001"
+      ],
+      "n_files": 251,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+      "card": "cards/PSI-99.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-100",
+      "acronym": "SAFFIRE-III",
+      "title": "Spacecraft Fire Experiment-III",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "Saffire/Cygnus",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Objectives determine large-scale fire growth and low-g flammability limits compared with NASA's normal-gravity material screening test.",
+      "pillars": [
+        "prevention"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "large_scale_fire",
+        "flame_spread",
+        "flammability_limits",
+        "smoldering",
+        "gas_measurements",
+        "nasa_std_6001"
+      ],
+      "n_files": 98,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+      "card": "cards/PSI-100.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-101",
+      "acronym": "SAME-R",
+      "title": "Smoke Aerosol Measurement Experiment-Reflight",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MSG",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Research Impacts/Earth Benefits quantify smoke particle sizes in low gravity, the baseline data for advanced spacecraft fire detectors.",
+      "pillars": [
+        "detection"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "smoke",
+        "detector_validation"
+      ],
+      "n_files": 380,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+      "card": "cards/PSI-101.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-102",
+      "acronym": "SAME",
+      "title": "Smoke and Aerosol Measurement Experiment",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MSG",
+      "level": 1,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Research Impacts/Earth Benefits says SAME provides technology and sensitivity data for advanced fire detectors on future spacecraft.",
+      "pillars": [
+        "detection"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "smoke",
+        "smoldering",
+        "detector_validation"
+      ],
+      "n_files": 111,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+      "card": "cards/PSI-102.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-106",
+      "acronym": "SLICE",
+      "title": "Structure and Liftoff In Combustion Experiment",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MSG",
+      "level": 2,
+      "level_reason": "Objectives study the structure, liftoff limits, soot and radiative heat loss of laminar diffusion flames in microgravity; Research Impacts/Earth Benefits mentions fire safety once, beside efficiency and emissions.",
+      "pillars": [],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "soot"
+      ],
+      "n_files": 23466,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106",
+      "card": "cards/PSI-106.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-107",
+      "acronym": "SPICE",
+      "title": "Smoke Point In Co-flow Experiment",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "MSG",
+      "level": 2,
+      "level_reason": "Objectives measure smoke points and sooting propensity of non-buoyant flames, and Research Impacts/Earth Benefits ties soot formation to designing safer spacecraft environments.",
+      "pillars": [],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "soot",
+        "smoke"
+      ],
+      "n_files": 217,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+      "card": "cards/PSI-107.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-115",
+      "acronym": "SAME Smoke Modeling",
+      "title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+      "project_type": "Ground Investigation",
+      "hardware_family": "other",
+      "level": 1,
+      "level_reason": "Ground study whose Objectives simulate how gravity changes pyrolysis smoke growth, and Research Impacts/Earth Benefits says it leads directly to better smoke detection devices.",
+      "pillars": [
+        "detection"
+      ],
+      "fuel_phase": [
+        "solid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "smoke",
+        "ground_study",
+        "modeling",
+        "reuses_psi_data"
+      ],
+      "n_files": 53,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115",
+      "card": "cards/PSI-115.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-117",
+      "acronym": "FLEX Cool Flame CFD",
+      "title": "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis",
+      "project_type": "Ground Investigation",
+      "hardware_family": "other",
+      "level": 2,
+      "level_reason": "Ground CFD study of FLEX droplet cool flames; Research Impacts/Earth Benefits says it could improve spacecraft fire-safety modeling, but its Objectives are about cool-flame dynamics.",
+      "pillars": [
+        "prevention"
+      ],
+      "fuel_phase": [
+        "liquid"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "droplet",
+        "cool_flames",
+        "extinction_limits",
+        "ground_study",
+        "modeling",
+        "reuses_psi_data"
+      ],
+      "n_files": 1,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-117",
+      "card": "cards/PSI-117.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-142",
+      "acronym": "FLEX Counterflow Cool Flames",
+      "title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+      "project_type": "Ground Investigation",
+      "hardware_family": "other",
+      "level": 2,
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Objectives build a flammability-limit diagram for cool diffusion flames from FLEX data, though Research Impacts/Earth Benefits points to engines.",
+      "pillars": [
+        "prevention"
+      ],
+      "fuel_phase": [
+        "liquid",
+        "gas"
+      ],
+      "has_per_test_tables": false,
+      "tags": [
+        "cool_flames",
+        "flammability_limits",
+        "extinction_limits",
+        "ground_study",
+        "reuses_psi_data"
+      ],
+      "n_files": 4,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-142",
+      "card": "cards/PSI-142.json",
+      "quant": null
+    },
+    {
+      "accession": "PSI-159",
+      "acronym": "ACME CFI-G",
+      "title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+      "project_type": "Microgravity Investigation",
+      "hardware_family": "ACME/CIR",
+      "level": 3,
+      "level_reason": "Research Impacts/Earth Benefits is about cool-flame kinetics for more efficient internal combustion engines",
+      "pillars": [],
+      "fuel_phase": [
+        "gas"
+      ],
+      "has_per_test_tables": true,
+      "tags": [
+        "cool_flames",
+        "oxygen_per_test",
+        "efficiency_emissions"
+      ],
+      "n_files": 3756,
+      "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+      "card": "cards/PSI-159.json",
+      "quant": null
+    }
+  ]
+}
