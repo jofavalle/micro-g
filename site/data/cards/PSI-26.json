@@ -7,12 +7,12 @@
   },
   "fields": {
     "objective": {
-      "status": "verified",
-      "text": "The two main objectives for BASS are to bridge the gap between normal gravity tests and actual material flammability in microgravity and assess the effectiveness of an inert, gaseous extinguishing agent.",
-      "quote": "The two main objectives for BASS are to:    1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "fuel": {

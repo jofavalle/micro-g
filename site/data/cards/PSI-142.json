@@ -52,12 +52,12 @@
       }
     },
     "pressure": {
-      "status": "verified",
-      "text": "Simulations of cool flame regimes and burning limits were conducted at elevated pressure (up to 20 atm).",
-      "quote": "simulated cool flame regimes and burning limits at elevated pressure (up to 20 atm) using DME/air mixtures.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "variables": {

@@ -16,12 +16,12 @@
       }
     },
     "fuel": {
-      "status": "verified",
-      "text": "The FLEX experiments involve igniting and observing the burning behavior of relatively large droplets.",
-      "quote": "The FLEX experiments involve igniting and observing the burning behavior of relatively large droplets.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "sample_geometry": {

@@ -43,12 +43,12 @@
       }
     },
     "flow": {
-      "status": "verified",
-      "text": "Test conditions were broadened including higher heating temperatures and no-flow during sample heating time.",
-      "quote": "test conditions were broadened including higher heating temperatures and no-flow during sample heating time",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "pressure": {
