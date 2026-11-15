@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-69",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The FLEX investigation aims to map the flammability limits of liquid fuels in microgravity environments.",
+      "quote": "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Select a smaller droplet size approximately 3 mm.",
+      "quote": "Select a smaller droplet size (≈ 3 mm)",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "Select the test pressure 0.5 - 1.5 atm for the LOI tests.",
+      "quote": "Select the test pressure (0.5 − 1.5 atm) for the LOI tests.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "variables": {
+      "status": "verified",
+      "text": "A primary objective of the experiments is to determine the Limiting Oxygen Index as a function of ambient pressure and determine how the presence of a suppressant influences the LOI.",
+      "quote": "A primary objective of the experiments is to determine the Limiting Oxygen Index (LOI) as a function of ambient pressure and determine how the presence of a suppressant influences the LOI .",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles.",
+      "quote": "Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions.",
+      "quote": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments, such as submarines or high-altitude aircraft.",
+      "quote": "On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments, such as submarines or high-altitude aircraft.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

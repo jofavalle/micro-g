@@ -2,9 +2,11 @@
 # AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz
 """Check every `verified` field of the cards against its source text.
 
-A field passes when its `quote` appears literally in the source field named by
-`source.ref` (only spaces and line breaks are normalized), and every number in its
-`text` is also a number in its `quote`. A failure prints
+A field passes when its `source.kind` is `psi_record` (the only source kept locally),
+its `quote` has at least MIN_QUOTE_WORDS words and appears literally in the source
+field named by `source.ref` (only spaces and line breaks are normalized), and every
+number in its `text` is also a number in its `quote`. Digits glued to a word, as in
+"CO2" or "PSI-2", are part of an identifier and are not numbers. A failure prints
 `fail: <accession>: <field>: <reason>`.
 
 It also reads `verification.json` of the same folder: its `passed` must equal the
@@ -34,7 +36,11 @@ if hasattr(sys.stdout, "reconfigure"):
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "site" / "data"
 DEFAULT_SOURCE = ROOT / "data" / "psi" / "investigations.json"
-NUMBER = re.compile(r"\d+(?:[.,]\d+)*")
+# Not preceded by a letter or digit, or by a letter and a hyphen: "CO2", "C12H26", "PSI-2" and
+# "PSI-26" are not numbers, and no tail of an identifier ("6" of "PSI-26") is taken as one.
+NUMBER = re.compile(r"(?<![A-Za-z\d])(?<![A-Za-z]-)\d+(?:[.,]\d+)*")
+MIN_QUOTE_WORDS = 4
+SOURCE_KIND = "psi_record"
 
 
 def normalize(text):
@@ -49,11 +55,17 @@ def check_field(field, record):
     """Return None if a verified field passes, or the reason it fails."""
     text = field.get("text") or ""
     quote = field.get("quote") or ""
-    ref = (field.get("source") or {}).get("ref")
+    source_info = field.get("source") or {}
+    ref = source_info.get("ref")
+    kind = source_info.get("kind")
     if not text.strip():
         return "empty text"
     if not quote.strip():
         return "empty quote"
+    if kind != SOURCE_KIND:
+        return f"source kind {kind!r} cannot be checked: only {SOURCE_KIND!r} is kept locally"
+    if len(quote.split()) < MIN_QUOTE_WORDS:
+        return f"quote shorter than {MIN_QUOTE_WORDS} words"
     source = record.get(ref) if isinstance(ref, str) else None
     if not isinstance(source, str):
         return f"source field {ref!r} not in the record"
@@ -76,9 +88,18 @@ def main(argv):
     source = DEFAULT_SOURCE
     if "--source" in args:
         i = args.index("--source")
+        if i + 1 >= len(args):
+            print("error: --source needs a file")
+            return 2
         source = Path(args[i + 1])
         del args[i:i + 2]
     folder = Path(args[0]) if args else DEFAULT_DATA
+    if not source.is_file():
+        print(f"error: source file not found: {source}")
+        return 2
+    if not (folder / "cards").is_dir():
+        print(f"error: no cards folder in {folder}")
+        return 2
     records = load_records(source)
 
     failures = []

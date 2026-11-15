@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-115",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective was to use numerical simulation to explore gravity's influence on pyrolysis smoke growth from a fundamental perspective.",
+      "quote": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The formation and growth of dibutyl-phthalate particles was simulated.",
+      "quote": "The formation and growth of dibutyl-phthalate (DBP) particles in Earth gravity and microgravity environments was simulated.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "measurements": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Models and tools characterizing smoke particles can be used to ascertain how temperature, gravity, and material properties affect produced smoke.",
+      "quote": "Models and tools that characterize particles generated as smoke can be used to ascertain how temperature, gravity, and material properties affect the smoke produced.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

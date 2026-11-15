@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-39",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The objectives of this investigation are to examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
+      "quote": "The objectives of this investigation are to:    1) Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Fuels observed include n-dodecane, farnesane, and mixtures of n-dodecane/iso-dodecane.",
+      "quote": "Fuels observed include n-dodecane, farnesane, and mixtures of n-dodecane/iso-dodecane.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Droplets of fuel are dispensed and suspended between hypodermic needles or tethered using silicon-carbide fibers.",
+      "quote": "Droplets of fuel are dispensed and suspended between hypodermic needles or tethered using silicon-carbide fibers.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm.",
+      "quote": "A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Flames were observed with a black-and-white camera for droplet size measurements.",
+      "quote": "Flames were observed with a black-and-white camera for droplet size measurements.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+      "quote": "Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Cool flames play a key role in the development and selection of new fuels and the design of advanced engines such as clean, high-efficiency Homogeneous Charge Compression Ignition (HCCI) engines.",
+      "quote": "Cool flames play a key role in the development and selection of new fuels and the design of advanced engines such as clean, high-efficiency Homogeneous Charge Compression Ignition (HCCI) engines.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

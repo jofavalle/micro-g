@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-98",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The objectives of this investigation were to determine how rapidly a large scale fire grows in low-gravity.",
+      "quote": "The objectives of this investigation were to: (1) determine how rapidly a large scale fire grows in low-gravity",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate.",
+      "quote": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The sample was approximately 0.94 meters long and 0.4 meters wide.",
+      "quote": "The sample was approximately 0.94 meters long and 0.4 meters wide, simulating a large piece of flammable fabric.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+      "quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Once the sample was ignited flame images were captured using two cameras.",
+      "quote": "Once the sample was ignited flame images were captured using two cameras.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "The investigation is crucial for the safety of current and future space missions.",
+      "quote": "The investigation is crucial for the safety of current and future space missions.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+      "quote": "Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

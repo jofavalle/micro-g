@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-60",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:44:55Z",
+  "sha256": "d81942283491fdb20c65b5ef0712c3b13c0c98f71f576d082de997cb5dbfaba5",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment data.",
+      "quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields.",
+      "quote": "Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",
+      "quote": "For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "On Earth, the insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
+      "quote": "On Earth, the insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}
