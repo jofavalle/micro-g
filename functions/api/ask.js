@@ -99,22 +99,10 @@ export async function onRequestPost({ request, env }) {
     const { answer, model } = await askModel(env, corpus, question);
     return reply(200, checkAnswer(corpus, answer, model));
   } catch (err) {
-    if (err instanceof AskError) return failure(err.reason, err.status, diagnostic(env, err.detail));
+    if (err instanceof AskError) return failure(err.reason, err.status);
     if (err && err.name === "TimeoutError") return failure("unavailable", 504);
-    return failure("unavailable", 502, diagnostic(env, { thrown: `${err && err.name}: ${err && err.message}` }));
+    return failure("unavailable", 502);
   }
-}
-
-// TEMPORARY (order #87, first deploy of the preview): why the call to Gemini
-// failed, with the key replaced by "[key]" wherever it appears. It is removed
-// before the PR is opened.
-function diagnostic(env, info) {
-  if (!info) return undefined;
-  let text = JSON.stringify(info);
-  for (const key of [env.LLM_API_KEY, apiKey(env)]) {
-    if (key) text = text.split(key).join("[key]");
-  }
-  return JSON.parse(text);
 }
 
 // The key as tools/llm.py reads it: without spaces or quotes around it.
@@ -147,60 +135,7 @@ const SELFTEST = [
   },
 ];
 
-// TEMPORARY (order #87): GET /api/ask?probe=1 sends a one-line prompt to
-// Gemini with variants of the schema, each changing one thing, and reports
-// what Gemini answers to each, with the key replaced. Removed before the PR.
-async function probe(env, corpus) {
-  const full = answerSchema(corpus);
-  const list = full.properties.list;
-  const withProps = (changes) => ({ ...full, properties: { ...full.properties, ...changes } });
-  const plainLevel = { ...list, properties: { ...list.properties, level: { type: "array", items: { type: "integer" } } } };
-  const variants = {
-    trivial: { type: "object", properties: { a: { type: "string" } }, required: ["a"] },
-    full,
-    list_anyof: withProps({ list: { anyOf: [{ ...list, type: "object" }, { type: "null" }] } }),
-    list_object: withProps({ list: { ...list, type: "object" } }),
-    level_no_enum: withProps({ list: plainLevel }),
-    chart_string: withProps({ chart: { type: "string", enum: CHART_KEYS } }),
-    no_null: withProps({ list: { ...plainLevel, type: "object" }, chart: { type: "string", enum: CHART_KEYS } }),
-  };
-  // Only yes or no: nothing of the key itself.
-  const results = {
-    key_shape: {
-      had_spaces_or_quotes_around: String(env.LLM_API_KEY || "") !== apiKey(env),
-      google_api_key_format: /^AIza[0-9A-Za-z_-]{35}$/.test(apiKey(env)),
-    },
-  };
-  for (const [name, schema] of Object.entries(variants)) {
-    try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": apiKey(env),
-          "Api-Revision": API_REVISION,
-          "User-Agent": USER_AGENT,
-        },
-        body: JSON.stringify({
-          model: env.LLM_MODEL || DEFAULT_MODEL,
-          input: "Answer with JSON that follows the schema, with empty lists and null where allowed.",
-          store: false,
-          response_format: { type: "text", mime_type: "application/json", schema },
-        }),
-        signal: AbortSignal.timeout(TIMEOUT_MS),
-      });
-      results[name] = { status: response.status, body: (await response.text()).slice(0, 700) };
-    } catch (err) {
-      results[name] = { thrown: `${err && err.name}: ${err && err.message}` };
-    }
-  }
-  return diagnostic(env, results);
-}
-
 export async function onRequestGet({ request, env }) {
-  if (new URL(request.url).searchParams.get("probe") === "1") {
-    return reply(200, { probe: await probe(env, await loadCorpus(request, env)) });
-  }
   if (new URL(request.url).searchParams.get("selftest") !== "1") {
     return failure("bad_request", 400);
   }
@@ -218,11 +153,10 @@ export async function onRequestGet({ request, env }) {
 // ---------------------------------------------------------------- responses
 
 class AskError extends Error {
-  constructor(reason, status, detail) {
+  constructor(reason, status) {
     super(reason);
     this.reason = reason;
     this.status = status;
-    this.detail = detail;
   }
 }
 
@@ -249,8 +183,8 @@ function reply(status, body) {
   });
 }
 
-function failure(reason, status, detail) {
-  return reply(status, { status: "error", reason, detail });
+function failure(reason, status) {
+  return reply(status, { status: "error", reason });
 }
 
 // ---------------------------------------------------------------- input
@@ -537,20 +471,17 @@ async function askModel(env, corpus, question) {
     }),
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
-  if (!response.ok) {
-    const detail = { upstream: response.status, body: (await response.text()).slice(0, 1200) };
-    if (response.status === 429) throw new AskError("quota", 429, detail);
-    throw new AskError("unavailable", 502, detail);
-  }
+  if (response.status === 429) throw new AskError("quota", 429);
+  if (!response.ok) throw new AskError("unavailable", 502);
   const interaction = await response.json();
   if (!isObject(interaction) || interaction.status !== "completed") {
-    throw new AskError("unavailable", 502, { interaction_status: isObject(interaction) ? interaction.status : null });
+    throw new AskError("unavailable", 502);
   }
   let answer;
   try {
     answer = JSON.parse(outputText(interaction));
   } catch {
-    throw new AskError("unavailable", 502, { output_start: outputText(interaction).slice(0, 300) });
+    throw new AskError("unavailable", 502);
   }
   return { answer, model: typeof interaction.model === "string" ? interaction.model : model };
 }
