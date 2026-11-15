@@ -66,12 +66,15 @@ For each output field:
   sentence, set `quote` to a passage of at least one clause (four words or more) copied
   EXACTLY, character for character, from ONE field of the record that supports `text`,
   and set `source_field` to that field's label.
+  `quote` is ONE contiguous passage: never join passages with "..." or anything else.
+  `text` says nothing that is not in `quote`: no detail taken from another sentence.
   Every number in `text` must also appear in `quote`. Do not infer, convert or round.
 - If the record does not state it, set status "not_stated", `text` "", `quote` "" and
   `source_field` "none". Do not guess; most records do not give oxygen, flow or pressure.
 - oxygen, flow and pressure are test conditions set by the experiment. They are
   "verified" only when the record gives a concrete value or range for them; a mention
-  without a value ("a range of pressures") is "not_stated".
+  without a value ("a range of pressures") is "not_stated". Conditions of a simulation
+  or a model are not test conditions: they are "not_stated" too.
 
 Output fields:
 {fields}
@@ -80,21 +83,31 @@ Record {accession}:
 {record}"""
 
 
+def allowed_sources(name):
+    """PSI fields a quote may come from. A hypothesis is not a finding."""
+    if name == "safety_finding":
+        return [f for f in SOURCE_FIELDS if f != "Hypothesis"]
+    return list(SOURCE_FIELDS)
+
+
 def schema():
-    field = {
-        "type": "object",
-        "properties": {
-            "status": {"type": "string", "enum": ["verified", "not_stated"]},
-            "text": {"type": "string"},
-            "quote": {"type": "string"},
-            "source_field": {"type": "string", "enum": [*SOURCE_FIELDS, "none"]},
-        },
-        "required": ["status", "text", "quote", "source_field"],
-        "additionalProperties": False,
-    }
+    def field(name, desc):
+        return {
+            "type": "object",
+            "description": desc,
+            "properties": {
+                "status": {"type": "string", "enum": ["verified", "not_stated"]},
+                "text": {"type": "string"},
+                "quote": {"type": "string"},
+                "source_field": {"type": "string",
+                                 "enum": [*allowed_sources(name), "none"]},
+            },
+            "required": ["status", "text", "quote", "source_field"],
+            "additionalProperties": False,
+        }
     return {
         "type": "object",
-        "properties": {name: dict(field, description=desc) for name, desc in FIELDS.items()},
+        "properties": {name: field(name, desc) for name, desc in FIELDS.items()},
         "required": list(FIELDS),
         "additionalProperties": False,
     }
@@ -155,6 +168,8 @@ def build_card(record, entry, counts):
         }
         counts["checked"] += 1
         reason = check_field(field, record)
+        if not reason and field["source"]["ref"] not in allowed_sources(name):
+            reason = f"source field {field['source']['ref']!r} not allowed for {name}"
         if reason:
             counts["dropped"] += 1
             print(f"dropped: {record['Accession']}: {name}: {reason}")
