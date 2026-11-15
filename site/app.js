@@ -1,4 +1,4 @@
-// AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03
+// AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz
 // Static interface over the JSON files described in docs/data-contract.md.
 // No framework and no build step. Every value from the data files is inserted
 // with textContent, never as HTML.
@@ -18,6 +18,13 @@ const LEVELS = [
 const PILLARS = ["prevention", "detection", "suppression"];
 const FUEL_PHASES = ["solid", "liquid", "gas"];
 const HARDWARE_FAMILIES = ["ACME/CIR", "MDCA/CIR", "MSG", "Saffire/Cygnus", "other"];
+
+// Phenomena a situation can name, in display order. They are catalog tags; the
+// situation view offers only the ones that appear in the loaded catalog.
+const PHENOMENA = [
+  "flame_spread", "large_scale_fire", "smoldering", "smoke", "soot", "gas_measurements",
+  "carbon_monoxide", "cool_flames", "flammability_limits", "extinction_limits", "suppressant_agents",
+];
 
 // ---------------------------------------------------------------- loading
 
@@ -138,6 +145,10 @@ function quantHref(accession) {
   return `#/quant/${encodeURIComponent(accession)}`;
 }
 
+function cardPath(entry) {
+  return typeof entry.card === "string" ? entry.card : `cards/${entry.accession}.json`;
+}
+
 // The catalog says which investigations have a quantitative table, so the
 // interface never requests a file that is not there.
 function hasQuant(entry) {
@@ -246,9 +257,9 @@ const FILTER_GROUPS = [
   },
 ];
 
-function matches(entry) {
-  return FILTER_GROUPS.every(({ key, values }) =>
-    selected[key].size === 0 || values(entry).some((v) => selected[key].has(String(v))));
+function matches(entry, groups = FILTER_GROUPS, state = selected) {
+  return groups.every(({ key, values }) =>
+    state[key].size === 0 || values(entry).some((v) => state[key].has(String(v))));
 }
 
 // By level, then investigations with per-test tables first, then by acronym.
@@ -267,7 +278,7 @@ async function renderCatalog(view, isCurrent) {
   const count = el("p", { class: "result-count", "aria-live": "polite" });
 
   function update() {
-    const shown = entries.filter(matches);
+    const shown = entries.filter((e) => matches(e));
     count.textContent = `Showing ${shown.length} of ${entries.length} investigations.`;
     results.replaceChildren();
     if (shown.length === 0) {
@@ -303,8 +314,13 @@ async function renderCatalog(view, isCurrent) {
   update();
 }
 
-function filterPanel(entries, onChange) {
-  const groups = FILTER_GROUPS.map(({ key, legend, options, values }) => {
+// The checkboxes of a list of filter groups. state holds one Set of selected
+// values per group key: the catalog uses FILTER_GROUPS and selected, and the
+// situation view passes its own.
+function filterPanel(entries, onChange, {
+  filterGroups = FILTER_GROUPS, state = selected, name = "Filters", clearLabel = "Clear filters",
+} = {}) {
+  const groups = filterGroups.map(({ key, legend, options, values }) => {
     const opts = options(entries);
     if (opts.length === 0) return null;
     return el("fieldset", { class: "filter-group" },
@@ -315,10 +331,10 @@ function filterPanel(entries, onChange) {
           el("input", {
             type: "checkbox",
             value,
-            checked: selected[key].has(value),
+            checked: state[key].has(value),
             onchange: (event) => {
-              if (event.target.checked) selected[key].add(value);
-              else selected[key].delete(value);
+              if (event.target.checked) state[key].add(value);
+              else state[key].delete(value);
               onChange();
             },
           }),
@@ -331,13 +347,13 @@ function filterPanel(entries, onChange) {
     type: "button",
     class: "clear-filters",
     onclick: () => {
-      for (const set of Object.values(selected)) set.clear();
+      for (const set of Object.values(state)) set.clear();
       for (const box of panel.querySelectorAll("input[type=checkbox]")) box.checked = false;
       onChange();
     },
-  }, "Clear filters");
+  }, clearLabel);
 
-  const panel = el("form", { class: "filters", "aria-label": "Filters", onsubmit: (e) => e.preventDefault() },
+  const panel = el("form", { class: "filters", "aria-label": name, onsubmit: (e) => e.preventDefault() },
     groups, clear);
   return panel;
 }
@@ -420,7 +436,7 @@ const checkCard = (d) =>
 async function renderCard(view, isCurrent, accession) {
   const catalog = await loadCatalog();
   const entry = findEntry(catalog, accession);
-  const card = await load(typeof entry.card === "string" ? entry.card : `cards/${accession}.json`, checkCard);
+  const card = await load(cardPath(entry), checkCard);
   if (!isCurrent()) return;
 
   const psi = safeUrl(entry.psi_url);
@@ -444,20 +460,27 @@ async function renderCard(view, isCurrent, accession) {
 
 function cardField(label, field, entry) {
   const ok = isObject(field) && field.status === "verified";
-  const source = isObject(field) && isObject(field.source) ? field.source : null;
   return el("section", { class: ok ? "field" : "field field-not-stated" },
     el("h2", {}, label),
-    el("div", { class: "field-body" },
-      ok
-        ? [
-          el("p", { class: "field-text" }, String(field.text)),
-          el("blockquote", { class: "quote" }, String(field.quote)),
-          el("p", { class: "field-source" }, "Source: ", sourceLabel(source, entry)),
-        ]
-        : [
-          el("p", { class: "not-stated" }, "Not stated in source"),
-          source ? el("p", { class: "field-source" }, "Looked for in: ", sourceLabel(source, entry)) : null,
-        ]));
+    fieldBody(field, entry, "Not stated in source"));
+}
+
+// The value of a card field with its quote and source, or notStated when the
+// source does not state it. The situation view shows safety_finding with it.
+function fieldBody(field, entry, notStated) {
+  const ok = isObject(field) && field.status === "verified";
+  const source = isObject(field) && isObject(field.source) ? field.source : null;
+  return el("div", { class: "field-body" },
+    ok
+      ? [
+        el("p", { class: "field-text" }, String(field.text)),
+        el("blockquote", { class: "quote" }, String(field.quote)),
+        el("p", { class: "field-source" }, "Source: ", sourceLabel(source, entry)),
+      ]
+      : [
+        el("p", { class: "not-stated" }, notStated),
+        source ? el("p", { class: "field-source" }, "Looked for in: ", sourceLabel(source, entry)) : null,
+      ]);
 }
 
 function sourceLabel(source, entry) {
@@ -682,6 +705,213 @@ function scatterChart(columns, rows, xi, yi) {
       skipped ? ` ${skipped} ${skipped === 1 ? "row has" : "rows have"} no value in one of the two columns and ${skipped === 1 ? "is" : "are"} left out.` : ""));
 }
 
+// ---------------------------------------------------------------- situation view
+
+// A situation is a selection kept in the address, so it can be linked:
+// #/situation?fuel=solid&pillar=prevention&phenomenon=flame_spread, with the
+// key repeated for each value. It matches like the catalog filters.
+const SITUATION_GROUPS = [
+  {
+    key: "fuel",
+    legend: "Fuel phase",
+    options: () => FUEL_PHASES.map((p) => ({ value: p, label: p })),
+    values: (e) => asList(e.fuel_phase),
+    catalogKey: "fuel_phase",
+  },
+  {
+    key: "pillar",
+    legend: "Pillar",
+    options: () => PILLARS.map((p) => ({ value: p, label: p })),
+    values: (e) => asList(e.pillars),
+    catalogKey: "pillars",
+  },
+  {
+    key: "phenomenon",
+    legend: "Phenomenon",
+    options: (entries) =>
+      PHENOMENA
+        .filter((p) => entries.some((e) => asList(e.tags).includes(p)))
+        .map((p) => ({ value: p, label: humanize(p) })),
+    values: (e) => asList(e.tags),
+    catalogKey: "tags",
+  },
+];
+
+// Fixed sentences of the view, always visible (issues #16 and #45).
+const SITUATION_NOTES = [
+  "Results are ordered by how direct the evidence is, not by level of risk; the view shows what " +
+    "each investigation found and does not recommend safety measures.",
+  "A situation cannot be matched by atmosphere (oxygen, pressure, flow): most PSI records do not " +
+    "report these conditions.",
+];
+
+function plural(n, one, many) {
+  return `${n} ${n === 1 ? one : many}`;
+}
+
+// Reads the selection from the part of the address after "?". Values that this
+// catalog does not offer are left out and reported, so a link never filters
+// silently by something the page does not show.
+function situationFromQuery(query, entries) {
+  const params = new URLSearchParams(query);
+  const state = {};
+  const ignored = [];
+  for (const { key, options } of SITUATION_GROUPS) {
+    const offered = new Set(options(entries).map((o) => o.value));
+    state[key] = new Set();
+    for (const value of params.getAll(key)) {
+      if (offered.has(value)) state[key].add(value);
+      else ignored.push(`${key}=${value}`);
+    }
+  }
+  for (const [name, value] of params) {
+    if (!SITUATION_GROUPS.some((g) => g.key === name)) ignored.push(`${name}=${value}`);
+  }
+  return { state, ignored };
+}
+
+// The address of a selection, with the values in the order of the selectors.
+function situationHash(state, entries) {
+  const params = new URLSearchParams();
+  for (const { key, options } of SITUATION_GROUPS) {
+    for (const { value } of options(entries)) {
+      if (state[key].has(value)) params.append(key, value);
+    }
+  }
+  const query = params.toString();
+  return query ? `#/situation?${query}` : "#/situation";
+}
+
+async function renderSituation(view, isCurrent, query) {
+  // The heading and the fixed sentences go first, so they stay visible even
+  // if the catalog fails to load.
+  const body = el("div", {}, el("p", { class: "loading" }, "Loading the catalog…"));
+  view.replaceChildren(
+    el("div", { class: "catalog-head" },
+      el("h1", {}, "Situation"),
+      el("p", { class: "lead" },
+        "Describe a situation in a crewed habitat: what can burn, whether the concern is to prevent, " +
+        "detect or suppress a fire, and which phenomenon. The view lists what the matching " +
+        "investigations found, each with the literal passage of its source.")),
+    el("ul", { class: "situation-notes" }, SITUATION_NOTES.map((text) => el("li", {}, text))),
+    body);
+
+  let catalog;
+  try {
+    catalog = await loadCatalog();
+  } catch (err) {
+    if (isCurrent()) body.replaceChildren(errorBox("The catalog could not be loaded.", err));
+    return;
+  }
+  if (!isCurrent()) return;
+
+  const entries = [...catalog.investigations].sort(compareEntries);
+  const { state, ignored } = situationFromQuery(query, entries);
+  const ignoredNote = ignored.length
+    ? el("p", { class: "note" },
+      `Ignored from the address, because this catalog does not offer them: ${ignored.join(", ")}.`)
+    : null;
+  const count = el("p", { class: "result-count", "aria-live": "polite" });
+  const results = el("div", { class: "results" });
+  const update = () => results.replaceChildren(...situationResults(entries, state, count));
+
+  body.replaceChildren(
+    el("div", { class: "catalog" },
+      filterPanel(entries, () => {
+        // replaceState does not fire hashchange, so the view is not rebuilt.
+        history.replaceState(null, "", situationHash(state, entries));
+        if (ignoredNote) ignoredNote.remove();
+        update();
+      }, { filterGroups: SITUATION_GROUPS, state, name: "Situation", clearLabel: "Clear selection" }),
+      el("div", { class: "catalog-list" }, ignoredNote, count, results)));
+  update();
+}
+
+function situationResults(entries, state, count) {
+  if (SITUATION_GROUPS.every(({ key }) => state[key].size === 0)) {
+    count.textContent = "";
+    return [el("p", { class: "empty" },
+      "Choose at least one option to describe the situation. Nothing is listed until then.")];
+  }
+  const shown = entries.filter((e) => matches(e, SITUATION_GROUPS, state));
+  const atLevel = (level) => shown.filter((e) => e.level === level);
+  const direct = atLevel(1);
+  const supporting = atLevel(2);
+  const others = atLevel(3);
+  const total = direct.length + supporting.length + others.length;
+  if (total === 0) {
+    count.textContent = "No investigation matches this situation.";
+    return [el("div", { class: "gap" },
+      el("p", { class: "gap-title" }, "No investigation in the corpus covers this situation."),
+      el("p", {}, "This is a gap in the evidence, not an error. Fewer options widen the situation."))];
+  }
+  count.textContent = `${plural(total, "investigation matches", "investigations match")}: ` +
+    `${direct.length} at level 1, ${supporting.length} at level 2 and ${others.length} at level 3.`;
+  return [
+    direct.length + supporting.length
+      ? el("p", { class: "finding-note" },
+        "Each summary was drafted by an LLM before publishing (tool and model on each card). The passage " +
+        "under it is quoted word for word from its source: read it before relying on the summary.")
+      : null,
+    situationSection("Direct fire-safety evidence", 1, direct),
+    situationSection("Supporting combustion science", 2, supporting),
+    others.length ? level3Line(others.length, state) : null,
+  ].filter(Boolean);
+}
+
+// Within a section the entries keep the catalog order: per-test tables first.
+function situationSection(title, level, entries) {
+  const id = `situation-level-${level}`;
+  return el("section", { class: "level-group", "aria-labelledby": id },
+    el("h2", { id }, `${title} (${entries.length})`),
+    entries.length
+      ? entries.map(situationEntry)
+      : el("p", { class: "empty" }, `No level-${level} investigation matches this situation.`));
+}
+
+// Each card loads on its own: one that fails says so and the others still show.
+function situationEntry(entry) {
+  const psi = safeUrl(entry.psi_url);
+  const finding = el("div", { class: "finding" }, el("p", { class: "loading" }, "Loading the card…"));
+  load(cardPath(entry), checkCard).then(
+    (card) => finding.replaceChildren(
+      fieldBody(card.fields.safety_finding, entry, "No safety finding stated in source")),
+    (err) => finding.replaceChildren(errorBox(`The card of ${entry.acronym} could not be loaded.`, err)));
+  return el("article", { class: "entry" },
+    el("div", { class: `level-badge level-${entry.level}`, title: `Level ${entry.level}: ${levelLabel(entry.level)}` },
+      `L${entry.level}`),
+    el("div", { class: "entry-body" },
+      el("h3", {},
+        el("a", { href: cardHref(entry.accession) }, String(entry.acronym)),
+        el("span", { class: "entry-title" }, String(entry.title))),
+      entry.has_per_test_tables === true
+        ? el("ul", { class: "chips", "aria-label": "Attributes" },
+          el("li", { class: "chip chip-tables" }, "Per-test tables"))
+        : null,
+      finding,
+      el("p", { class: "entry-links" },
+        el("a", { href: cardHref(entry.accession) }, "Open card"),
+        psi ? [" · ", el("a", { href: psi, rel: "noopener" }, "PSI record")] : null)));
+}
+
+// Level 3 is not listed: one line counts it and opens the catalog filtered to
+// the same situation at level 3.
+function level3Line(n, state) {
+  return el("p", { class: "level-3-line" },
+    `${plural(n, "investigation", "investigations")} at level 3 (${levelLabel(3).toLowerCase()}) ` +
+    `also ${n === 1 ? "matches; it is" : "match; they are"} not listed here. `,
+    el("a", { href: "#/", onclick: () => presetCatalog(state) }, "Show in the catalog"),
+    ".");
+}
+
+function presetCatalog(state) {
+  for (const set of Object.values(selected)) set.clear();
+  selected.level.add("3");
+  for (const { key, catalogKey } of SITUATION_GROUPS) {
+    for (const value of state[key]) selected[catalogKey].add(value);
+  }
+}
+
 // ---------------------------------------------------------------- other views
 
 function renderNotFound(view) {
@@ -698,19 +928,33 @@ async function route() {
   const view = document.getElementById("view");
   const token = ++renderCount;
   const isCurrent = () => token === renderCount;
-  const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
+  // The part after "?" is the selection of the situation view.
+  const hash = location.hash.replace(/^#\/?/, "");
+  const cut = hash.indexOf("?");
+  const query = cut < 0 ? "" : hash.slice(cut + 1);
+  const parts = (cut < 0 ? hash : hash.slice(0, cut)).split("/").filter(Boolean).map(decodeURIComponent);
+  markCurrentView(parts.length === 0 ? "catalog" : parts[0]);
 
   view.replaceChildren(el("p", { class: "loading" }, "Loading…"));
   try {
     if (parts.length === 0) await renderCatalog(view, isCurrent);
     else if (parts[0] === "investigation" && parts.length === 2) await renderCard(view, isCurrent, parts[1]);
     else if (parts[0] === "quant" && parts.length === 2) await renderQuant(view, isCurrent, parts[1]);
+    else if (parts[0] === "situation" && parts.length === 1) await renderSituation(view, isCurrent, query);
     else renderNotFound(view);
   } catch (err) {
     if (isCurrent()) view.replaceChildren(errorBox("This view could not be loaded.", err));
   }
   // On navigation (not on the first load), start the new view at the top.
   if (isCurrent() && token > 1) window.scrollTo(0, 0);
+}
+
+// Marks the header link of the current view, if it has one.
+function markCurrentView(current) {
+  for (const link of document.querySelectorAll(".site-nav a[data-view]")) {
+    if (link.dataset.view === current) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
 }
 
 function showFixtureBanner() {
