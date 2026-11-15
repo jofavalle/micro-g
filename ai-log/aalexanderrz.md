@@ -29,6 +29,7 @@ Format and rules in [README.md](README.md).
 | 2026-11-15 14:42 | Claude Code, Pro | 16% (end of session, after opening PR #80) | 19% | 2026-11-15 17:20 | 2026-11-17 15:00 | #76, PR #80 |
 | 2026-11-15 16:08 | Claude Code, Pro | 25% (end of session, after the reviews of PR #79 and PR #82 and the fixes of PR #80; same session as the 14:42 reading, which was not the end) | 20% | 2026-11-15 17:20 | 2026-11-17 15:00 | PR #79, PR #80, PR #82 |
 | 2026-11-15 16:29 | Claude Code, Pro | 26% (given at the start of the session; time of the first clock reading) | 20% | 2026-11-15 17:20 | not read | #86 |
+| 2026-11-15 17:14 | Claude Code, Pro | 45% (end of session, after opening PR #90 and checking its preview) | 23% | 2026-11-15 17:20 | 2026-11-17 15:00 | #86, PR #90 |
 
 ## AI use
 
