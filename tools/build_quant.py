@@ -72,7 +72,8 @@ OMITTED = "[text omitted]"
 COLUMNS = (
     ("test_id", "", "FLEX test identifier, from the name of its test sheet file"),
     ("cir_test_number", "", "CIR test number, as the sheet gives it"),
-    ("test_date", "", "Test date (YYYY-MM-DD)"),
+    ("test_date", "", "Test date (YYYY-MM-DD); null if the sheet gives none, or one in a "
+                      "year outside 2009 to 2011"),
     ("fuel", "", "Fuel, as the sheet names it"),
     ("support", "", "Droplet support: fiber if the sheet says `Fiber: Yes`, free (free droplet) "
                     "if it says `Fiber: No`"),
@@ -123,6 +124,11 @@ MONTHS = {
         "september", "october", "november", "december",
     ))
 }
+# Years of the test dates of the sheets, on the census of 2026-11-15: 266 sheets, from
+# 2009-03-05 to 2011-12-08. The other five say `Friday, December 31, 0002`, which is
+# not the date of a test: a date outside these years is written as null, and the note
+# quotes what the sheet says (review of PR #49).
+TEST_YEARS = (2009, 2011)
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 NOTE_COUNTS = re.compile(r"(\d+) listed, (\d+) parsed, (\d+) excluded")
@@ -394,7 +400,15 @@ def census(listed, sheets, excluded):
 
 # ---------------------------------------------------------------- table
 
-def build_row(sheet, problems, remarks):
+def in_test_years(day):
+    return TEST_YEARS[0] <= int(day[:4]) <= TEST_YEARS[1]
+
+
+def join_names(names):
+    return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
+
+
+def build_row(sheet, problems, remarks, odd_dates):
     title, entries, plain = parse_sheet(decode(sheet["data"]))
     tid = test_id(sheet["name"])
     if title != tid:
@@ -422,7 +436,12 @@ def build_row(sheet, problems, remarks):
         if column in NUMBER_COLUMNS:
             row[column] = to_number(value)
         elif column == "test_date":
-            row[column] = to_day(value)
+            day = to_day(value)
+            if day is not None and not in_test_years(day):
+                # Not the date of a test: null, and the note quotes the sheet.
+                odd_dates[value].append(tid)
+                day = None
+            row[column] = day
         elif column == "support":
             if value not in SUPPORT:
                 problems.append(f"{sheet['name']}: {label} is {value!r}, not Yes or No")
@@ -461,8 +480,13 @@ def render(note, rows, sources):
 
 def build(listed, sheets, excluded, fetched):
     problems, remarks = [], []
+    odd_dates = defaultdict(list)  # test date as the sheet writes it -> test ids
     sheets = drop_copies(sheets, excluded)
-    rows = [build_row(sheet, problems, remarks) for sheet in sheets]
+    rows = [build_row(sheet, problems, remarks, odd_dates) for sheet in sheets]
+    for value, tids in odd_dates.items():
+        remarks.append(
+            f"{join_names(tids)} {'gives' if len(tids) == 1 else 'give'} `{value}` as test "
+            f"date, a year outside {TEST_YEARS[0]} to {TEST_YEARS[1]}: test_date is null there")
     if problems:
         for line in problems:
             print(f"error: {line}")
@@ -601,6 +625,9 @@ def verify():
         day = row[at["test_date"]]
         if day is not None and not (isinstance(day, str) and DAY.match(day)):
             problems.append(f"{p}: test_date must be YYYY-MM-DD or null")
+        elif day is not None and not in_test_years(day):
+            problems.append(
+                f"{p}: test_date {day} is in a year outside {TEST_YEARS[0]} to {TEST_YEARS[1]}")
         for name in NUMBER_COLUMNS:
             value = row[at[name]]
             is_number = isinstance(value, (int, float)) and not isinstance(value, bool)
