@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>micro-g</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chat.css">
+  <script src="chat.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -13,7 +15,8 @@
   <header class="site-header">
     <a class="brand" href="#/">micro-g</a>
     <nav class="site-nav" aria-label="Views">
-      <a href="#/" data-view="catalog">Catalog</a>
+      <a href="#/" data-view="overview">Overview</a>
+      <a href="#/catalog" data-view="catalog">Catalog</a>
       <a href="#/situation" data-view="situation">Situation</a>
     </nav>
     <p class="tagline">Combustion investigations from NASA's Physical Sciences Informatics
@@ -23,6 +26,7 @@
     <h2 id="verification-title" class="verification-title">How the investigation cards were checked</h2>
     <p class="verification-status">Loading the verification numbers…</p>
   </section>
+  <section id="ask" class="ask" hidden></section>
   <main id="view" class="view" tabindex="-1">
     <noscript>
       <p class="error">This page needs JavaScript to load its data files.</p>
