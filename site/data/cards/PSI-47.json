@@ -8,20 +8,20 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The focus of DAFT / DAFT-2 was to mitigate the risk for the Smoke Aerosol Measurement Experiment.",
-      "quote": "The focus of DAFT / DAFT-2 was to mitigate the risk for the Smoke Aerosol Measurement Experiment (SAME).",
+      "text": "DAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity.",
+      "quote": "DAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity.",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
       }
     },
     "fuel": {
-      "status": "verified",
-      "text": "The fuel or material used was isopropyl alcohol.",
-      "quote": "relies on gravity to recycle isopropyl alcohol used in the measurement process.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "sample_geometry": {
@@ -71,7 +71,7 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "The modified P-Trak gathered data from counting aerosol particles.",
+      "text": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak CNC specifically designed to work in microgravity.",
       "quote": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak CNC specifically designed to work in microgravity.",
       "source": {
         "kind": "psi_record",
@@ -79,18 +79,18 @@
       }
     },
     "safety_finding": {
-      "status": "not_stated",
-      "text": "",
-      "quote": "",
+      "status": "verified",
+      "text": "This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
+      "quote": "This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+        "ref": "Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
-      "quote": "This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
+      "text": "Additionally, the successful adaptation of the TSI P-Trak for microgravity can inform the design of instruments for use in other challenging Earth environments, such as submarines or underwater laboratories where accurate detection of smoke can save lives.",
+      "quote": "Additionally, the successful adaptation of the TSI P-Trak for microgravity can inform the design of instruments for use in other challenging Earth environments, such as submarines or underwater laboratories where accurate detection of smoke can save lives.",
       "source": {
         "kind": "psi_record",
         "ref": "Research Impacts/Earth Benefits"

@@ -8,7 +8,7 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation set out to better understand the structure and stability of laminar diffusion flames in microgravity.",
+      "text": "The objective of this investigation is to better understand the structure and stability of laminar diffusion flames in microgravity.",
       "quote": "The objective of this investigation is to better understand the structure and stability of laminar diffusion flames in microgravity.",
       "source": {
         "kind": "psi_record",
@@ -17,7 +17,7 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "Methane, ethylene, and nitrogen-diluted mixtures were used as fuels.",
+      "text": "This setup used several fuels such as methane, ethylene, and nitrogen-diluted mixtures.",
       "quote": "This setup used several fuels such as methane, ethylene, and nitrogen-diluted mixtures.",
       "source": {
         "kind": "psi_record",
@@ -26,7 +26,7 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "Exchangeable burner tubes were used in the apparatus.",
+      "text": "The SLICE apparatus consisted of a fan-driven flow duct, exchangeable burner tubes, and integrated sensors to measure flow rates and temperature.",
       "quote": "The SLICE apparatus consisted of a fan-driven flow duct, exchangeable burner tubes, and integrated sensors to measure flow rates and temperature.",
       "source": {
         "kind": "psi_record",
@@ -62,7 +62,7 @@
     },
     "variables": {
       "status": "verified",
-      "text": "Burner diameter, coflow velocity, and fuel composition were varied between tests.",
+      "text": "The hypothesis is that the structure and stability of laminar diffusion flames in microgravity are significantly influenced by burner diameter, coflow velocity, and fuel composition and are fundamentally different than flames observed on Earth.",
       "quote": "The hypothesis is that the structure and stability of laminar diffusion flames in microgravity are significantly influenced by burner diameter, coflow velocity, and fuel composition and are fundamentally different than flames observed on Earth.",
       "source": {
         "kind": "psi_record",
@@ -71,8 +71,8 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Flow rates and temperature were measured using integrated sensors, and high-resolution images were captured.",
-      "quote": "The SLICE apparatus consisted of a fan-driven flow duct, exchangeable burner tubes, and integrated sensors to measure flow rates and temperature.",
+      "text": "A high resolution camera captured still images while sensor data was overlaid on these images.",
+      "quote": "A high resolution camera captured still images while sensor data was overlaid on these images.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -80,7 +80,7 @@
     },
     "safety_finding": {
       "status": "verified",
-      "text": "Insights into flame stability and behavior enhance fire safety.",
+      "text": "Insights into flame stability and behavior to enhance fire safety.",
       "quote": "Insights into flame stability and behavior to enhance fire safety.",
       "source": {
         "kind": "psi_record",

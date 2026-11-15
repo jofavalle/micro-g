@@ -8,8 +8,8 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation set out to measure and characterize the transient structure of diffusion flames established at initially non-steady, spherical flame structures.",
-      "quote": "Measure and characterize the transient structure (such as temperature and species distribution) of diffusion flames established at initially non-steady, spherical flame structures for mixtures of different H2/CH4/diluent ratios   (soot-free) and different C2H4/diluent ratios (sooty), for different flow rates.",
+      "text": "A series of experiments is proposed with the following specific objectives, in both soot-free and sooty flames, to compare with detailed computational simulation to assess transport properties and detailed chemical kinetics.",
+      "quote": "A series of experiments is proposed with the following specific objectives, in both soot-free and sooty flames, to compare with detailed computational simulation to assess transport properties and detailed chemical kinetics (including chemiluminescence):",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -17,7 +17,7 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "Conventional gaseous fuels including hydrogen, methane, and ethylene were used.",
+      "text": "Conventional gaseous fuels including hydrogen, methane, and ethylene will be used.",
       "quote": "Conventional gaseous fuels including hydrogen, methane, and ethylene will be used.",
       "source": {
         "kind": "psi_record",
@@ -26,8 +26,8 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The experiments used a spherical porous burner to obtain a spherical flame.",
-      "quote": "issued into an oxidizing environment through a spherical porous burner and ignited to obtain, nominally, a spherical, one-dimensional stabilized flame.",
+      "text": "A series of experiments is proposed in which mixtures of various gaseous fuels and diluents will be issued into an oxidizing environment through a spherical porous burner and ignited to obtain, nominally, a spherical, one-dimensional stabilized flame.",
+      "quote": "A series of experiments is proposed in which mixtures of various gaseous fuels and diluents will be issued into an oxidizing environment through a spherical porous burner and ignited to obtain, nominally, a spherical, one-dimensional stabilized flame.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -62,8 +62,8 @@
     },
     "variables": {
       "status": "verified",
-      "text": "The tests varied mixtures of different H2/CH4/diluent ratios and different C2H4/diluent ratios for different flow rates.",
-      "quote": "mixtures of different H2/CH4/diluent ratios   (soot-free) and different C2H4/diluent ratios (sooty), for different flow rates.",
+      "text": "Measure and characterize the transient structure of diffusion flames established at initially non-steady, spherical flame structures for mixtures of different H2/CH4/diluent ratios and different C2H4/diluent ratios, for different flow rates.",
+      "quote": "Measure and characterize the transient structure (such as temperature and species distribution) of diffusion flames established at initially non-steady, spherical flame structures for mixtures of different H2/CH4/diluent ratios   (soot-free) and different C2H4/diluent ratios (sooty), for different flow rates.",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -71,8 +71,8 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Synchronized measurements included spectrally resolved images, flame and burner temperatures, and radiative flux measurements.",
-      "quote": "Synchronized measurements are to be made including spectrally resolved images, flame and burner temperatures, radiative flux measurements, and system operating conditions",
+      "text": "Synchronized measurements are to be made including spectrally resolved images, flame and burner temperatures, radiative flux measurements, and system operating conditions.",
+      "quote": "Synchronized measurements are to be made including spectrally resolved images, flame and burner temperatures, radiative flux measurements, and system operating conditions (including reactant flow rates, ambient temperatures, pressures and acceleration levels, etc.).",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -89,8 +89,8 @@
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "Understanding diffusion flames improves combustion engine performance in terms of power, efficiency, pollutant emissions, and reliability.",
-      "quote": "understanding the underlying dynamics and chemistry of diffusion flames is important in improving performance in terms of power, efficiency, pollutant emissions, and reliability.",
+      "text": "Practically, with diffusion flame burning as the basis in many combustion engines and devices, understanding the underlying dynamics and chemistry of diffusion flames is important in improving performance in terms of power, efficiency, pollutant emissions, and reliability.",
+      "quote": "Practically, with diffusion flame burning as the basis in many combustion engines and devices, understanding the underlying dynamics and chemistry of diffusion flames is important in improving performance in terms of power, efficiency, pollutant emissions, and reliability.",
       "source": {
         "kind": "psi_record",
         "ref": "Research Impacts/Earth Benefits"

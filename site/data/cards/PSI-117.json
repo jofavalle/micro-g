@@ -8,7 +8,7 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation used flight data from FLEX to quantify how thermal and convective perturbations regulated droplet cool flames.",
+      "text": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames.",
       "quote": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX) to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames",
       "source": {
         "kind": "psi_record",
@@ -17,7 +17,7 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The fuel studied was n-alkane for the droplet cool flames.",
+      "text": "OpenFOAM was used to develop a 3-D CFD model of n-alkane droplet cool flames in microgravity.",
       "quote": "OpenFOAM was used to develop a 3-D CFD model of n-alkane droplet cool flames in microgravity",
       "source": {
         "kind": "psi_record",
@@ -26,8 +26,8 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "Both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets were used in the simulations.",
-      "quote": "combined convection plus heating applied to both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets.",
+      "text": "Controlled simulations examined three forcing modes applied to both large and sub-millimeter droplets.",
+      "quote": "controlled simulations examined three forcing modes (i) convection alone to mimic droplet drift, (ii) imposed heat flux, and (iii) combined convection plus heating applied to both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -62,8 +62,8 @@
     },
     "variables": {
       "status": "verified",
-      "text": "Tests varied forcing amplitude and frequency, ambient composition, and pressure.",
-      "quote": "parameter sweeps over forcing amplitude and frequency, ambient composition (including ozone-assisted cases), and pressure.",
+      "text": "Parameter sweeps were performed over forcing amplitude and frequency, ambient composition, and pressure.",
+      "quote": "parameter sweeps over forcing amplitude and frequency, ambient composition (including ozone-assisted cases), and pressure",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -71,7 +71,7 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Predictive observables such as ignition delay, oscillation frequency and amplitude, and stand-off and extinction diameters were extracted.",
+      "text": "Predictive observables were extracted including ignition delay, oscillation frequency and amplitude, and stand-off and extinction diameters.",
       "quote": "From each case, predictive observables were extracted (ignition delay, oscillation frequency and amplitude, stand-off and extinction diameters)",
       "source": {
         "kind": "psi_record",
@@ -80,8 +80,8 @@
     },
     "safety_finding": {
       "status": "verified",
-      "text": "The research has the potential to improve spacecraft fire-safety modeling by resolving cool-flame and extinction behavior in microgravity.",
-      "quote": "Potential to improve spacecraft fire-safety modeling by resolving cool-flame/extinction behavior in microgravity; leverages FLEX to define safer operating envelopes/materials.",
+      "text": "This research has the potential to improve spacecraft fire-safety modeling by resolving cool-flame and extinction behavior in microgravity.",
+      "quote": "Potential to improve spacecraft fire-safety modeling by resolving cool-flame/extinction behavior in microgravity",
       "source": {
         "kind": "psi_record",
         "ref": "Research Impacts/Earth Benefits"
@@ -89,8 +89,8 @@
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "The work advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions.",
-      "quote": "Advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions; delivers validated CFD tools transferrable to practical combustors.",
+      "text": "This research advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions, and delivers validated CFD tools transferrable to practical combustors.",
+      "quote": "Advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions; delivers validated CFD tools transferrable to practical combustors",
       "source": {
         "kind": "psi_record",
         "ref": "Research Impacts/Earth Benefits"

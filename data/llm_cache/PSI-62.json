@@ -1,8 +1,8 @@
 {
   "accession": "PSI-62",
   "model": "gemini-3.5-flash-lite",
-  "date": "2026-11-15T08:07:53Z",
-  "sha256": "e4a3fbf0a99dd32c9d43ba27cf57cbdd7238d93b36c9413224c9aabf691813d2",
+  "date": "2026-11-15T13:45:02Z",
+  "sha256": "dd338d8898e6644c3ecd01389d59a5914629e73545c3dbd00732a5e03c1d3bdb",
   "answer": {
     "objective": {
       "status": "verified",
@@ -12,14 +12,14 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The tested materials included polymethyl methacrylate samples and wax cylinders.",
-      "quote": "flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
+      "text": "The project tested polymethyl methacrylate samples as well as wax cylinders.",
+      "quote": "including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
       "source_field": "Approach"
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The BASS geometries included flat sheets, spheres, and rod-shaped samples, as well as cylinders.",
-      "quote": "flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
+      "text": "The approach tested various BASS geometries, including flat sheets, spheres, and rod-shaped samples, as well as cylinders.",
+      "quote": "tested on various BASS geometries, including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
       "source_field": "Approach"
     },
     "oxygen": {
@@ -53,10 +53,10 @@
       "source_field": "Approach"
     },
     "safety_finding": {
-      "status": "verified",
-      "text": "The long-term goal was to enable accurate prediction of flammability limits for spacecraft materials and to provide a tool that could also serve as a subgrid-scale model in large-eddy simulations of fires, supporting spacecraft safety and hazard mitigation.",
-      "quote": "Ultimately, the long-term goal was to enable accurate prediction of flammability limits for spacecraft materials and to provide a tool that could also serve as a subgrid-scale model in large-eddy simulations of fires, supporting spacecraft safety and hazard mitigation.",
-      "source_field": "Objectives"
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
     },
     "earth_benefits": {
       "status": "verified",

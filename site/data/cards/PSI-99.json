@@ -8,7 +8,7 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits compared to those obtained in NASA's normal gravity material flammability screening test.",
+      "text": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits.",
       "quote": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
       "source": {
         "kind": "psi_record",
@@ -44,7 +44,7 @@
     },
     "flow": {
       "status": "verified",
-      "text": "Depending on the sample material, the Saffire-II was conducted at an air flow velocity of either 20 or 30 cm/s, the flow being either concurrent or opposed.",
+      "text": "Depending on the sample material, the Saffire-II was conducted at an air flow velocity of either 20 or 30 cm/s.",
       "quote": "Depending on the sample material, the Saffire-II was conducted at an air flow velocity of either 20 or 30 cm/s, the flow being either concurrent or opposed.",
       "source": {
         "kind": "psi_record",
@@ -71,8 +71,8 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Once the sample was ignited flame images were captured using two cameras, and thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
-      "quote": "Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "text": "Once the sample was ignited flame images were captured using two cameras.",
+      "quote": "Once the sample was ignited flame images were captured using two cameras.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -80,8 +80,8 @@
     },
     "safety_finding": {
       "status": "verified",
-      "text": "Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA's material selection criteria, and how microgravity and limited oxygen affect flame size.",
-      "quote": "Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria, and how microgravity and limited oxygen affect flame size.",
+      "text": "The investigation is crucial for the safety of current and future space missions.",
+      "quote": "The investigation is crucial for the safety of current and future space missions.",
       "source": {
         "kind": "psi_record",
         "ref": "Research Impacts/Earth Benefits"

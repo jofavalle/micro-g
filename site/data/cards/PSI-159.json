@@ -8,7 +8,7 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation aimed to determine the conditions for cool diffusion flames for propane, n-butane, and n-pentane.",
+      "text": "The investigation aimed to determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane.",
       "quote": "Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",
       "source": {
         "kind": "psi_record",
@@ -17,7 +17,7 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The fuels burned during the investigation were propane, n-butane, and n-pentane.",
+      "text": "The fuels tested include propane, n-butane, and n-pentane.",
       "quote": "Cool diffusion flames burning propane, n-butane, and n-pentane.",
       "source": {
         "kind": "psi_record",
@@ -26,7 +26,7 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The samples used in the investigation were spherical porous burners.",
+      "text": "The testing involved spherical porous burners.",
       "quote": "Steady-state cool diffusion flames on spherical porous burners.",
       "source": {
         "kind": "psi_record",
@@ -62,7 +62,7 @@
     },
     "variables": {
       "status": "verified",
-      "text": "The investigation varied multiple fuels, reactant dilutions, flow rates, and pressures for normal and inverse convection directions.",
+      "text": "Multiple fuels, a range of reactant dilutions, flow rates, and pressures were considered for normal and inverse convection directions.",
       "quote": "Consider multiple fuels, a range of reactant dilutions, flow rates, and pressures for normal and inverse convection directions.",
       "source": {
         "kind": "psi_record",
@@ -71,7 +71,7 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "The flames were observed using cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "text": "The flames were observed with a suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
       "quote": "Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
       "source": {
         "kind": "psi_record",
@@ -89,7 +89,7 @@
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "The measurements will help test and advance cool flame kinetics mechanisms to facilitate the development of more efficient internal combustion engines.",
+      "text": "The measurements performed for this project will help to test and advance cool flame kinetics mechanisms, which should facilitate the development of more efficient internal combustion engines.",
       "quote": "The measurements performed for this project will help to test and advance cool flame kinetics mechanisms. This should facilitate the development of more efficient internal combustion engines.",
       "source": {
         "kind": "psi_record",

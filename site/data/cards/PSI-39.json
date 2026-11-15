@@ -8,8 +8,8 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation examines the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
-      "quote": "Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
+      "text": "The objectives of this investigation are to examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
+      "quote": "The objectives of this investigation are to:    1) Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -53,26 +53,26 @@
     },
     "pressure": {
       "status": "verified",
-      "text": "The combustion chamber operates at pressures ranging from 0.25 to 0.5 atm.",
-      "quote": "ranging from 0.25 to 0.5 atm",
+      "text": "A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm.",
+      "quote": "A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
       }
     },
     "variables": {
-      "status": "verified",
-      "text": "Fuels were diluted with molecular oxygen, atomic nitrogen, and helium to study the influence on flame extinction and dynamics.",
-      "quote": "Fuels diluted with molecular oxygen, atomic nitrogen, and helium to study the influence on flame extinction and dynamics.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "measurements": {
       "status": "verified",
-      "text": "Flames were observed with a black-and-white camera for droplet size measurements, a UV camera for capturing OH* radical emissions and flame size, and narrow-band and wide-band radiometers for analyzed flame radiation.",
-      "quote": "Flames were observed with a black-and-white camera for droplet size measurements. A UV camera was used for capturing the OH* radical emissions and flame size. Other high resolution cameras were used for monitoring and documentation. Narrow-band and wide-band radiometers for analyzed flame radiation.",
+      "text": "Flames were observed with a black-and-white camera for droplet size measurements.",
+      "quote": "Flames were observed with a black-and-white camera for droplet size measurements.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -80,8 +80,8 @@
     },
     "safety_finding": {
       "status": "verified",
-      "text": "The research supports the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
-      "quote": "support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+      "text": "Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+      "quote": "Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
       "source": {
         "kind": "psi_record",
         "ref": "Research Impacts/Earth Benefits"

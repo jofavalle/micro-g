@@ -17,7 +17,7 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "Methane and ethylene were used as fuels.",
+      "text": "Methane and ethylene were used as fuels and diluted with nitrogen to control flame strength.",
       "quote": "Methane and ethylene were used as fuels and diluted with nitrogen to control flame strength.",
       "source": {
         "kind": "psi_record",
@@ -26,7 +26,7 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The gas-jet burner is used to create a small, focused flame for detailed ion-driven convection studies while the coflow burner surrounds the fuel jet with a weak synthetic air flow.",
+      "text": "The gas-jet burner is used to create a small, focused flame for detailed ion-driven convection studies while the coflow burner surrounds the fuel jet with a weak synthetic air flow to enable flame stability and soot behavior analysis.",
       "quote": "The gas-jet burner is used to create a small, focused flame for detailed ion-driven convection studies while the coflow burner surrounds the fuel jet with a weak synthetic air flow to enable flame stability and soot behavior analysis.",
       "source": {
         "kind": "psi_record",
@@ -43,12 +43,12 @@
       }
     },
     "flow": {
-      "status": "verified",
-      "text": "The coflow burner surrounds the fuel jet with a weak synthetic air flow.",
-      "quote": "the coflow burner surrounds the fuel jet with a weak synthetic air flow to enable flame stability and soot behavior analysis.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "pressure": {
@@ -79,12 +79,12 @@
       }
     },
     "safety_finding": {
-      "status": "verified",
-      "text": "The application of electric fields in microgravity environments will significantly influence laminar diffusion flames by enabling precise manipulation of flame stability, soot behavior, and combustion dynamics through ion-driven convection and chemi-ionization processes.",
-      "quote": "The application of electric fields in microgravity environments will significantly influence laminar diffusion flames by enabling precise manipulation of flame stability, soot behavior, and combustion dynamics through ion-driven convection and chemi-ionization processes.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Hypothesis"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {

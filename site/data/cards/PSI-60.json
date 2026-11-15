@@ -8,7 +8,7 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The objective was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from SPICE data.",
+      "text": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment data.",
       "quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI.",
       "source": {
         "kind": "psi_record",
@@ -71,25 +71,25 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Over 1600 raw DSLR images were analyzed to incorporate advanced soot models.",
-      "quote": "By analyzing over 1600 raw DSLR images and incorporating advanced soot models, the study sought to improve understanding of soot formation, oxidation, radiative re-absorption, and aggregate growth in heavily sooting flames.",
+      "text": "Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields.",
+      "quote": "Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives"
+        "ref": "Approach"
       }
     },
     "safety_finding": {
-      "status": "not_stated",
-      "text": "",
-      "quote": "",
+      "status": "verified",
+      "text": "For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",
+      "quote": "For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+        "ref": "Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "The insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
+      "text": "On Earth, the insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
       "quote": "On Earth, the insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
       "source": {
         "kind": "psi_record",

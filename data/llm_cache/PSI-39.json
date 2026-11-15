@@ -1,13 +1,13 @@
 {
   "accession": "PSI-39",
   "model": "gemini-3.5-flash-lite",
-  "date": "2026-11-15T08:06:32Z",
-  "sha256": "60044c1ed226953aa545c101b1e5a781900fb2ee299021a51aca10d38c80da3c",
+  "date": "2026-11-15T13:44:44Z",
+  "sha256": "097a1349ccb5b22b4cf0846b3e88d02f562e3965a1ab8085756c59306797718d",
   "answer": {
     "objective": {
       "status": "verified",
-      "text": "The investigation examines the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
-      "quote": "Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
+      "text": "The objectives of this investigation are to examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
+      "quote": "The objectives of this investigation are to:    1) Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.",
       "source_field": "Objectives"
     },
     "fuel": {
@@ -36,26 +36,26 @@
     },
     "pressure": {
       "status": "verified",
-      "text": "The combustion chamber operates at pressures ranging from 0.25 to 0.5 atm.",
-      "quote": "ranging from 0.25 to 0.5 atm",
+      "text": "A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm.",
+      "quote": "A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm.",
       "source_field": "Approach"
     },
     "variables": {
-      "status": "verified",
-      "text": "Fuels were diluted with molecular oxygen, atomic nitrogen, and helium to study the influence on flame extinction and dynamics.",
-      "quote": "Fuels diluted with molecular oxygen, atomic nitrogen, and helium to study the influence on flame extinction and dynamics.",
-      "source_field": "Approach"
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
     },
     "measurements": {
       "status": "verified",
-      "text": "Flames were observed with a black-and-white camera for droplet size measurements, a UV camera for capturing OH* radical emissions and flame size, and narrow-band and wide-band radiometers for analyzed flame radiation.",
-      "quote": "Flames were observed with a black-and-white camera for droplet size measurements. A UV camera was used for capturing the OH* radical emissions and flame size. Other high resolution cameras were used for monitoring and documentation. Narrow-band and wide-band radiometers for analyzed flame radiation.",
+      "text": "Flames were observed with a black-and-white camera for droplet size measurements.",
+      "quote": "Flames were observed with a black-and-white camera for droplet size measurements.",
       "source_field": "Approach"
     },
     "safety_finding": {
       "status": "verified",
-      "text": "The research supports the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
-      "quote": "support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+      "text": "Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
+      "quote": "Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.",
       "source_field": "Research Impacts/Earth Benefits"
     },
     "earth_benefits": {

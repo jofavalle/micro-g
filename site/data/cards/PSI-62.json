@@ -17,8 +17,8 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The tested materials included polymethyl methacrylate samples and wax cylinders.",
-      "quote": "flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
+      "text": "The project tested polymethyl methacrylate samples as well as wax cylinders.",
+      "quote": "including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -26,8 +26,8 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The BASS geometries included flat sheets, spheres, and rod-shaped samples, as well as cylinders.",
-      "quote": "flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
+      "text": "The approach tested various BASS geometries, including flat sheets, spheres, and rod-shaped samples, as well as cylinders.",
+      "quote": "tested on various BASS geometries, including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -79,12 +79,12 @@
       }
     },
     "safety_finding": {
-      "status": "verified",
-      "text": "The long-term goal was to enable accurate prediction of flammability limits for spacecraft materials and to provide a tool that could also serve as a subgrid-scale model in large-eddy simulations of fires, supporting spacecraft safety and hazard mitigation.",
-      "quote": "Ultimately, the long-term goal was to enable accurate prediction of flammability limits for spacecraft materials and to provide a tool that could also serve as a subgrid-scale model in large-eddy simulations of fires, supporting spacecraft safety and hazard mitigation.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {

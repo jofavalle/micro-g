@@ -8,8 +8,8 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The primary objectives include obtaining soot-inception limits of quasi-steady normal and inverse spherical diffusion flames.",
-      "quote": "Obtain soot-inception limits of quasi-steady normal and inverse spherical diffusion flames as functions of flow rate, Zst, amount of inert (N2 or CO2), and pressure for C2H4 and CH4 flames.",
+      "text": "The primary objectives of this flight experiment include obtaining soot-inception limits of quasi-steady normal and inverse spherical diffusion flames.",
+      "quote": "The primary objectives of this flight experiment are:\nA. Obtain soot-inception limits of quasi-steady normal and inverse spherical diffusion flames as functions of flow rate",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -17,8 +17,8 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The fuels tested are C2H4 and CH4.",
-      "quote": "for C2H4 and CH4 flames.",
+      "text": "Ethylene and methane are the fuels used for the flames.",
+      "quote": "and pressure for C2H4 and CH4 flames.",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -26,11 +26,11 @@
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The experiment investigates spherical diffusion flames.",
-      "quote": "Perform spherical diffusion flame tests in drop towers and aboard the International Space Station.",
+      "text": "The investigation tests spherical diffusion flames.",
+      "quote": "Obtain soot-inception limits of quasi-steady normal and inverse spherical diffusion flames",
       "source": {
         "kind": "psi_record",
-        "ref": "Approach"
+        "ref": "Objectives"
       }
     },
     "oxygen": {
@@ -62,7 +62,7 @@
     },
     "variables": {
       "status": "verified",
-      "text": "Variables include reactant dilutions, flow rates, and pressures.",
+      "text": "The tests vary reactant dilutions, flow rates and pressures for normal and inverse convection directions.",
       "quote": "Consider a broad range of reactant dilutions, flow rates and pressures for normal and inverse convection directions.",
       "source": {
         "kind": "psi_record",
@@ -71,7 +71,7 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Flames are observed using cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "text": "The flames are observed using a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
       "quote": "Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
       "source": {
         "kind": "psi_record",
@@ -79,17 +79,17 @@
       }
     },
     "safety_finding": {
-      "status": "verified",
-      "text": "Microgravity spherical diffusion flames extinguish when the peak temperature first decreases below 1130 K.",
-      "quote": "Microgravity spherical diffusion flames extinguish when the peak temperature first decreases below 1130 K.",
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
       "source": {
         "kind": "psi_record",
-        "ref": "Hypothesis"
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "The project has the potential for improving efficiency and reducing pollutant emissions in terrestrial combustors.",
+      "text": "This project has the potential for improving efficiency and reducing pollutant emissions in terrestrial combustors.",
       "quote": "This project has the potential for improving efficiency and reducing pollutant emissions in terrestrial combustors.",
       "source": {
         "kind": "psi_record",

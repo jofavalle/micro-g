@@ -7,26 +7,26 @@
   },
   "fields": {
     "objective": {
-      "status": "not_stated",
-      "text": "",
-      "quote": "",
+      "status": "verified",
+      "text": "The FLEX investigation aims to map the flammability limits of liquid fuels in microgravity environments.",
+      "quote": "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+        "ref": "Objectives"
       }
     },
     "fuel": {
-      "status": "not_stated",
-      "text": "",
-      "quote": "",
+      "status": "verified",
+      "text": "The FLEX experiments involve igniting and observing the burning behavior of relatively large droplets.",
+      "quote": "The FLEX experiments involve igniting and observing the burning behavior of relatively large droplets.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+        "ref": "Approach"
       }
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The tests involve relatively large droplets with a size of approximately 3 mm.",
+      "text": "Select a smaller droplet size approximately 3 mm.",
       "quote": "Select a smaller droplet size (≈ 3 mm)",
       "source": {
         "kind": "psi_record",
@@ -53,7 +53,7 @@
     },
     "pressure": {
       "status": "verified",
-      "text": "The test pressure for the LOI tests is selected between 0.5 and 1.5 atm.",
+      "text": "Select the test pressure 0.5 - 1.5 atm for the LOI tests.",
       "quote": "Select the test pressure (0.5 − 1.5 atm) for the LOI tests.",
       "source": {
         "kind": "psi_record",
@@ -62,7 +62,7 @@
     },
     "variables": {
       "status": "verified",
-      "text": "The variables include ambient pressure and ambient oxygen mole fraction.",
+      "text": "A primary objective of the experiments is to determine the Limiting Oxygen Index as a function of ambient pressure and determine how the presence of a suppressant influences the LOI.",
       "quote": "A primary objective of the experiments is to determine the Limiting Oxygen Index (LOI) as a function of ambient pressure and determine how the presence of a suppressant influences the LOI .",
       "source": {
         "kind": "psi_record",
@@ -71,7 +71,7 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Measurements include droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles.",
+      "text": "Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles.",
       "quote": "Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles",
       "source": {
         "kind": "psi_record",
@@ -80,7 +80,7 @@
     },
     "safety_finding": {
       "status": "verified",
-      "text": "The research contributes to improved fire safety protocols for future space missions.",
+      "text": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions.",
       "quote": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective.",
       "source": {
         "kind": "psi_record",
@@ -89,7 +89,7 @@
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "Insights gained can advance fire safety in confined environments such as submarines or high-altitude aircraft.",
+      "text": "On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments, such as submarines or high-altitude aircraft.",
       "quote": "On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments, such as submarines or high-altitude aircraft.",
       "source": {
         "kind": "psi_record",

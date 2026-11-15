@@ -8,8 +8,8 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation determined how rapidly a large scale fire grows in low-gravity and investigated low-g flammability limits.",
-      "quote": "The objectives of this investigation were to: (1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+      "text": "The objectives of this investigation were to determine how rapidly a large scale fire grows in low-gravity.",
+      "quote": "The objectives of this investigation were to: (1) determine how rapidly a large scale fire grows in low-gravity",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -17,8 +17,8 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The sample material used was a composite fabric called Sibal consisting of cotton on a fiberglass substrate.",
-      "quote": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight).",
+      "text": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate.",
+      "quote": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -44,7 +44,7 @@
     },
     "flow": {
       "status": "verified",
-      "text": "The Saffire-I experiment was conducted at an air flow velocity of 20 cm/s.",
+      "text": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
       "quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
       "source": {
         "kind": "psi_record",
@@ -71,8 +71,8 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Flame images were captured using two cameras, while thermocouples, radiometers, solid state sensors, and anemometers provided various temperature, radiation, pressure, gas concentration, and velocity measurements.",
-      "quote": "Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "text": "Once the sample was ignited flame images were captured using two cameras.",
+      "quote": "Once the sample was ignited flame images were captured using two cameras.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -80,11 +80,11 @@
     },
     "safety_finding": {
       "status": "verified",
-      "text": "Using terrestrial fires and fire standards to design spacecraft fire safety systems presents an inherent risk to the vehicle because of the significant level of uncertainty.",
-      "quote": "This investigation hypothesizes that due to large differences between fire behavior in normal and reduced gravity, the use of terrestrial fires and fire standards to design spacecraft fire safety systems presents an inherent risk to the vehicle because of the significant level of uncertainty.",
+      "text": "The investigation is crucial for the safety of current and future space missions.",
+      "quote": "The investigation is crucial for the safety of current and future space missions.",
       "source": {
         "kind": "psi_record",
-        "ref": "Hypothesis"
+        "ref": "Research Impacts/Earth Benefits"
       }
     },
     "earth_benefits": {

@@ -1,8 +1,8 @@
 {
   "accession": "PSI-68",
   "model": "gemini-3.5-flash-lite",
-  "date": "2026-11-15T08:07:59Z",
-  "sha256": "8c34fb29403c394e3ed97da32936604f7c6021bd2aee5c66a29f859b25d1c6ef",
+  "date": "2026-11-15T13:45:08Z",
+  "sha256": "4a31472e4b213cd766c68ea814ac3462c684a9f6b7060175c06c0fcbce91c5c6",
   "answer": {
     "objective": {
       "status": "verified",
@@ -12,19 +12,19 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The FLEX-2 experiments used bi-component mixtures.",
-      "quote": "The present FLEX-2 experiments using bi-component mixtures.",
-      "source_field": "Hypothesis"
+      "text": "The investigation involves bi-component fuel droplets and pure fuel combustion.",
+      "quote": "Investigate the role of liquid-phase mixing on the burning characteristics of bi-component fuel droplets.",
+      "source_field": "Objectives"
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "The fuel was dispensed as a droplet onto the support fiber or freely deployed.",
-      "quote": "dispensing of a predetermined amount of fuel (based on the target droplet size) onto the support fiber for those tests in which the droplet is not freely deployed.",
+      "text": "The experiments study droplet size and droplets in a binary linear array.",
+      "quote": "6) Droplet spacing and initial size in a binary linear array.",
       "source_field": "Approach"
     },
     "oxygen": {
       "status": "verified",
-      "text": "The oxygen concentration was varied between 0.1 to 0.4 mole fraction.",
+      "text": "The chamber was filled with an atmosphere where O2 concentration varied between 0.1 to 0.4 mole fraction.",
       "quote": "O2 concentration between 0.1 to 0.4 mole fraction",
       "source_field": "Approach"
     },
@@ -36,20 +36,20 @@
     },
     "pressure": {
       "status": "verified",
-      "text": "The pressure was varied between 0.5 atm to 3.0 atm.",
+      "text": "The chamber atmosphere was varied in pressure between 0.5 atm to 3.0 atm.",
       "quote": "varied in pressure between 0.5 atm to 3.0 atm",
       "source_field": "Approach"
     },
     "variables": {
       "status": "verified",
-      "text": "The independently varied experimental parameters included fuel type, ambient gas composition, ambient pressure, droplet initial diameter, droplet translation velocity, and droplet spacing.",
+      "text": "The independently varied experimental parameters during FLEX-2 experiments included Fuel type.",
       "quote": "The independently varied experimental parameters during FLEX-2 experiments were 1) Fuel type 2) Ambient gas composition 3) Ambient Pressure 4) Droplet initial diameter 5) Droplet translation velocity (and acceleration) 6) Droplet spacing and initial size in a binary linear array.",
       "source_field": "Approach"
     },
     "measurements": {
       "status": "verified",
-      "text": "Combustion and flame evolution were monitored and tracked using high speed photography, and pressure and temperature data were recorded.",
-      "quote": "Monitor combustions and track flame evolution using high speed photography",
+      "text": "Pressure and temperature data of the chamber environment was recorded in near real time.",
+      "quote": "Pressure and temperature data of the chamber environment was recorded in near real time.",
       "source_field": "Approach"
     },
     "safety_finding": {

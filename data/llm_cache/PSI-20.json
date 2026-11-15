@@ -1,8 +1,8 @@
 {
   "accession": "PSI-20",
   "model": "gemini-3.5-flash-lite",
-  "date": "2026-11-15T08:05:56Z",
-  "sha256": "758da0289e0e93caaa6760d6c3ede305e629528393bdb44828400d0e48ad336e",
+  "date": "2026-11-15T13:42:29Z",
+  "sha256": "4b440e1ad6c1c37b8e96afb641eb9c4757473ddabb27b6e19a72a9dbfdb9ce3e",
   "answer": {
     "objective": {
       "status": "verified",
@@ -12,19 +12,19 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The flight program observes burning behavior for CH4/N2 and C2H4/N2 mixtures.",
+      "text": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25 and 50 mm diameter.",
       "quote": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25  and 50 mm diameter.",
       "source_field": "Objectives"
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "Porous circular burners of 25 and 50 mm diameter were used.",
+      "text": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25 and 50 mm diameter.",
       "quote": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25  and 50 mm diameter.",
       "source_field": "Objectives"
     },
     "oxygen": {
       "status": "verified",
-      "text": "NASA considered atmospheres for human space missions include 21 percent, 26.5 percent, and 34 percent oxygen.",
+      "text": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
       "quote": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
       "source_field": "Objectives"
     },
@@ -36,32 +36,32 @@
     },
     "pressure": {
       "status": "verified",
-      "text": "NASA considered atmospheres for human space missions include pressures of 14.7 psia, 10.2 psia, and 8.2 psia.",
+      "text": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
       "quote": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
       "source_field": "Objectives"
     },
     "variables": {
       "status": "verified",
-      "text": "Ambient oxygen concentrations and pressures were varied.",
-      "quote": "Consider O2/N2 ambients with various pressures and ambient O2 concentrations and pressures.",
-      "source_field": "Objectives"
+      "text": "For each test, conditions will be established for the chamber contents, namely choice of diluent, oxygen concentration, and pressure.",
+      "quote": "For each test, conditions will be established for the chamber contents, namely choice of diluent, oxygen concentration, and pressure.",
+      "source_field": "Approach"
     },
     "measurements": {
       "status": "verified",
-      "text": "Burner surface temperature and heat flux are measured during the tests.",
-      "quote": "Because burner surface temperature and heat flux will vary, this will allow a broad range of conditions to be observed during a single test.",
+      "text": "Eventually either the flame will extinguish, the surface temperature of the burner will equilibrate, or the temperature limit of the heat flux sensor will be reached.",
+      "quote": "Eventually either the flame will extinguish, the surface temperature of the burner will equilibrate, or the temperature limit of the heat flux sensor will be reached.",
       "source_field": "Approach"
     },
     "safety_finding": {
       "status": "verified",
-      "text": "Quasi-steady burning corresponding to various condensed-phase materials was observed in microgravity despite the absence of air flow.",
+      "text": "Quasi-steady burning corresponding to various condensed-phase materials such as PMMA and Nylon was observed in microgravity despite the absence of air flow, where the cessation of ventilation is an established step in putting out spacecraft fires.",
       "quote": "Quasi-steady burning corresponding to various condensed-phase materials (such as PMMA and Nylon) was observed in microgravity despite the absence of air flow, where the cessation of ventilation is an established step in putting out spacecraft fires.",
       "source_field": "Research Impacts/Earth Benefits"
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "BRE yielded important data relevant to spacecraft fire safety.",
-      "quote": "BRE yielded important data relevant to spacecraft fire safety.",
+      "text": "While BRE’s results are still preliminary, they suggest that NASA may want to increase use of its alternative flammability Test 2, with the cone calorimeter, where that test can measure material properties corresponding to the microgravity flames observed with the BRE burner.",
+      "quote": "While BRE’s results are still preliminary, they suggest that NASA may want to increase use of its alternative flammability Test 2, with the cone calorimeter, where that test can measure material properties corresponding to the microgravity flames observed with the BRE burner.",
       "source_field": "Research Impacts/Earth Benefits"
     }
   }

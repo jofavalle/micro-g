@@ -8,8 +8,8 @@
   "fields": {
     "objective": {
       "status": "verified",
-      "text": "The investigation set out to determine how rapidly a large scale fire grows in low-gravity and to investigate low-g flammability limits.",
-      "quote": "determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits",
+      "text": "The objectives of this investigation were to determine how rapidly a large scale fire grows in low-gravity and investigate the low-g flammability limits compared to those obtained in NASA normal gravity material flammability screening test.",
+      "quote": "The objectives of this investigation were to:\n(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
       "source": {
         "kind": "psi_record",
         "ref": "Objectives"
@@ -17,8 +17,8 @@
     },
     "fuel": {
       "status": "verified",
-      "text": "The investigation used SIBAL as the sample material.",
-      "quote": "the Saffire III investigation also used SIBAL as the sample material.",
+      "text": "The Saffire III investigation also used SIBAL as the sample material.",
+      "quote": "As a follow on to the Saffire 1 investigation, the Saffire III investigation also used SIBAL as the sample material.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -45,7 +45,7 @@
     "flow": {
       "status": "verified",
       "text": "The experiments were conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I.",
-      "quote": "conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I.",
+      "quote": "However, the experiments were conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"
@@ -71,8 +71,8 @@
     },
     "measurements": {
       "status": "verified",
-      "text": "Flame images were captured using two cameras, while thermocouples, radiometers, solid state sensors, and anemometers provided various measurements.",
-      "quote": "flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "text": "Once the sample was ignited flame images were captured using two cameras.",
+      "quote": "Once the sample was ignited flame images were captured using two cameras.",
       "source": {
         "kind": "psi_record",
         "ref": "Approach"

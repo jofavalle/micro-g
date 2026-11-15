@@ -1,24 +1,24 @@
 {
   "accession": "PSI-25",
   "model": "gemini-3.5-flash-lite",
-  "date": "2026-11-15T08:06:19Z",
-  "sha256": "1a2063b4b896475749defb76170df9a17c41bcbca5e2036cc687e2183f7ecbab",
+  "date": "2026-11-15T13:44:31Z",
+  "sha256": "246c4b1320910d3ba8a34424cfae89411c9f4d086e1355efbc3e7d03d7a62728",
   "answer": {
     "objective": {
       "status": "verified",
-      "text": "The investigation set out to study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+      "text": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
       "quote": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
       "source_field": "Objectives"
     },
     "fuel": {
       "status": "verified",
-      "text": "Solid fuels were used in the investigation.",
+      "text": "Solid fuels are burned in the tests.",
       "quote": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
       "source_field": "Objectives"
     },
     "sample_geometry": {
       "status": "verified",
-      "text": "Practical, realistic fuels in typical geometries were examined, including slabs, cylinders, and spherical sections.",
+      "text": "Practical, realistic (thicker) fuels in typical geometries will be examined, including slabs, cylinders, and spherical sections.",
       "quote": "Practical, realistic (thicker) fuels in typical geometries will be examined, including slabs, cylinders, and spherical sections.",
       "source_field": "Objectives"
     },
@@ -42,8 +42,8 @@
     },
     "variables": {
       "status": "verified",
-      "text": "The primary variables include forced flow velocity, ambient oxygen concentration, and sample geometry.",
-      "quote": "The primary variables include:\n     • Forced flow velocity (speed and direction)\n     • Ambient oxygen concentration (via working volume nitrogen vitiation)\n     • Sample geometry (rods, spherical section, slabs, films, and fabric sheets",
+      "text": "The primary variables include Forced flow velocity (speed and direction).",
+      "quote": "The primary variables include:\n     • Forced flow velocity (speed and direction)",
       "source_field": "Objectives"
     },
     "measurements": {

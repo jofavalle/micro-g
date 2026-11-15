@@ -7,17 +7,17 @@
   },
   "fields": {
     "objective": {
-      "status": "not_stated",
-      "text": "",
-      "quote": "",
+      "status": "verified",
+      "text": "The two main objectives for BASS are to bridge the gap between normal gravity tests and actual material flammability in microgravity and assess the effectiveness of an inert, gaseous extinguishing agent.",
+      "quote": "The two main objectives for BASS are to:    1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+        "ref": "Objectives"
       }
     },
     "fuel": {
       "status": "verified",
-      "text": "Fabric samples consisting of 75% cotton and 25% fiberglass, Nomex fabric, and Ultem were used as fuel sources.",
+      "text": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass, Nomex fabric, and Ultem were used as a fuel source.",
       "quote": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem.",
       "source": {
         "kind": "psi_record",
@@ -25,12 +25,12 @@
       }
     },
     "sample_geometry": {
-      "status": "not_stated",
-      "text": "",
-      "quote": "",
+      "status": "verified",
+      "text": "Other sample shapes were utilized as well including spheres and cylinders.",
+      "quote": "Other sample shapes were utilized as well including spheres and cylinders.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+        "ref": "Approach"
       }
     },
     "oxygen": {
@@ -62,16 +62,16 @@
     },
     "variables": {
       "status": "verified",
-      "text": "The experiment varied materials, geometries, preheating, and flow configurations.",
-      "quote": "Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+      "text": "This investigation explored two primary air flow configurations; concurrent-flow and opposed-flow.",
+      "quote": "This investigation explored two primary air flow configurations; concurrent-flow and opposed-flow.",
       "source": {
         "kind": "psi_record",
-        "ref": "Objectives"
+        "ref": "Approach"
       }
     },
     "measurements": {
       "status": "verified",
-      "text": "Data was collected on flame size, shape, color, spread rate, and potential flame quenching through observations of top and edge profiles.",
+      "text": "Data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
       "quote": "Flames were observed in the top and edge profiles and data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
       "source": {
         "kind": "psi_record",
@@ -89,7 +89,7 @@
     },
     "earth_benefits": {
       "status": "verified",
-      "text": "Validated combustion models have wide applicability to the general understanding of many terrestrial combustion problems.",
+      "text": "These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.",
       "quote": "These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.",
       "source": {
         "kind": "psi_record",
