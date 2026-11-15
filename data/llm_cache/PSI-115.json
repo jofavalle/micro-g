@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-115",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:46:34Z",
+  "sha256": "b2cf050d44bf8bf4155b5eb9aa752f42f7f61ad6d39ea17e7995f51e7d0b77b6",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective was to use numerical simulation to explore gravity's influence on pyrolysis smoke growth from a fundamental perspective.",
+      "quote": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The formation and growth of dibutyl-phthalate particles was simulated.",
+      "quote": "The formation and growth of dibutyl-phthalate (DBP) particles in Earth gravity and microgravity environments was simulated.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Instantaneous scalar fields were used to describe particle accumulation and growth in the wakes.",
+      "quote": "Instantaneous scalar fields were used to describe particle accumulation and growth in the buoyant and non-buoyant wakes that form downstream of the hot vapor source.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Models and tools characterizing smoke particles can be used to ascertain how temperature, gravity, and material properties affect produced smoke.",
+      "quote": "Models and tools that characterize particles generated as smoke can be used to ascertain how temperature, gravity, and material properties affect the smoke produced.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

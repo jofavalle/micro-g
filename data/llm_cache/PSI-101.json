@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-101",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:45:39Z",
+  "sha256": "17c645412a06c8d87692ad6ed49c12d4852ce487aad2c7b767a77dcbd04d480d",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The primary objective of the SAME-R investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment.",
+      "quote": "the primary objective of the SAME-R investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Pyrell, an intumescent fire-retardant foam by Foamex, was introduced to replace DBP samples.",
+      "quote": "Pyrell®, an intumescent fire-retardant foam by Foamex, was introduced to replace DBP samples",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Test conditions were broadened including higher heating temperatures and no-flow during sample heating time.",
+      "quote": "test conditions were broadened including higher heating temperatures and no-flow during sample heating time",
+      "source_field": "Approach"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Test conditions were broadened including higher heating temperatures and no-flow during sample heating time.",
+      "quote": "test conditions were broadened including higher heating temperatures and no-flow during sample heating time",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "A new instrument, M-pass, developed in-house GRC, was used to replace one of the two Commercial Diagnostic Enclosures that includes a DustTrak and an ionization detector used in SAME.",
+      "quote": "a new instrument, M-pass, developed in-house GRC, was used to replace one of the two Commercial Diagnostic Enclosures that includes a DustTrak and an ionization detector used in SAME.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "The change in the size distribution and number density will, in turn, affect the response of the smoke detectors and possibly result in some detectors not producing an alarm when exposed to this smoke.",
+      "quote": "The change in the size distribution and number density will, in turn, affect the response of the smoke detectors and possibly result in some detectors not producing an alarm when exposed to this smoke.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "The smoke detectors developed from the results of SAME can also be useful in other extreme environments on Earth, such as submarines or underwater laboratories.",
+      "quote": "The smoke detectors developed from the results of SAME can also be useful in other extreme environments on Earth, such as submarines or underwater laboratories.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-20",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:42:29Z",
+  "sha256": "4b440e1ad6c1c37b8e96afb641eb9c4757473ddabb27b6e19a72a9dbfdb9ce3e",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties.",
+      "quote": "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25 and 50 mm diameter.",
+      "quote": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25  and 50 mm diameter.",
+      "source_field": "Objectives"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25 and 50 mm diameter.",
+      "quote": "Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25  and 50 mm diameter.",
+      "source_field": "Objectives"
+    },
+    "oxygen": {
+      "status": "verified",
+      "text": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
+      "quote": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
+      "source_field": "Objectives"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
+      "quote": "NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen.",
+      "source_field": "Objectives"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "For each test, conditions will be established for the chamber contents, namely choice of diluent, oxygen concentration, and pressure.",
+      "quote": "For each test, conditions will be established for the chamber contents, namely choice of diluent, oxygen concentration, and pressure.",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Eventually either the flame will extinguish, the surface temperature of the burner will equilibrate, or the temperature limit of the heat flux sensor will be reached.",
+      "quote": "Eventually either the flame will extinguish, the surface temperature of the burner will equilibrate, or the temperature limit of the heat flux sensor will be reached.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "Quasi-steady burning corresponding to various condensed-phase materials such as PMMA and Nylon was observed in microgravity despite the absence of air flow, where the cessation of ventilation is an established step in putting out spacecraft fires.",
+      "quote": "Quasi-steady burning corresponding to various condensed-phase materials (such as PMMA and Nylon) was observed in microgravity despite the absence of air flow, where the cessation of ventilation is an established step in putting out spacecraft fires.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "While BRE’s results are still preliminary, they suggest that NASA may want to increase use of its alternative flammability Test 2, with the cone calorimeter, where that test can measure material properties corresponding to the microgravity flames observed with the BRE burner.",
+      "quote": "While BRE’s results are still preliminary, they suggest that NASA may want to increase use of its alternative flammability Test 2, with the cone calorimeter, where that test can measure material properties corresponding to the microgravity flames observed with the BRE burner.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

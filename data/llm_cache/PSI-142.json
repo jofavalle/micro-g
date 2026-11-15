@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-142",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:46:47Z",
+  "sha256": "595e4171fbcb5bdd7cc37afe3c94ff775129870f02c8f99895c8b16c2019b137",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames to develop a new diagram of the flammability limits of diffusional cool flames affected by radiation, diffusion, and convection.",
+      "quote": "the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames to: 1) Develop a new diagram of the flammability limits of diffusional cool flames affected by radiation, diffusion, and convection.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Simulations used n-heptane/air mixtures and dimethyl ether (DME) / air mixtures.",
+      "quote": "(a) spark-assisted flame propagation of a n-heptane/air mixture, (b) one dimensional freely-propagating dimethyl ether (DME) flames using an arc-length continuation method and (c) simulated cool flame regimes and burning limits at elevated pressure (up to 20 atm) using DME/air mixtures.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The investigation maintained a one-dimensional geometry.",
+      "quote": "while maintaining a one-dimensional geometry.",
+      "source_field": "Objectives"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "Simulations of cool flame regimes and burning limits were conducted at elevated pressure (up to 20 atm).",
+      "quote": "simulated cool flame regimes and burning limits at elevated pressure (up to 20 atm) using DME/air mixtures.",
+      "source_field": "Approach"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "A comparative study of the oxygen concentration effects on the extinction limits of cool flames was conducted.",
+      "quote": "a comparative studies of the oxygen concentration effects on the extinction limits of cool flames was conducted",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "The investigation aimed to obtain new, quantitative data of extinction limit, flame temperature, and species distribution.",
+      "quote": "Obtain new, quantitative data of extinction limit, flame temperature, and species distribution for the validation of kinetic and radiation models involving cool flames.",
+      "source_field": "Objectives"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Obtaining a fundamental understanding of the warm diffusion flame is particularly relevant to combustion in highly turbulent flow fields and in microgravity environments, owing to the possibility of long residence times.",
+      "quote": "Obtaining a fundamental understanding of the warm diffusion flame is particularly relevant to combustion in highly turbulent flow fields and in microgravity environments, owing to the possibility of long residence times.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

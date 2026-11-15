@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-117",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:46:41Z",
+  "sha256": "32bc0dbfef85d3f7818521eef4a551e0755599a75fb74bacfdbb13038e27d043",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames.",
+      "quote": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX) to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "OpenFOAM was used to develop a 3-D CFD model of n-alkane droplet cool flames in microgravity.",
+      "quote": "OpenFOAM was used to develop a 3-D CFD model of n-alkane droplet cool flames in microgravity",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Controlled simulations examined three forcing modes applied to both large and sub-millimeter droplets.",
+      "quote": "controlled simulations examined three forcing modes (i) convection alone to mimic droplet drift, (ii) imposed heat flux, and (iii) combined convection plus heating applied to both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Parameter sweeps were performed over forcing amplitude and frequency, ambient composition, and pressure.",
+      "quote": "parameter sweeps over forcing amplitude and frequency, ambient composition (including ozone-assisted cases), and pressure",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Predictive observables were extracted including ignition delay, oscillation frequency and amplitude, and stand-off and extinction diameters.",
+      "quote": "From each case, predictive observables were extracted (ignition delay, oscillation frequency and amplitude, stand-off and extinction diameters)",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "This research has the potential to improve spacecraft fire-safety modeling by resolving cool-flame and extinction behavior in microgravity.",
+      "quote": "Potential to improve spacecraft fire-safety modeling by resolving cool-flame/extinction behavior in microgravity",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "This research advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions, and delivers validated CFD tools transferrable to practical combustors.",
+      "quote": "Advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions; delivers validated CFD tools transferrable to practical combustors",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

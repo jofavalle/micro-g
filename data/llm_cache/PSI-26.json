@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-26",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:44:38Z",
+  "sha256": "adb1a7ed63c4c4cbf818e45d6099619fa3fc6b1859615fa97dfd1bf84301dd04",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The two main objectives for BASS are to bridge the gap between normal gravity tests and actual material flammability in microgravity and assess the effectiveness of an inert, gaseous extinguishing agent.",
+      "quote": "The two main objectives for BASS are to:    1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass, Nomex fabric, and Ultem were used as a fuel source.",
+      "quote": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Other sample shapes were utilized as well including spheres and cylinders.",
+      "quote": "Other sample shapes were utilized as well including spheres and cylinders.",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Airflow speeds reached as high as 40 cm/s.",
+      "quote": "Airflow was controlled using a variable speed fan, with airflow speeds reaching as high as 40 cm/s.",
+      "source_field": "Approach"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "This investigation explored two primary air flow configurations; concurrent-flow and opposed-flow.",
+      "quote": "This investigation explored two primary air flow configurations; concurrent-flow and opposed-flow.",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
+      "quote": "Flames were observed in the top and edge profiles and data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.",
+      "quote": "These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-62",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T13:45:02Z",
+  "sha256": "dd338d8898e6644c3ecd01389d59a5914629e73545c3dbd00732a5e03c1d3bdb",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective of this research was to develop and validate new flamelet generated manifold modeling techniques for concurrent flame spread in microgravity.",
+      "quote": "The objective of this research was to develop and validate new flamelet generated manifold (FGM) modeling techniques for concurrent flame spread in microgravity.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The project tested polymethyl methacrylate samples as well as wax cylinders.",
+      "quote": "including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The approach tested various BASS geometries, including flat sheets, spheres, and rod-shaped samples, as well as cylinders.",
+      "quote": "tested on various BASS geometries, including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders.",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "The evaluation metrics included flame geometry, temperature distribution, soot volume fraction, and flame spread rate.",
+      "quote": "The evaluation metrics included flame geometry, temperature distribution, soot volume fraction, and flame spread rate, with special emphasis on reproducing the “Goldilocks” flammability zone reported by Olson and Ferkul.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "On Earth, these advancements could improve combustion modeling by deepening our understanding of coupled thermal, chemical, and flow processes, which betters fire safety standards.",
+      "quote": "On Earth, these advancements could improve combustion modeling by deepening our understanding of coupled thermal, chemical, and flow processes, which betters fire safety standards.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

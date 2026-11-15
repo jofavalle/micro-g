@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-47",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "DAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity.",
+      "quote": "DAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak CNC specifically designed to work in microgravity.",
+      "quote": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak CNC specifically designed to work in microgravity.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
+      "quote": "This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Additionally, the successful adaptation of the TSI P-Trak for microgravity can inform the design of instruments for use in other challenging Earth environments, such as submarines or underwater laboratories where accurate detection of smoke can save lives.",
+      "quote": "Additionally, the successful adaptation of the TSI P-Trak for microgravity can inform the design of instruments for use in other challenging Earth environments, such as submarines or underwater laboratories where accurate detection of smoke can save lives.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

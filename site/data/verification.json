@@ -1,0 +1,10 @@
+{
+  "checked": 159,
+  "passed": 147,
+  "dropped": 12,
+  "manual_sample": {
+    "n": 30,
+    "correct": 27,
+    "reviewed_by": "aalexanderrz, cesarp03"
+  }
+}
