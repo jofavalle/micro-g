@@ -565,5 +565,6 @@
     {"key": "psi-data/PSI-69/Raw Data/FLEX-279_TestSheet.txt", "sha256": "d839d8353c3802ea9e4591e8270eb7b5bbe754f0b05452bbdfe2b60baf1e89e1"},
     {"key": "psi-data/PSI-69/Raw Data/FLEX-280_TestSheet.txt", "sha256": "16ce006730ba6b61a6fad317363445c1dc81e44c9f7d818bde4ff7dd153283f0"}
   ],
-  "fit": null
+  "fit": null,
+  "fit_note": "No relation is fitted. The rule the team wrote before counting the tests asks for one condition (fuel, support, pressure and x_o2 held fixed) with at least 3 levels of x_co2, each with 3 or more tests that extinguished at a finite diameter (d_ext > 0). None of the 121 conditions in this table has 3 such levels; the best one (Methanol, free, 1.01 atm, x_o2 0.15) has 2: 5 tests at x_co2 0 and 3 at 0.32. With pressure rounded to 0.1 atm there are 79 conditions: 4 reach 2 levels and none reaches 3. Of the 271 tests, 207 report d_ext > 0, 9 report 0 and 55 report none."
 }
