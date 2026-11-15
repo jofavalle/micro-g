@@ -1,45 +1,43 @@
 /* AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz, PabloBernal-CPU */
 
-:root {
-  --bg: #ffffff;
-  --surface: #f5f6f8;
-  --border: #d9dce1;
-  --text: #1a1a1a;
-  --muted: #5b6270;
-  --link: #0b57b7;
-  --accent: #0b57b7;
-  --warn-bg: #fff4d6;
-  --warn-text: #5c4300;
-  --error-bg: #fde8e8;
-  --error-border: #c62828;
-  --level-1: #b3261e;
-  --level-2: #8a5a00;
-  --level-3: #3a5f8a;
-  --chip-tables: #dff3e4;
-  --chip-tables-text: #1e5c2f;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.45;
+/* Space Grotesk, by The Space Grotesk Project Authors, under the SIL Open Font
+   License 1.1 (fonts/OFL.txt). The variable font fonts/woff2/SpaceGrotesk[wght].woff2
+   of https://github.com/floriankarsten/space-grotesk, commit 03507d0, renamed.
+   It is used for the brand and the headings; the rest keeps the system font. */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk-wght.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121417;
-    --surface: #1c1f24;
-    --border: #353a42;
-    --text: #e8e9ec;
-    --muted: #a3a9b4;
-    --link: #8ab4ff;
-    --accent: #8ab4ff;
-    --warn-bg: #3a2f10;
-    --warn-text: #f5dc9a;
-    --error-bg: #3b1d1d;
-    --error-border: #ef8a8a;
-    --level-1: #ef8a80;
-    --level-2: #e0b45c;
-    --level-3: #8fb3e0;
-    --chip-tables: #1f3a27;
-    --chip-tables-text: #a8dcb5;
-  }
+/* One dark theme, inspired by space: colours and gradients only, no images.
+   Every text colour keeps a contrast of 4.5:1 or more on the surfaces below. */
+:root {
+  color-scheme: dark;
+  --bg: #070b16;
+  --surface: #0e1527;
+  --surface-raised: #131c33;
+  --border: #263252;
+  --text: #e9eef8;
+  --muted: #a6b1c7;
+  --link: #8cc0ff;
+  --accent: #6f9dff;
+  --flame: #ffaa5c;
+  --warn-bg: #3a2f10;
+  --warn-text: #f5dc9a;
+  --error-bg: #3b1d1d;
+  --error-border: #ef8a8a;
+  --level-1: #ff8f85;
+  --level-2: #f0bd5e;
+  --level-3: #93b8ea;
+  --chip-tables: #183a26;
+  --chip-tables-text: #a8e0b8;
+  --display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.45;
+  accent-color: var(--accent);
 }
 
 * { box-sizing: border-box; }
@@ -50,7 +48,42 @@ body {
   color: var(--text);
 }
 
+/* The sky, fixed behind the page and exactly as large as the window: two faint
+   nebulae, and stars only in the margins outside the content column, so that
+   no star sits behind text. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse 60% 45% at 12% 0%, rgba(84, 104, 230, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 92% 8%, rgba(255, 140, 70, 0.07), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 70% 100%, rgba(40, 140, 170, 0.08), transparent 70%);
+}
+
+body::after {
+  background:
+    radial-gradient(1px 1px at 24px 36px, rgba(255, 255, 255, 0.8), transparent 1.5px) 0 0 / 170px 170px,
+    radial-gradient(1px 1px at 112px 92px, rgba(200, 215, 255, 0.6), transparent 1.5px) 0 0 / 170px 170px,
+    radial-gradient(1.5px 1.5px at 70px 150px, rgba(255, 230, 200, 0.7), transparent 2px) 0 0 / 230px 230px,
+    radial-gradient(1px 1px at 190px 40px, rgba(255, 255, 255, 0.5), transparent 1.5px) 0 0 / 230px 230px;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(50% - 616px), transparent calc(50% - 600px), transparent calc(50% + 600px), #000 calc(50% + 616px));
+  mask-image: linear-gradient(to right, #000 calc(50% - 616px), transparent calc(50% - 600px), transparent calc(50% + 600px), #000 calc(50% + 616px));
+}
+
+h1,
+h2,
+h3 { font-family: var(--display); letter-spacing: -0.01em; }
+
 a { color: var(--link); }
+
+::selection { background: #2c4a8f; color: #ffffff; }
 
 code { font-size: 0.9em; overflow-wrap: anywhere; }
 
@@ -74,27 +107,49 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .site-header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 1rem;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 0.75rem;
 }
 
+/* The brand is "micro-G", with a capital G. Space Grotesk stops at weight 700,
+   so a thin stroke of the text colour makes it heavier than the old 700. */
 .brand {
-  font-size: 1.4rem;
+  font-family: var(--display);
+  font-size: 2.3rem;
   font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
   color: var(--text);
+  text-decoration: none;
+  -webkit-text-stroke: 0.02em currentColor;
+}
+
+.brand-g { color: var(--flame); }
+
+.tagline { flex-basis: 100%; margin: 0; color: var(--muted); }
+
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.site-nav a {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
   text-decoration: none;
 }
 
-.tagline { margin: 0; color: var(--muted); }
-
-.site-nav { display: flex; gap: 1rem; }
-.site-nav a { font-weight: 600; text-decoration: none; }
 .site-nav a:hover,
-.site-nav a:focus-visible,
-.site-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 0.25em; }
-.site-nav a[aria-current="page"] { color: var(--text); }
+.site-nav a:focus-visible { border-color: var(--accent); text-decoration: underline; text-underline-offset: 0.25em; }
+
+.site-nav a[aria-current="page"] {
+  border-color: transparent;
+  background: var(--accent);
+  color: #071021;
+}
 
 /* Verification panel, visible on every view */
 
@@ -152,6 +207,8 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
   padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
+  scrollbar-color: var(--border) transparent;
 }
 
 .filter-group {
@@ -407,9 +464,10 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
   left: 0.9rem;
   width: 1.7rem;
   height: 1.7rem;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--flame);
   border-radius: 50%;
-  color: var(--accent);
+  color: var(--flame);
+  font-family: var(--display);
   font-weight: 700;
   line-height: 1.4rem;
   text-align: center;
@@ -441,8 +499,9 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
   min-width: 0;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
   border-radius: 6px;
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface)) var(--surface);
   overflow-wrap: anywhere;
 }
 
@@ -464,7 +523,7 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: 6px;
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface) 12rem) var(--surface);
 }
 
 .panel h2 { margin: 0 0 0.25rem; font-size: 1.1rem; }
@@ -503,7 +562,7 @@ a.bar-line:focus-visible .bar-label { text-decoration: underline; }
   overflow: hidden;
 }
 
-.bar-fill { display: block; height: 100%; background: var(--accent); }
+.bar-fill { display: block; height: 100%; background: linear-gradient(90deg, #4a78e0, var(--accent)); }
 .bar-fill.level-1,
 .bar-fill.level-2,
 .bar-fill.level-3 { background: currentColor; }
@@ -530,7 +589,7 @@ a.bar-line:focus-visible .bar-label { text-decoration: underline; }
   padding: 0;
   border: 1px solid var(--border);
   border-radius: 4px;
-  background: color-mix(in srgb, var(--accent) calc(var(--share, 0) * 40%), var(--bg));
+  background: color-mix(in srgb, var(--accent) calc(var(--share, 0) * 55%), var(--bg));
 }
 
 .heat a {
