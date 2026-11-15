@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15T07:50:30Z",
+  "generated": "2026-11-15T08:14:20Z",
   "source": {
     "url": "https://psi.nasa.gov/geode-py/ws/repo/search",
     "snapshot_date": "2026-11-15"
@@ -88,7 +88,7 @@
       "project_type": "Microgravity Investigation",
       "hardware_family": "ACME/CIR",
       "level": 3,
-      "level_reason": "Research Impacts/Earth Benefits states it is not being conducted to serve any space applications and names cleaner, more efficient terrestrial combustion.",
+      "level_reason": "Research Impacts/Earth Benefits states it is not being conducted to serve any space applications, but it is possible that its findings could aid the development of future space-based combustion devices; the benefits it names are cleaner, more efficient terrestrial combustion.",
       "pillars": [],
       "fuel_phase": [
         "gas"
@@ -437,7 +437,7 @@
       "project_type": "Microgravity Investigation",
       "hardware_family": "MSG",
       "level": 1,
-      "level_reason": "SubResearch Area is Spacecraft Fire Safety and Research Impacts/Earth Benefits quantify smoke particle sizes in low gravity, the baseline data for advanced spacecraft fire detectors.",
+      "level_reason": "SubResearch Area is Spacecraft Fire Safety, its Objectives quantify smoke particle sizes in low gravity, and Research Impacts/Earth Benefits says the results provide the reduced gravity baseline data against which future fire detection technology can be evaluated.",
       "pillars": [
         "detection"
       ],
@@ -611,7 +611,7 @@
       "project_type": "Microgravity Investigation",
       "hardware_family": "ACME/CIR",
       "level": 3,
-      "level_reason": "Research Impacts/Earth Benefits is about cool-flame kinetics for more efficient internal combustion engines",
+      "level_reason": "Research Impacts/Earth Benefits is about cool-flame kinetics for more efficient internal combustion engines.",
       "pillars": [],
       "fuel_phase": [
         "gas"
