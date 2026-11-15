@@ -16,6 +16,7 @@ Format and rules in [README.md](README.md).
 | 2026-11-15 01:46 | Claude Code, Pro | 10% | 8% (all models); 0% (Fable) | 2026-11-15 05:20 | 2026-11-20 07:00 | PR #39 |
 | 2026-11-15 02:11 | Claude Code, Pro | 13% | 9% (all models); 0% (Fable) | 2026-11-15 05:20 | 2026-11-20 07:00 | PR #39, PR #40 |
 | 2026-11-15 09:05 | Claude Code, Pro | 27% | 14% (all models); 5% (Fable) | 2026-11-15 12:10 | 2026-11-20 07:00 | #48 |
+| 2026-11-15 10:12 | Claude Code, Pro | 59% | 18% (all models); 11% (Fable) | 2026-11-15 12:10 | 2026-11-20 07:00 | #48, PR #49 |
 
 ## AI use
 
