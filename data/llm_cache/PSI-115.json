@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-115",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:08:53Z",
+  "sha256": "4317d945c58e3735ae1a54beca72f9a94a1239189e45988a2dd9994bbdeeb801",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation used numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective.",
+      "quote": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Dibutyl-phthalate was studied as the source of particles.",
+      "quote": "The formation and growth of dibutyl-phthalate (DBP) particles in Earth gravity and microgravity environments was simulated.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments.",
+      "quote": "The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments.",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The study considered two cross-flow velocities.",
+      "quote": "This study considered two cross-flow velocities of sufficiently low speed that buoyancy cannot be neglected in the presence of gravity.",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Instantaneous scalar fields were used to describe particle accumulation and growth.",
+      "quote": "Instantaneous scalar fields were used to describe particle accumulation and growth in the buoyant and non-buoyant wakes that form downstream of the hot vapor source.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Models and tools that characterize particles generated as smoke can lead to better smoke detection devices and prevent fires.",
+      "quote": "Models and tools that characterize particles generated as smoke can be used to ascertain how temperature, gravity, and material properties affect the smoke produced. This would directly lead to better smoke detection devices and prevent fires that can lead to loss of materiel and loss of life.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

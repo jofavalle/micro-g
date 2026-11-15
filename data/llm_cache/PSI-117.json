@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-117",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:08:59Z",
+  "sha256": "950d1db9b8dcd0d14d39ea4a5f65bd021c10416cc4a346e589b0a4d0c92ba2af",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation used flight data from FLEX to quantify how thermal and convective perturbations regulated droplet cool flames.",
+      "quote": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX) to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The fuel studied was n-alkane for the droplet cool flames.",
+      "quote": "OpenFOAM was used to develop a 3-D CFD model of n-alkane droplet cool flames in microgravity",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets were used in the simulations.",
+      "quote": "combined convection plus heating applied to both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets.",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Tests varied forcing amplitude and frequency, ambient composition, and pressure.",
+      "quote": "parameter sweeps over forcing amplitude and frequency, ambient composition (including ozone-assisted cases), and pressure.",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Predictive observables such as ignition delay, oscillation frequency and amplitude, and stand-off and extinction diameters were extracted.",
+      "quote": "From each case, predictive observables were extracted (ignition delay, oscillation frequency and amplitude, stand-off and extinction diameters)",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "The research has the potential to improve spacecraft fire-safety modeling by resolving cool-flame and extinction behavior in microgravity.",
+      "quote": "Potential to improve spacecraft fire-safety modeling by resolving cool-flame/extinction behavior in microgravity; leverages FLEX to define safer operating envelopes/materials.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "The work advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions.",
+      "quote": "Advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions; delivers validated CFD tools transferrable to practical combustors.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-159",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation aimed to determine the conditions for cool diffusion flames for propane, n-butane, and n-pentane.",
+      "quote": "Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The fuels burned during the investigation were propane, n-butane, and n-pentane.",
+      "quote": "Cool diffusion flames burning propane, n-butane, and n-pentane.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Hypothesis"
+      }
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The samples used in the investigation were spherical porous burners.",
+      "quote": "Steady-state cool diffusion flames on spherical porous burners.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Hypothesis"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The investigation varied multiple fuels, reactant dilutions, flow rates, and pressures for normal and inverse convection directions.",
+      "quote": "Consider multiple fuels, a range of reactant dilutions, flow rates, and pressures for normal and inverse convection directions.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "The flames were observed using cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "quote": "Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "The measurements will help test and advance cool flame kinetics mechanisms to facilitate the development of more efficient internal combustion engines.",
+      "quote": "The measurements performed for this project will help to test and advance cool flame kinetics mechanisms. This should facilitate the development of more efficient internal combustion engines.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

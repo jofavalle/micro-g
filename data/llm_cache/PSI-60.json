@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-60",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:06:43Z",
+  "sha256": "3a96b0be171946053c98669ab3f76ca5c11d44e9416f38bf13120ad46b73f41d",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from SPICE data.",
+      "quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Over 1600 raw DSLR images were analyzed to incorporate advanced soot models.",
+      "quote": "By analyzing over 1600 raw DSLR images and incorporating advanced soot models, the study sought to improve understanding of soot formation, oxidation, radiative re-absorption, and aggregate growth in heavily sooting flames.",
+      "source_field": "Objectives"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "The insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
+      "quote": "On Earth, the insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

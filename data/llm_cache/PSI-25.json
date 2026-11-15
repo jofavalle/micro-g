@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-25",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:06:19Z",
+  "sha256": "1a2063b4b896475749defb76170df9a17c41bcbca5e2036cc687e2183f7ecbab",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation set out to study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+      "quote": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Solid fuels were used in the investigation.",
+      "quote": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+      "source_field": "Objectives"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Practical, realistic fuels in typical geometries were examined, including slabs, cylinders, and spherical sections.",
+      "quote": "Practical, realistic (thicker) fuels in typical geometries will be examined, including slabs, cylinders, and spherical sections.",
+      "source_field": "Objectives"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds up to 40 cm/s.",
+      "quote": "Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds up to 40 cm/s.",
+      "source_field": "Approach"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The primary variables include forced flow velocity, ambient oxygen concentration, and sample geometry.",
+      "quote": "The primary variables include:\n     • Forced flow velocity (speed and direction)\n     • Ambient oxygen concentration (via working volume nitrogen vitiation)\n     • Sample geometry (rods, spherical section, slabs, films, and fabric sheets",
+      "source_field": "Objectives"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Flame appearance, flame growth, and spread rates were determined in both the opposed and concurrent flow.",
+      "quote": "Flame appearance, flame growth, and spread rates were determined in both the opposed and concurrent flow.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "BASS-II helps engineers select the safest materials and improve firefighting methods on future space missions.",
+      "quote": "BASS-II helps engineers select the safest materials and improve firefighting methods on future space missions.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "These models can then be used to more accurately study flames on Earth, such as in wildfires, building fires, energy recapture from waste recycling, and other combustion problems.",
+      "quote": "These models can then be used to more accurately study flames on Earth, such as in wildfires, building fires, energy recapture from waste recycling, and other combustion problems.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

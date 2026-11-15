@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-142",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:09:05Z",
+  "sha256": "fa7cd1044f3715188e010a964567f9a64484ed34a2ff08231a1f817d22ee1580",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames to develop a new diagram of the flammability limits of diffusional cool flames affected by radiation, diffusion, and convection.",
+      "quote": "the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames to: 1) Develop a new diagram of the flammability limits of diffusional cool flames affected by radiation, diffusion, and convection.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The fuel used in the study included n-heptane and dimethyl ether.",
+      "quote": "spark-assisted flame propagation of a n-heptane/air mixture",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The geometry used involved a one-dimensional system.",
+      "quote": "while maintaining a one-dimensional geometry.",
+      "source_field": "Objectives"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "Simulated cool flame regimes and burning limits were examined at elevated pressure up to 20 atm.",
+      "quote": "simulated cool flame regimes and burning limits at elevated pressure (up to 20 atm) using DME/air mixtures.",
+      "source_field": "Approach"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Factors such as oxygen concentration, dilution, pressure, diffusion, and convection transport processes affect the cool flame transition.",
+      "quote": "The investigation hypothesizes that factors such as oxygen concentration, dilution, pressure, diffusion, and convection transport processes affect the cool flame transition.",
+      "source_field": "Hypothesis"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Measurements obtained include extinction limit, flame temperature, and species distribution.",
+      "quote": "Obtain new, quantitative data of extinction limit, flame temperature, and species distribution for the validation of kinetic and radiation models involving cool flames.",
+      "source_field": "Objectives"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Cool flames and warm flames are relevant and important flame regimes for high-pressure near-limit combustion applications.",
+      "quote": "cool flames and warm flames are relevant and important flame regimes for high-pressure near-limit combustion applications.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

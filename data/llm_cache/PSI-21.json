@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-21",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:06:01Z",
+  "sha256": "49beca5950062771ba71768c0f50837d9bac8af20ad65abc3d0e74104e6f8650",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation set out to characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution.",
+      "quote": "Characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution, through measurement of flame shape, lift-off heights, temperatures and extinction limits.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The fuels burned in the diffusion flames were methane and ethylene.",
+      "quote": "Characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution, through measurement of flame shape, lift-off heights, temperatures and extinction limits.",
+      "source_field": "Objectives"
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The variables between tests included velocity and fuel dilution.",
+      "quote": "Characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution, through measurement of flame shape, lift-off heights, temperatures and extinction limits.",
+      "source_field": "Objectives"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Measurements included flame shape, lift-off heights, temperatures, and extinction limits.",
+      "quote": "Characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution, through measurement of flame shape, lift-off heights, temperatures and extinction limits.",
+      "source_field": "Objectives"
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "An understanding of those factors that affect flame extinction in diffusion flames is critical in the suppression of fires and in improving engine efficiency.",
+      "quote": "In addition, an understanding of those factors that affect flame extinction in diffusion flames is critical in the suppression of fires and in improving engine efficiency.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

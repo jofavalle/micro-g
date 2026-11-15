@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-26",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:06:26Z",
+  "sha256": "16002e4888fdfd0860bc73580b9fd984f102a11e9b29b915c252f65709426991",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation aimed to bridge the gap between normal gravity NASA-STD-6001 Test #1 methods, ground-based microgravity tests, and actual material flammability in microgravity, and to assess the effectiveness of an inert, gaseous extinguishing agent in putting out flames.",
+      "quote": "The two main objectives for BASS are to: 1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity. ... 2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Fabric samples consisting of 75% cotton and 25% fiberglass, Nomex fabric, and Ultem were used as fuel sources.",
+      "quote": "Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Samples were examined in typical geometries, including fabric, spheres, and cylinders.",
+      "quote": "Practical, realistic (thicker) fuels in typical geometries will be examined ... Other sample shapes were utilized as well including spheres and cylinders.",
+      "source_field": "Objectives"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Airflow speeds reached as high as 40 cm/s.",
+      "quote": "Airflow was controlled using a variable speed fan, with airflow speeds reaching as high as 40 cm/s.",
+      "source_field": "Approach"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The experiment varied materials, geometries, preheating, and flow configurations.",
+      "quote": "Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+      "source_field": "Objectives"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Data was collected on flame size, shape, color, spread rate, and potential flame quenching through observations of top and edge profiles.",
+      "quote": "Flames were observed in the top and edge profiles and data was collected on flame size, shape, color, spread rate, and potential flame quenching.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "Results are used in models and predictions of heat release in spacecraft fires and to ensure the safety of future crewed missions.",
+      "quote": "These results are used in first order models and predictions of heat release in spacecraft fires ... and ensure the safety of future crewed missions.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Validated combustion models have wide applicability to the general understanding of many terrestrial combustion problems.",
+      "quote": "These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

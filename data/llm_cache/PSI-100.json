@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-100",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:08:23Z",
+  "sha256": "d7bd17076092462c03fd6aff193216d1291e3a295e8ee58e0196ec17c42d3b47",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation set out to determine how rapidly a large scale fire grows in low-gravity and to investigate low-g flammability limits.",
+      "quote": "determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The investigation used SIBAL as the sample material.",
+      "quote": "the Saffire III investigation also used SIBAL as the sample material.",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "verified",
+      "text": "The experiments were conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I.",
+      "quote": "conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I.",
+      "source_field": "Approach"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The flow was either concurrent or opposed.",
+      "quote": "The flow was either concurrent or opposed.",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Flame images were captured using two cameras, while thermocouples, radiometers, solid state sensors, and anemometers provided various measurements.",
+      "quote": "flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "The investigation is crucial for the safety of current and future space missions.",
+      "quote": "The investigation is crucial for the safety of current and future space missions.",
+      "source_field": "Research Impacts/Earth Benefits"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+      "quote": "Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

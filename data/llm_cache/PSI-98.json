@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-98",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:08:12Z",
+  "sha256": "468b900dac0441ae67cafa2462adc1937f5ce1b575c40158cd159eccb0d635b1",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The investigation determined how rapidly a large scale fire grows in low-gravity and investigated low-g flammability limits.",
+      "quote": "The objectives of this investigation were to: (1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The sample material used was a composite fabric called Sibal consisting of cotton on a fiberglass substrate.",
+      "quote": "The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight).",
+      "source_field": "Approach"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The sample was approximately 0.94 meters long and 0.4 meters wide.",
+      "quote": "The sample was approximately 0.94 meters long and 0.4 meters wide, simulating a large piece of flammable fabric.",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "verified",
+      "text": "The Saffire-I experiment was conducted at an air flow velocity of 20 cm/s.",
+      "quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+      "source_field": "Approach"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Flame images were captured using two cameras, while thermocouples, radiometers, solid state sensors, and anemometers provided various temperature, radiation, pressure, gas concentration, and velocity measurements.",
+      "quote": "Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "Using terrestrial fires and fire standards to design spacecraft fire safety systems presents an inherent risk to the vehicle because of the significant level of uncertainty.",
+      "quote": "This investigation hypothesizes that due to large differences between fire behavior in normal and reduced gravity, the use of terrestrial fires and fire standards to design spacecraft fire safety systems presents an inherent risk to the vehicle because of the significant level of uncertainty.",
+      "source_field": "Hypothesis"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+      "quote": "Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

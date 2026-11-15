@@ -1,0 +1,68 @@
+{
+  "accession": "PSI-10",
+  "model": "gemini-3.5-flash-lite",
+  "date": "2026-11-15T08:05:50Z",
+  "sha256": "6379dd0787c059eb053b34beda82dec40bb7c8889c759d6d05ab04326eeb54f2",
+  "answer": {
+    "objective": {
+      "status": "verified",
+      "text": "The primary objectives include obtaining soot-inception limits of quasi-steady normal and inverse spherical diffusion flames.",
+      "quote": "Obtain soot-inception limits of quasi-steady normal and inverse spherical diffusion flames as functions of flow rate, Zst, amount of inert (N2 or CO2), and pressure for C2H4 and CH4 flames.",
+      "source_field": "Objectives"
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The fuels tested are C2H4 and CH4.",
+      "quote": "for C2H4 and CH4 flames.",
+      "source_field": "Objectives"
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The experiment investigates spherical diffusion flames.",
+      "quote": "Perform spherical diffusion flame tests in drop towers and aboard the International Space Station.",
+      "source_field": "Approach"
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source_field": "none"
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Variables include reactant dilutions, flow rates, and pressures.",
+      "quote": "Consider a broad range of reactant dilutions, flow rates and pressures for normal and inverse convection directions.",
+      "source_field": "Approach"
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Flames are observed using cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "quote": "Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
+      "source_field": "Approach"
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "Microgravity spherical diffusion flames extinguish when the peak temperature first decreases below 1130 K.",
+      "quote": "Microgravity spherical diffusion flames extinguish when the peak temperature first decreases below 1130 K.",
+      "source_field": "Hypothesis"
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "The project has the potential for improving efficiency and reducing pollutant emissions in terrestrial combustors.",
+      "quote": "This project has the potential for improving efficiency and reducing pollutant emissions in terrestrial combustors.",
+      "source_field": "Research Impacts/Earth Benefits"
+    }
+  }
+}

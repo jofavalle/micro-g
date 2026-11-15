@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-68",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The primary goal of the FLEX-2 flight experiments is to extend the results of FLEX-1 to fuels and environmental conditions that mimic real combustor conditions.",
+      "quote": "The primary goal of the FLEX-2 flight experiments is to extend the results of FLEX-1 to fuels and environmental conditions that mimic real combustor conditions",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "The FLEX-2 experiments used bi-component mixtures.",
+      "quote": "The present FLEX-2 experiments using bi-component mixtures.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Hypothesis"
+      }
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "The fuel was dispensed as a droplet onto the support fiber or freely deployed.",
+      "quote": "dispensing of a predetermined amount of fuel (based on the target droplet size) onto the support fiber for those tests in which the droplet is not freely deployed.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "oxygen": {
+      "status": "verified",
+      "text": "The oxygen concentration was varied between 0.1 to 0.4 mole fraction.",
+      "quote": "O2 concentration between 0.1 to 0.4 mole fraction",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "flow": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "pressure": {
+      "status": "verified",
+      "text": "The pressure was varied between 0.5 atm to 3.0 atm.",
+      "quote": "varied in pressure between 0.5 atm to 3.0 atm",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "variables": {
+      "status": "verified",
+      "text": "The independently varied experimental parameters included fuel type, ambient gas composition, ambient pressure, droplet initial diameter, droplet translation velocity, and droplet spacing.",
+      "quote": "The independently varied experimental parameters during FLEX-2 experiments were 1) Fuel type 2) Ambient gas composition 3) Ambient Pressure 4) Droplet initial diameter 5) Droplet translation velocity (and acceleration) 6) Droplet spacing and initial size in a binary linear array.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Combustion and flame evolution were monitored and tracked using high speed photography, and pressure and temperature data were recorded.",
+      "quote": "Monitor combustions and track flame evolution using high speed photography",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "safety_finding": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "Insights gained from these studies can lead to more efficient and cleaner combustion technologies which are crucial for reducing pollution and greenhouse gas emissions.",
+      "quote": "Insights gained from these studies can lead to more efficient and cleaner combustion technologies which are crucial for reducing pollution and greenhouse gas emissions.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}

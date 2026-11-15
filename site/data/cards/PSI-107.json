@@ -1,0 +1,100 @@
+{
+  "accession": "PSI-107",
+  "generated_by": {
+    "tool": "Gemini API via tools/build_cards.py",
+    "model": "gemini-3.5-flash-lite",
+    "date": "2026-11-15"
+  },
+  "fields": {
+    "objective": {
+      "status": "verified",
+      "text": "The objective of SPICE is to better understand the complex process of combustion by observing flames in a microgravity environment.",
+      "quote": "The objective of SPICE is to better understand the complex process of combustion by observing flames in a microgravity environment aboard the International Space Station (ISS) and analogous ground experiments.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "fuel": {
+      "status": "verified",
+      "text": "Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures.",
+      "quote": "Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "sample_geometry": {
+      "status": "verified",
+      "text": "Burner diameters were 0.41 mm, 0.76 mm, and 1.6 mm.",
+      "quote": "burner diameters of 0.41 mm, 0.76 mm, and 1.6 mm",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "oxygen": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "flow": {
+      "status": "verified",
+      "text": "Co-flow velocities ranged from 5.4 cm/s to 65 cm/s.",
+      "quote": "co-flow velocities ranging from 5.4 cm/s to 65 cm/s.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "pressure": {
+      "status": "not_stated",
+      "text": "",
+      "quote": "",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives, Approach, Hypothesis, Research Impacts/Earth Benefits"
+      }
+    },
+    "variables": {
+      "status": "verified",
+      "text": "Burner diameters and co-flow velocity were varied to determine their effects on luminous flame lengths and smoke points.",
+      "quote": "(2) Determine the effects of burner diameter and co-flow velocity on the luminous flame lengths and smoke points.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Objectives"
+      }
+    },
+    "measurements": {
+      "status": "verified",
+      "text": "Measurements included flame height, radiative heat losses, and co-flow air velocity distributions.",
+      "quote": "Measurements included flame height, radiative heat losses, and co-flow air velocity distributions.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Approach"
+      }
+    },
+    "safety_finding": {
+      "status": "verified",
+      "text": "The research will improve our understanding of soot formation mechanisms and help design safer spacecraft environments.",
+      "quote": "(1) Will improve our understanding of soot formation mechanisms and help design safer spacecraft environments.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    },
+    "earth_benefits": {
+      "status": "verified",
+      "text": "The research could possibly provide insights to better fuel formulations and combustion processes.",
+      "quote": "(4) Could possibly provide insights to better fuel formulations and combustion processes.",
+      "source": {
+        "kind": "psi_record",
+        "ref": "Research Impacts/Earth Benefits"
+      }
+    }
+  }
+}
