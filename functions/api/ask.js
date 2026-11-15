@@ -138,7 +138,54 @@ const SELFTEST = [
   },
 ];
 
+// TEMPORARY (order #87): GET /api/ask?probe=1 sends a one-line prompt to
+// Gemini with variants of the schema, each changing one thing, and reports
+// what Gemini answers to each, with the key replaced. Removed before the PR.
+async function probe(env, corpus) {
+  const full = answerSchema(corpus);
+  const list = full.properties.list;
+  const withProps = (changes) => ({ ...full, properties: { ...full.properties, ...changes } });
+  const plainLevel = { ...list, properties: { ...list.properties, level: { type: "array", items: { type: "integer" } } } };
+  const variants = {
+    trivial: { type: "object", properties: { a: { type: "string" } }, required: ["a"] },
+    full,
+    list_anyof: withProps({ list: { anyOf: [{ ...list, type: "object" }, { type: "null" }] } }),
+    list_object: withProps({ list: { ...list, type: "object" } }),
+    level_no_enum: withProps({ list: plainLevel }),
+    chart_string: withProps({ chart: { type: "string", enum: CHART_KEYS } }),
+    no_null: withProps({ list: { ...plainLevel, type: "object" }, chart: { type: "string", enum: CHART_KEYS } }),
+  };
+  const results = {};
+  for (const [name, schema] of Object.entries(variants)) {
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": env.LLM_API_KEY,
+          "Api-Revision": API_REVISION,
+          "User-Agent": USER_AGENT,
+        },
+        body: JSON.stringify({
+          model: env.LLM_MODEL || DEFAULT_MODEL,
+          input: "Answer with JSON that follows the schema, with empty lists and null where allowed.",
+          store: false,
+          response_format: { type: "text", mime_type: "application/json", schema },
+        }),
+        signal: AbortSignal.timeout(TIMEOUT_MS),
+      });
+      results[name] = { status: response.status, body: (await response.text()).slice(0, 700) };
+    } catch (err) {
+      results[name] = { thrown: `${err && err.name}: ${err && err.message}` };
+    }
+  }
+  return diagnostic(env, results);
+}
+
 export async function onRequestGet({ request, env }) {
+  if (new URL(request.url).searchParams.get("probe") === "1") {
+    return reply(200, { probe: await probe(env, await loadCorpus(request, env)) });
+  }
   if (new URL(request.url).searchParams.get("selftest") !== "1") {
     return failure("bad_request", 400);
   }
@@ -476,17 +523,7 @@ async function askModel(env, corpus, question) {
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!response.ok) {
-    let error = null;
-    try {
-      error = (await response.json()).error;
-    } catch {
-      error = null;
-    }
-    const detail = {
-      upstream: response.status,
-      error_status: isObject(error) ? error.status : null,
-      message: isObject(error) ? String(error.message).slice(0, 600) : null,
-    };
+    const detail = { upstream: response.status, body: (await response.text()).slice(0, 1200) };
     if (response.status === 429) throw new AskError("quota", 429, detail);
     throw new AskError("unavailable", 502, detail);
   }
