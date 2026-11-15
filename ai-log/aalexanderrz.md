@@ -6,6 +6,7 @@ Format and rules in [README.md](README.md).
 
 | Date and time | Tool and account type | Session used | Weekly used | Next refill | Weekly reset | Issue or PR |
 |---|---|---|---|---|---|---|
+| 2026-11-14 23:07 | Claude Code, Pro | 3% (end of session; start reading not taken) | 2% | 2026-11-15 03:50 | 2026-11-17 15:00 | #19, PR #28 |
 
 ## AI use
 
