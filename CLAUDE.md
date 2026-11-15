@@ -8,7 +8,8 @@ team: a change to it is proposed by PR, like any other. Each person's own settin
 
 ## Commands
 
-- Run: there is no product yet; the PR that creates the first one adds it here.
+- Run: `python3 -m http.server 8000 --directory site` (on Windows, `py`), then open
+  `http://localhost:8000/`. The published site is <https://micro-g.pages.dev/>.
 - Verify: `python3 .github/higiene.py` (on Windows, `py .github/higiene.py`)
 - Repository hygiene: `python3 .github/higiene.py` (on Windows, `py .github/higiene.py`).
   It also runs in CI on every push and on every PR.
