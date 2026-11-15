@@ -4,16 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>micro-g</title>
+  <title>micro-G</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chat.css">
+  <script src="chat.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
   <div id="fixture-banner" class="fixture-banner" hidden></div>
   <header class="site-header">
-    <a class="brand" href="#/">micro-g</a>
+    <a class="brand" href="#/">micro-<span class="brand-g">G</span></a>
     <nav class="site-nav" aria-label="Views">
-      <a href="#/" data-view="catalog">Catalog</a>
+      <a href="#/" data-view="overview">Overview</a>
+      <a href="#/catalog" data-view="catalog">Catalog</a>
       <a href="#/situation" data-view="situation">Situation</a>
     </nav>
     <p class="tagline">Combustion investigations from NASA's Physical Sciences Informatics
@@ -23,22 +26,26 @@
     <h2 id="verification-title" class="verification-title">How the investigation cards were checked</h2>
     <p class="verification-status">Loading the verification numbers…</p>
   </section>
+  <section id="ask" class="ask" hidden></section>
   <main id="view" class="view" tabindex="-1">
     <noscript>
       <p class="error">This page needs JavaScript to load its data files.</p>
     </noscript>
   </main>
-  <footer class="site-gaps gap" aria-labelledby="gaps-title">
-    <h2 id="gaps-title">Known gaps</h2>
-    <p><strong>Partial gravity.</strong> None of the 24 investigations was run in partial gravity,
-      such as on the Moon or Mars: 19 are microgravity investigations and 5 are ground
-      investigations. The dashboard does not model what happens between microgravity and normal
-      gravity.</p>
-    <p><strong>Combustion gases.</strong> In the tabular files of PSI that the team explored,
-      BASS-II reports O2, CO2 and CO only at the start and at the end of each test, and
-      Saffire-I, -II and -III report O2 and CO2 over time and no CO. The dashboard publishes no
-      chart of these measurements: the catalog only marks these four investigations with the tag
-      “gas measurements”.</p>
+  <footer class="site-footer">
+    <section class="site-gaps gap" aria-labelledby="gaps-title">
+      <h2 id="gaps-title">Known gaps</h2>
+      <p><strong>Partial gravity.</strong> None of the 24 investigations was run in partial gravity,
+        such as on the Moon or Mars: 19 are microgravity investigations and 5 are ground
+        investigations. The dashboard does not model what happens between microgravity and normal
+        gravity.</p>
+      <p><strong>Combustion gases.</strong> In the tabular files of PSI that the team explored,
+        BASS-II reports O2, CO2 and CO only at the start and at the end of each test, and
+        Saffire-I, -II and -III report O2 and CO2 over time and no CO. The dashboard publishes no
+        chart of these measurements: the catalog only marks these four investigations with the tag
+        “gas measurements”.</p>
+    </section>
+    <p class="site-source"><a href="https://github.com/jofavalle/micro-g" rel="noopener">Source code on GitHub</a></p>
   </footer>
 </body>
 </html>

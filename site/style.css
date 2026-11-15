@@ -1,45 +1,43 @@
 /* AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz, PabloBernal-CPU */
 
-:root {
-  --bg: #ffffff;
-  --surface: #f5f6f8;
-  --border: #d9dce1;
-  --text: #1a1a1a;
-  --muted: #5b6270;
-  --link: #0b57b7;
-  --accent: #0b57b7;
-  --warn-bg: #fff4d6;
-  --warn-text: #5c4300;
-  --error-bg: #fde8e8;
-  --error-border: #c62828;
-  --level-1: #b3261e;
-  --level-2: #8a5a00;
-  --level-3: #3a5f8a;
-  --chip-tables: #dff3e4;
-  --chip-tables-text: #1e5c2f;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.45;
+/* Space Grotesk, by The Space Grotesk Project Authors, under the SIL Open Font
+   License 1.1 (fonts/OFL.txt). The variable font fonts/woff2/SpaceGrotesk[wght].woff2
+   of https://github.com/floriankarsten/space-grotesk, commit 03507d0, renamed.
+   It is used for the brand and the headings; the rest keeps the system font. */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk-wght.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121417;
-    --surface: #1c1f24;
-    --border: #353a42;
-    --text: #e8e9ec;
-    --muted: #a3a9b4;
-    --link: #8ab4ff;
-    --accent: #8ab4ff;
-    --warn-bg: #3a2f10;
-    --warn-text: #f5dc9a;
-    --error-bg: #3b1d1d;
-    --error-border: #ef8a8a;
-    --level-1: #ef8a80;
-    --level-2: #e0b45c;
-    --level-3: #8fb3e0;
-    --chip-tables: #1f3a27;
-    --chip-tables-text: #a8dcb5;
-  }
+/* One dark theme, inspired by space: colours and gradients only, no images.
+   Every text colour keeps a contrast of 4.5:1 or more on the surfaces below. */
+:root {
+  color-scheme: dark;
+  --bg: #070b16;
+  --surface: #0e1527;
+  --surface-raised: #131c33;
+  --border: #263252;
+  --text: #e9eef8;
+  --muted: #a6b1c7;
+  --link: #8cc0ff;
+  --accent: #6f9dff;
+  --flame: #ffaa5c;
+  --warn-bg: #3a2f10;
+  --warn-text: #f5dc9a;
+  --error-bg: #3b1d1d;
+  --error-border: #ef8a8a;
+  --level-1: #ff8f85;
+  --level-2: #f0bd5e;
+  --level-3: #93b8ea;
+  --chip-tables: #183a26;
+  --chip-tables-text: #a8e0b8;
+  --display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.45;
+  accent-color: var(--accent);
 }
 
 * { box-sizing: border-box; }
@@ -50,7 +48,42 @@ body {
   color: var(--text);
 }
 
+/* The sky, fixed behind the page and exactly as large as the window: two faint
+   nebulae, and stars only in the margins outside the content column, so that
+   no star sits behind text. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse 60% 45% at 12% 0%, rgba(84, 104, 230, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 92% 8%, rgba(255, 140, 70, 0.07), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 70% 100%, rgba(40, 140, 170, 0.08), transparent 70%);
+}
+
+body::after {
+  background:
+    radial-gradient(1px 1px at 24px 36px, rgba(255, 255, 255, 0.8), transparent 1.5px) 0 0 / 170px 170px,
+    radial-gradient(1px 1px at 112px 92px, rgba(200, 215, 255, 0.6), transparent 1.5px) 0 0 / 170px 170px,
+    radial-gradient(1.5px 1.5px at 70px 150px, rgba(255, 230, 200, 0.7), transparent 2px) 0 0 / 230px 230px,
+    radial-gradient(1px 1px at 190px 40px, rgba(255, 255, 255, 0.5), transparent 1.5px) 0 0 / 230px 230px;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(50% - 616px), transparent calc(50% - 600px), transparent calc(50% + 600px), #000 calc(50% + 616px));
+  mask-image: linear-gradient(to right, #000 calc(50% - 616px), transparent calc(50% - 600px), transparent calc(50% + 600px), #000 calc(50% + 616px));
+}
+
+h1,
+h2,
+h3 { font-family: var(--display); letter-spacing: -0.01em; }
+
 a { color: var(--link); }
+
+::selection { background: #2c4a8f; color: #ffffff; }
 
 code { font-size: 0.9em; overflow-wrap: anywhere; }
 
@@ -65,7 +98,8 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .site-header,
 .verification,
 .view,
-.site-gaps {
+.site-gaps,
+.site-source {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -74,27 +108,49 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .site-header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 1rem;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 0.75rem;
 }
 
+/* The brand is "micro-G", with a capital G. Space Grotesk stops at weight 700,
+   so a thin stroke of the text colour makes it heavier than the old 700. */
 .brand {
-  font-size: 1.4rem;
+  font-family: var(--display);
+  font-size: 2.3rem;
   font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
   color: var(--text);
+  text-decoration: none;
+  -webkit-text-stroke: 0.02em currentColor;
+}
+
+.brand-g { color: var(--flame); }
+
+.tagline { flex-basis: 100%; margin: 0; color: var(--muted); }
+
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.site-nav a {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
   text-decoration: none;
 }
 
-.tagline { margin: 0; color: var(--muted); }
-
-.site-nav { display: flex; gap: 1rem; }
-.site-nav a { font-weight: 600; text-decoration: none; }
 .site-nav a:hover,
-.site-nav a:focus-visible,
-.site-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 0.25em; }
-.site-nav a[aria-current="page"] { color: var(--text); }
+.site-nav a:focus-visible { border-color: var(--accent); text-decoration: underline; text-underline-offset: 0.25em; }
+
+.site-nav a[aria-current="page"] {
+  border-color: transparent;
+  background: var(--accent);
+  color: #071021;
+}
 
 /* Verification panel, visible on every view */
 
@@ -142,12 +198,18 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
   align-items: start;
 }
 
+/* Pinned while the list scrolls, but never taller than the window: a long
+   panel scrolls on its own, so its last filters stay within reach. */
 .filters {
   position: sticky;
   top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
   padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
+  scrollbar-color: var(--border) transparent;
 }
 
 .filter-group {
@@ -367,6 +429,188 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .gap p { margin: 0.25rem 0; }
 .gap-title { font-weight: 700; }
 
+/* Overview */
+
+.overview-head .lead { max-width: 60rem; }
+
+.guide,
+.figures { margin: 0 0 1.5rem; }
+
+.guide h2,
+.figures h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+
+.guide-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.guide-steps li {
+  position: relative;
+  padding: 0.75rem 1rem 0.75rem 3.25rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  counter-increment: step;
+}
+
+.guide-steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0.7rem;
+  left: 0.9rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 2px solid var(--flame);
+  border-radius: 50%;
+  color: var(--flame);
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.4rem;
+  text-align: center;
+}
+
+.guide-steps p { margin: 0; }
+.guide-steps .step-title { margin-bottom: 0.25rem; font-weight: 700; }
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--link);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface)) var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.tile p { margin: 0; }
+.tile-value { font-size: 2rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.tile-of { font-size: 1rem; font-weight: 600; color: var(--muted); }
+.tile-label { font-weight: 600; }
+.tile .tile-detail { margin-top: 0.15rem; color: var(--muted); font-size: 0.88rem; }
+.tile-unread .tile-value { color: var(--muted); }
+
+.overview-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface) 12rem) var(--surface);
+}
+
+.panel h2 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+
+.panel-lead,
+.panel-foot { margin: 0 0 0.75rem; color: var(--muted); font-size: 0.9rem; }
+.panel-foot { margin: 0.75rem 0 0; }
+.panel .note { margin: 0 0 0.75rem; }
+
+.bars { display: grid; gap: 0.2rem; margin: 0; padding: 0; list-style: none; }
+
+.bar-line {
+  display: grid;
+  grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 4px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+a.bar-line:hover,
+a.bar-line:focus-visible { background: var(--bg); }
+a.bar-line:hover .bar-label,
+a.bar-line:focus-visible .bar-label { text-decoration: underline; }
+
+.bar-label { overflow-wrap: anywhere; }
+
+.bar-track {
+  display: block;
+  height: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.bar-fill { display: block; height: 100%; background: linear-gradient(90deg, #4a78e0, var(--accent)); }
+.bar-fill.level-1,
+.bar-fill.level-2,
+.bar-fill.level-3 { background: currentColor; }
+
+.bar-value { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.bar-gap .bar-value { color: var(--muted); }
+
+.heatmap-wrap { overflow-x: auto; }
+
+.heatmap {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+}
+
+.heatmap caption { margin-bottom: 0.25rem; color: var(--muted); font-size: 0.9rem; text-align: left; }
+.heatmap th { font-size: 0.92rem; font-weight: 600; text-transform: capitalize; }
+.heatmap thead th { padding-bottom: 0.15rem; text-align: center; }
+.heatmap tbody th { width: 7rem; padding-right: 0.25rem; text-align: left; }
+.heatmap thead td { width: 7rem; }
+
+.heat {
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) calc(var(--share, 0) * 55%), var(--bg));
+}
+
+.heat a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  border-radius: 3px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.heat a:hover,
+.heat a:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; }
+.heat-n { font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.heat-gap { border: 2px dashed var(--muted); background: transparent; }
+.heat-note { color: var(--muted); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
 .error {
   margin: 1rem 0;
   padding: 0.75rem 1rem;
@@ -377,13 +621,21 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .error p { margin: 0.25rem 0; }
 .error-title { font-weight: 700; }
 
-/* Known gaps, at the foot of every view (the box comes from .gap) */
+/* Known gaps and the link to the repository, at the foot of every view (the box comes from .gap) */
 
-.site-gaps { margin-bottom: 1.5rem; }
+.site-gaps { margin-bottom: 0.75rem; }
 .site-gaps h2 { margin: 0 0 0.25rem; font-size: 1rem; }
+.site-source { margin-bottom: 1.5rem; color: var(--muted); font-size: 0.92rem; }
 
 @media (max-width: 800px) {
   .catalog { grid-template-columns: minmax(0, 1fr); }
-  .filters { position: static; }
+  .filters { position: static; max-height: none; overflow: visible; }
   .field { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+}
+
+@media (max-width: 480px) {
+  .bar-line { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.1rem; }
+  .bar-label { grid-column: 1 / -1; }
+  .heatmap tbody th,
+  .heatmap thead td { width: 5.5rem; }
 }

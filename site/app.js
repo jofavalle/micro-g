@@ -299,19 +299,24 @@ async function renderCatalog(view, isCurrent) {
     }
   }
 
-  const source = isObject(catalog.source) ? catalog.source : {};
-  const sourceUrl = safeUrl(source.url);
   view.replaceChildren(
     el("div", { class: "catalog-head" },
       el("h1", {}, "Investigations"),
-      el("p", { class: "provenance" },
-        "PSI snapshot of ", String(source.snapshot_date || "unknown date"),
-        sourceUrl ? [" (", el("a", { href: sourceUrl, rel: "noopener" }, "source"), ")"] : null,
-        `; catalog generated ${catalog.generated || "at an unknown time"}.`)),
+      provenance(catalog)),
     el("div", { class: "catalog" },
       filterPanel(entries, update),
       el("div", { class: "catalog-list" }, count, results)));
   update();
+}
+
+// Where the catalog comes from: the PSI snapshot and when the file was written.
+function provenance(catalog) {
+  const source = isObject(catalog.source) ? catalog.source : {};
+  const sourceUrl = safeUrl(source.url);
+  return el("p", { class: "provenance" },
+    "PSI snapshot of ", String(source.snapshot_date || "unknown date"),
+    sourceUrl ? [" (", el("a", { href: sourceUrl, rel: "noopener" }, "source"), ")"] : null,
+    `; catalog generated ${catalog.generated || "at an unknown time"}.`);
 }
 
 // The checkboxes of a list of filter groups. state holds one Set of selected
@@ -398,7 +403,7 @@ function findEntry(catalog, accession) {
 
 function backLinks(entry, extra) {
   return el("p", { class: "back" },
-    el("a", { href: "#/" }, "← Catalog"),
+    el("a", { href: "#/catalog" }, "← Catalog"),
     extra ? [" · ", el("a", { href: cardHref(entry.accession) }, `Card of ${entry.acronym}`)] : null);
 }
 
@@ -904,7 +909,7 @@ function level3Line(n, state) {
   return el("p", { class: "level-3-line" },
     `${plural(n, "investigation", "investigations")} at level 3 (${levelLabel(3).toLowerCase()}) ` +
     `also ${n === 1 ? "matches; it is" : "match; they are"} not listed here. `,
-    el("a", { href: "#/", onclick: () => presetCatalog(state) }, "Show in the catalog"),
+    el("a", { href: "#/catalog", onclick: () => presetCatalog(state) }, "Show in the catalog"),
     ".");
 }
 
@@ -916,12 +921,341 @@ function presetCatalog(state) {
   }
 }
 
+// ---------------------------------------------------------------- overview view
+
+// The home page: a guide, key figures and four charts. Every number on it is
+// counted here from the data files; none is typed in.
+
+function formatCount(n) {
+  return Number(n).toLocaleString("en-US");
+}
+
+// A situation address with one value in some groups, e.g. { fuel: "solid" }.
+function situationLink(selection, entries) {
+  const state = Object.fromEntries(SITUATION_GROUPS.map(({ key }) => [key, new Set()]));
+  for (const [key, value] of Object.entries(selection)) state[key].add(value);
+  return situationHash(state, entries);
+}
+
+// How many investigations pair each pillar with each fuel phase. One counts in
+// every cell that matches one of its pillars and one of its fuel phases.
+function pillarFuelGrid(entries) {
+  const cells = PILLARS.flatMap((pillar) => FUEL_PHASES.map((fuel) => ({
+    pillar,
+    fuel,
+    n: entries.filter((e) => asList(e.pillars).includes(pillar) && asList(e.fuel_phase).includes(fuel)).length,
+  })));
+  const outside = entries.filter((e) =>
+    !PILLARS.some((p) => asList(e.pillars).includes(p))
+    || !FUEL_PHASES.some((f) => asList(e.fuel_phase).includes(f))).length;
+  return { cells, outside };
+}
+
+// Set by chat.js when it mounts in #ask; while #ask is hidden, the guide does
+// not mention the chat.
+function askShown() {
+  const ask = document.getElementById("ask");
+  return Boolean(ask && !ask.hidden);
+}
+
+function focusAsk() {
+  const ask = document.getElementById("ask");
+  if (!ask) return;
+  ask.scrollIntoView({ block: "start" });
+  const field = ask.querySelector("textarea, input, button");
+  if (field) field.focus({ preventScroll: true });
+}
+
+// Watches #ask while the overview is shown, so the first step of the guide
+// follows the chat if it appears or hides after the page is drawn.
+let askObserver = null;
+
+async function renderOverview(view, isCurrent) {
+  const catalog = await loadCatalog();
+  if (!isCurrent()) return;
+  const entries = [...catalog.investigations].sort(compareEntries);
+  const grid = pillarFuelGrid(entries);
+
+  view.replaceChildren(
+    el("div", { class: "catalog-head overview-head" },
+      el("h1", {}, "Overview"),
+      el("p", { class: "lead" },
+        `What the ${plural(entries.length, "combustion investigation", "combustion investigations")} ` +
+        "of the corpus cover. Every number on this page is counted from the published data files."),
+      provenance(catalog)),
+    usageGuide(entries, grid),
+    keyFigures(entries),
+    el("div", { class: "overview-panels" },
+      levelPanel(entries),
+      mapPanel(entries, grid),
+      fieldsPanel(entries),
+      phenomenaPanel(entries)));
+}
+
+function usageGuide(entries, grid) {
+  const best = grid.cells.reduce((a, b) => (b.n > a.n ? b : a), grid.cells[0]);
+  const example = entries.find(hasQuant) || entries[0];
+  const psi = example ? safeUrl(example.psi_url) : null;
+
+  const situation = (text) => el("a", { href: "#/situation" }, text);
+  const first = el("p", {});
+  const fillFirst = () => first.replaceChildren(...(askShown()
+    ? [el("button", { type: "button", class: "link-button", onclick: focusAsk }, "Ask a question"),
+      " in the box above, or ", situation("describe a situation"),
+      ": what can burn, whether the concern is to prevent, detect or suppress a fire, and which phenomenon."]
+    : [situation("Describe a situation"),
+      ": what can burn, whether the concern is to prevent, detect or suppress a fire, and which phenomenon."]));
+  fillFirst();
+  if (askObserver) askObserver.disconnect();
+  const ask = document.getElementById("ask");
+  if (ask) {
+    askObserver = new MutationObserver(() => {
+      if (first.isConnected) fillFirst();
+      else askObserver.disconnect();
+    });
+    askObserver.observe(ask, { attributes: true, attributeFilter: ["hidden"] });
+  }
+
+  const step = (title, body) => el("li", {}, el("p", { class: "step-title" }, title), body);
+  return el("section", { class: "guide", "aria-labelledby": "guide-title" },
+    el("h2", { id: "guide-title" }, "How to use it"),
+    el("ol", { class: "guide-steps", role: "list" },
+      step("Ask or describe a situation", first),
+      step("Read the findings with their literal passage",
+        el("p", {},
+          "Each matching investigation shows what it found: a summary drafted by an LLM, with the " +
+          "passage of its source quoted word for word under it.",
+          best && best.n > 0
+            ? [" For example, ",
+              el("a", { href: situationLink({ fuel: best.fuel, pillar: best.pillar }, entries) },
+                `${best.fuel} fuel, ${best.pillar}`),
+              ` (${plural(best.n, "investigation", "investigations")}).`]
+            : null)),
+      step("Open the card, the data table or the PSI record",
+        el("p", {},
+          "Each investigation has a card with its ten fields and a link to its PSI record; some also " +
+          "have a table with one row per test.",
+          example
+            ? [` For example, ${example.acronym}: `,
+              el("a", { href: cardHref(example.accession) }, "card"),
+              hasQuant(example) ? [" · ", el("a", { href: quantHref(example.accession) }, "test table")] : null,
+              psi ? [" · ", el("a", { href: psi, rel: "noopener" }, "PSI record")] : null,
+              "."]
+            : null,
+          " The ", el("a", { href: "#/catalog" }, "catalog"),
+          ` lists all ${entries.length}.`))));
+}
+
+// A tile of the key figures. value may be a node, to set the "of N" apart.
+function tile(node, value, label, detail) {
+  node.replaceChildren(
+    el("p", { class: "tile-value" }, value),
+    el("p", { class: "tile-label" }, label),
+    detail ? el("p", { class: "tile-detail" }, detail) : null);
+  return node;
+}
+
+function pendingTile(label) {
+  return tile(el("li", { class: "tile" }), "…", label, "Loading…");
+}
+
+function unreadTile(node, label, err) {
+  node.classList.add("tile-unread");
+  return tile(node, "–", label, `Could not be read${err instanceof DataError ? ` (${err.url})` : ""}.`);
+}
+
+function keyFigures(entries) {
+  const types = new Map();
+  for (const e of entries) types.set(String(e.project_type), (types.get(String(e.project_type)) || 0) + 1);
+  const typeDetail = [...types]
+    .sort((a, b) => b[1] - a[1])
+    .map(([type, n]) => `${formatCount(n)} ${type.replace(/\s*investigation$/i, "").toLowerCase()}`)
+    .join(" · ");
+  const files = entries.reduce((sum, e) => sum + (Number.isInteger(e.n_files) ? e.n_files : 0), 0);
+  const withTables = entries.filter((e) => e.has_per_test_tables === true).length;
+
+  const tiles = [
+    tile(el("li", { class: "tile" }), formatCount(entries.length),
+      el("a", { href: "#/catalog" }, "investigations"), typeDetail),
+    tile(el("li", { class: "tile" }), formatCount(withTables), "with per-test tables",
+      "PSI files with one row per test"),
+    tile(el("li", { class: "tile" }), formatCount(files), "files listed in PSI",
+      `across the ${plural(entries.length, "PSI record", "PSI records")}`),
+  ];
+
+  // One tile per downloadable table; each loads on its own.
+  for (const entry of entries.filter(hasQuant)) {
+    const node = pendingTile(`${entry.acronym} tests`);
+    load(entry.quant, checkQuant).then(
+      (data) => tile(node, formatCount(data.table.rows.length),
+        el("a", { href: quantHref(entry.accession) }, `${entry.acronym} tests in a downloadable table`),
+        "one row per test, with a CSV download"),
+      (err) => unreadTile(node, `${entry.acronym} table`, err));
+    tiles.push(node);
+  }
+
+  const checked = pendingTile("card fields verified");
+  const manual = pendingTile("manual review");
+  loadVerification().then(
+    (data) => {
+      tile(checked, [formatCount(data.passed), el("span", { class: "tile-of" }, ` of ${formatCount(data.checked)}`)],
+        "card fields verified", `${formatCount(data.dropped)} dropped and shown as "Not stated in source"`);
+      const sample = data.manual_sample;
+      if (sample === null) tile(manual, "Pending", "manual review", "no sample reviewed by hand yet");
+      else {
+        tile(manual, [formatCount(sample.correct), el("span", { class: "tile-of" }, ` of ${formatCount(sample.n)}`)],
+          "right in the manual review", "sampled fields checked by hand against the PSI record");
+      }
+    },
+    (err) => {
+      unreadTile(checked, "card fields verified", err);
+      unreadTile(manual, "manual review", err);
+    });
+  tiles.push(checked, manual);
+
+  return el("section", { class: "figures", "aria-labelledby": "figures-title" },
+    el("h2", { id: "figures-title" }, "Key figures"),
+    el("ul", { class: "tiles", role: "list" }, tiles));
+}
+
+function overviewPanel(id, title, lead, body, foot) {
+  return el("section", { class: "panel", "aria-labelledby": id },
+    el("h2", { id }, title),
+    el("p", { class: "panel-lead" }, lead),
+    body,
+    foot ? el("p", { class: "panel-foot" }, foot) : null);
+}
+
+// Horizontal bars in HTML. Each row: { label, value (text), share (0 to 1),
+// href, onclick, fill (extra class of the bar) }. The value is always written.
+function barList(rows) {
+  return el("ul", { class: "bars", role: "list" }, rows.map((row) => {
+    const parts = [
+      el("span", { class: "bar-label" }, row.label),
+      el("span", { class: "bar-track", "aria-hidden": "true" },
+        el("span", {
+          class: row.fill ? `bar-fill ${row.fill}` : "bar-fill",
+          style: `width: ${(Math.max(0, Math.min(1, row.share)) * 100).toFixed(1)}%`,
+        })),
+      el("span", { class: "bar-value" }, row.value),
+    ];
+    return el("li", { class: row.gap ? "bar-row bar-gap" : "bar-row" },
+      row.href
+        ? el("a", { class: "bar-line", href: row.href, onclick: row.onclick }, parts)
+        : el("div", { class: "bar-line" }, parts));
+  }));
+}
+
+function levelPanel(entries) {
+  const rows = LEVELS.map((level) => {
+    const n = entries.filter((e) => e.level === level.value).length;
+    return {
+      label: `Level ${level.value} · ${level.label}`,
+      value: formatCount(n),
+      share: entries.length ? n / entries.length : 0,
+      fill: `level-${level.value}`,
+      gap: n === 0,
+      href: "#/catalog",
+      onclick: () => {
+        for (const set of Object.values(selected)) set.clear();
+        selected.level.add(String(level.value));
+      },
+    };
+  });
+  return overviewPanel("chart-levels", "Investigations by priority level",
+    "The team set each level by hand, from direct fire-safety evidence (1) to efficiency and " +
+    "propulsion (3). Each bar opens the catalog at that level.",
+    barList(rows));
+}
+
+function mapPanel(entries, grid) {
+  const max = Math.max(1, ...grid.cells.map((c) => c.n));
+  const cellOf = (pillar, fuel) => grid.cells.find((c) => c.pillar === pillar && c.fuel === fuel);
+  const table = el("table", { class: "heatmap" },
+    el("caption", {}, "Rows: safety pillar. Columns: fuel phase."),
+    el("thead", {}, el("tr", {},
+      el("td", {}),
+      FUEL_PHASES.map((fuel) => el("th", { scope: "col" }, fuel)))),
+    el("tbody", {}, PILLARS.map((pillar) => el("tr", {},
+      el("th", { scope: "row" }, pillar),
+      FUEL_PHASES.map((fuel) => {
+        const { n } = cellOf(pillar, fuel);
+        const what = n === 0 ? "no investigation, a gap" : plural(n, "investigation", "investigations");
+        return el("td", { class: n === 0 ? "heat heat-gap" : "heat", style: `--share: ${(n / max).toFixed(3)}` },
+          el("a", {
+            href: situationLink({ fuel, pillar }, entries),
+            "aria-label": `${pillar}, ${fuel} fuel: ${what}`,
+            title: `${pillar}, ${fuel} fuel: ${what}`,
+          },
+          el("span", { class: "heat-n" }, formatCount(n)),
+          n === 0 ? el("span", { class: "heat-note" }, "gap") : null));
+      })))));
+  return overviewPanel("chart-map", "Pillar by fuel phase",
+    "How many investigations cover each pair of safety pillar and fuel phase. Each cell opens that " +
+    "situation; darker cells hold more investigations.",
+    el("div", { class: "heatmap-wrap" }, table),
+    "An investigation counts in every cell that pairs one of its pillars with one of its fuel phases" +
+    (grid.outside
+      ? `; ${plural(grid.outside, "investigation has", "investigations have")} no pillar or no fuel phase and ` +
+        `${grid.outside === 1 ? "is" : "are"} in no cell. `
+      : ". ") +
+    "A 0 is a gap: no investigation in the corpus covers that pair.");
+}
+
+// Each card loads on its own. A card that fails is counted as "could not be
+// read", never as a field that is not stated.
+function fieldsPanel(entries) {
+  const body = el("div", {}, el("p", { class: "loading" }, "Loading the cards…"));
+  Promise.allSettled(entries.map((e) => load(cardPath(e), checkCard))).then((results) => {
+    const cards = results.filter((r) => r.status === "fulfilled").map((r) => r.value);
+    const unread = entries.filter((e, i) => results[i].status !== "fulfilled");
+    const unreadNote = unread.length
+      ? el("p", { class: "note" },
+        `${plural(unread.length, "card", "cards")} of ${entries.length} could not be read ` +
+        `(${unread.map((e) => e.acronym).join(", ")}): ${unread.length === 1 ? "it is" : "they are"} ` +
+        `counted as "could not be read", not as fields that are not stated.`)
+      : null;
+    if (cards.length === 0) {
+      body.replaceChildren(unreadNote, el("p", { class: "empty" }, "With no card read, there is nothing to count."));
+      return;
+    }
+    const rows = CARD_FIELDS.map(([key, label]) => {
+      const n = cards.filter((c) => isObject(c.fields[key]) && c.fields[key].status === "verified").length;
+      return { label, value: `${n} of ${cards.length}`, share: n / cards.length, gap: n === 0 };
+    });
+    body.replaceChildren(unreadNote, barList(rows));
+  });
+  return overviewPanel("chart-fields", "What the PSI records state",
+    "For each field of the investigation cards, how many cards have it verified, with a passage " +
+    "quoted word for word from the source. The rest show \"Not stated in source\".",
+    body);
+}
+
+function phenomenaPanel(entries) {
+  const rows = PHENOMENA
+    .map((p, i) => ({ p, i, n: entries.filter((e) => asList(e.tags).includes(p)).length }))
+    .sort((a, b) => b.n - a.n || a.i - b.i)
+    .map(({ p, n }) => ({
+      label: humanize(p),
+      value: n === 0 ? "0 · gap" : formatCount(n),
+      share: entries.length ? n / entries.length : 0,
+      gap: n === 0,
+      // A phenomenon no investigation has is not offered by the situation view.
+      href: n === 0 ? null : situationLink({ phenomenon: p }, entries),
+    }));
+  return overviewPanel("chart-phenomena", "Phenomena covered",
+    `How many of the ${entries.length} investigations carry each phenomenon tag. Each bar opens ` +
+    "the situation of that phenomenon.",
+    barList(rows));
+}
+
 // ---------------------------------------------------------------- other views
 
 function renderNotFound(view) {
   view.replaceChildren(
     el("h1", {}, "Page not found"),
-    el("p", {}, "There is nothing at this address. ", el("a", { href: "#/" }, "Go to the catalog"), "."));
+    el("p", {}, "There is nothing at this address. Go to the ",
+      el("a", { href: "#/" }, "overview"), " or the ", el("a", { href: "#/catalog" }, "catalog"), "."));
 }
 
 // ---------------------------------------------------------------- routing
@@ -937,11 +1271,12 @@ async function route() {
   const cut = hash.indexOf("?");
   const query = cut < 0 ? "" : hash.slice(cut + 1);
   const parts = (cut < 0 ? hash : hash.slice(0, cut)).split("/").filter(Boolean).map(decodeURIComponent);
-  markCurrentView(parts.length === 0 ? "catalog" : parts[0]);
+  markCurrentView(parts.length === 0 ? "overview" : parts[0]);
 
   view.replaceChildren(el("p", { class: "loading" }, "Loading…"));
   try {
-    if (parts.length === 0) await renderCatalog(view, isCurrent);
+    if (parts.length === 0) await renderOverview(view, isCurrent);
+    else if (parts[0] === "catalog" && parts.length === 1) await renderCatalog(view, isCurrent);
     else if (parts[0] === "investigation" && parts.length === 2) await renderCard(view, isCurrent, parts[1]);
     else if (parts[0] === "quant" && parts.length === 2) await renderQuant(view, isCurrent, parts[1]);
     else if (parts[0] === "situation" && parts.length === 1) await renderSituation(view, isCurrent, query);
