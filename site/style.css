@@ -98,7 +98,8 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
 .site-header,
 .verification,
 .view,
-.site-gaps {
+.site-gaps,
+.site-source {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -620,10 +621,11 @@ a.bar-line:focus-visible .bar-label { text-decoration: underline; }
 .error p { margin: 0.25rem 0; }
 .error-title { font-weight: 700; }
 
-/* Known gaps, at the foot of every view (the box comes from .gap) */
+/* Known gaps and the link to the repository, at the foot of every view (the box comes from .gap) */
 
-.site-gaps { margin-bottom: 1.5rem; }
+.site-gaps { margin-bottom: 0.75rem; }
 .site-gaps h2 { margin: 0 0 0.25rem; font-size: 1rem; }
+.site-source { margin-bottom: 1.5rem; color: var(--muted); font-size: 0.92rem; }
 
 @media (max-width: 800px) {
   .catalog { grid-template-columns: minmax(0, 1fr); }
