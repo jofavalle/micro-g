@@ -1,0 +1,45 @@
+{
+  "census_tabular": {
+    "extensions": [
+      ".xlsx",
+      ".xls",
+      ".csv"
+    ],
+    "max_bytes": 10485760
+  },
+  "dropped_fields": {
+    "fields": [
+      "Person",
+      "Publication Author List"
+    ],
+    "reason": "they name people; no personal data is versioned (challenge rules)"
+  },
+  "files_listing": {
+    "body": {
+      "fileType": "study",
+      "folder": "genelab-data/<accession>/",
+      "obfuscationcode": null,
+      "studyId": "<accession>",
+      "version": 1
+    },
+    "method": "POST",
+    "url": "https://psi.nasa.gov/geode-py/ws/files/v2"
+  },
+  "retrieved_utc": "2026-11-15T05:45:12Z",
+  "search": {
+    "method": "GET",
+    "params": {
+      "ffield": "Research Area",
+      "from": "0",
+      "fvalue": "combustion science",
+      "q": "",
+      "size": "200"
+    },
+    "url": "https://psi.nasa.gov/geode-py/ws/repo/search"
+  },
+  "sha256": {
+    "files_census.json": "83a8dd734341fa8ba63041af3368637349ae1b831d19a1045cdd9ba089d76c35",
+    "investigations.json": "75eef4d5361e39f7bfccfa0717a1586fa0bf08ef08010338fca35e527d6cd35b"
+  },
+  "user_agent": "psi-snapshot/1.0"
+}
