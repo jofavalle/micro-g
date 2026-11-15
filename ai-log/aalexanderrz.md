@@ -6,9 +6,11 @@ Format and rules in [README.md](README.md).
 
 | Date and time | Tool and account type | Session used | Weekly used | Next refill | Weekly reset | Issue or PR |
 |---|---|---|---|---|---|---|
+| 2026-11-14 23:07 | Claude Code, Pro | 3% (end of session; start reading not taken) | 2% | 2026-11-15 03:50 | 2026-11-17 15:00 | #19, PR #28 |
 
 ## AI use
 
 | Time | Issue or PR | Tool and model | Request | Checked or corrected | Evidence |
 |---|---|---|---|---|---|
 | 2026-11-14 15:02 | #4, PR #5 | Claude Code, claude-opus-5-5 (auto mode, Bash and PowerShell tools) | Review PR #5 against order #4 and test its permission rules | aalexanderrz read the draft before publishing it; the test showed that the ask rule for git commit did not prompt in auto mode | https://github.com/jofavalle/micro-g/pull/5#issuecomment-6884151147 |
+| 2026-11-14 22:54 | #19 | Claude Code, claude-opus-5-5 (auto mode, Bash and PowerShell tools) | Write `explore/suppression_detection/summarize.py` to download and summarize the small PSI tabular files of FLEX, FLEX-2, CFI, SAME, SAME-R and DAFT, generate `summary.json`, and draft the findings comment | aalexanderrz approved the txt sampling rule, the omission of header cells over 120 characters (one named a person) and the findings comment before it was posted. `--verify` printed `summary ok`; three `bytes` values matched the PSI listing. Corrected during the work: txt parsing failed on bare CR line endings, sizes came as floats, the skipped list was 2.5 MB and became counts per reason, and the column cap went from 200 to 1000 | `explore/suppression_detection/`; https://github.com/jofavalle/micro-g/issues/19#issuecomment-6889392482 |
