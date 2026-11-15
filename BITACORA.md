@@ -11,8 +11,9 @@ acumula.
 El repositorio y la capa del equipo están listos: las reglas oficiales del reto, las
 denegaciones para PowerShell y los archivos de claves (#3); el registro de uso de IA en
 `ai-log/` (#8, #9); la denegación de `gh pr merge` y lo que el modo auto no garantiza antes de
-un commit (#5, #7); y el paso de `revisar-pr` que dice cómo se aprueba (#12). Todavía no hay
-idea, enfoque ni código del producto.
+un commit (#5, #7); y el paso de `revisar-pr` que dice cómo se aprueba (#12). Los cuatro
+integrantes pasaron la comprobación del primer día (#1). Todavía no hay idea, enfoque ni código
+del producto.
 
 ## Siguiente paso
 
@@ -23,8 +24,6 @@ idea, enfoque ni código del producto.
 - **Con la idea decidida:** el stack y el servicio de despliegue, con su archivo local de claves
   en el `.gitignore`, en las denegaciones de `Read` y en la higiene; la `LICENSE` (OSI, la elige
   el equipo) y el `README.md` en inglés; y la primera orden del producto.
-- **jofavalle:** pegar en #1 su comprobación del primer día, como ya hicieron los otros tres, y
-  cerrar #1.
 - **Cada integrante:** después de cada `git pull`, sesión nueva de Claude Code; y su cuota y su
   uso de IA en `ai-log/`.
 - **Plazos.** La entrega cierra el domingo 15 a las 23:59, en la hora del evento local del
