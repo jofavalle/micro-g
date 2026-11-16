@@ -1,4 +1,4 @@
-<!-- AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz -->
+<!-- AI-assisted: Claude Code (claude-opus-5-5), reviewed by aalexanderrz, jofavalle -->
 # Project page text
 
 The text of each field of the Space Apps project page, ready to paste. The fields, their
@@ -11,11 +11,11 @@ pasted.
 
 ## Project Name
 
-micro-g
+micro-G
 
 ## High-Level Project Summary
 
-micro-g is a dashboard over the 24 combustion investigations of NASA's Physical Sciences <!-- site/data/catalog.json: 24 investigations -->
+micro-G is a dashboard over the 24 combustion investigations of NASA's Physical Sciences <!-- site/data/catalog.json: 24 investigations -->
 Informatics (PSI) repository, for researchers and engineers who work on fire safety in crewed
 spacecraft and habitats. It addresses the Flame in Freefall challenge by ordering the
 investigations by how directly they bear on fire safety, giving one card per investigation in
@@ -23,7 +23,9 @@ which every statement carries the literal passage of the PSI record it comes fro
 publishing a per-test table of the Flame Extinguishment Experiment (FLEX) that can be
 downloaded. A user describes a situation in a crewed habitat in microgravity (what can burn and
 in which phase, and whether the concern is to prevent, detect or suppress a fire) and gets the
-findings of the matching investigations, with their citations. It matters because the
+findings of the matching investigations, with their citations. A chat on the home page answers
+questions about the catalog and the cards with a language model, and keeps only the sentences
+that cite a verified field of a card. It matters because the
 conditions and results of these investigations are spread across long text records and test
 files; the dashboard puts what each one found next to its source, so that whoever designs a
 mission or an experiment can check it. This project is not affiliated with NASA and is not
@@ -42,9 +44,14 @@ TODO(#75)
 **What it does.** The dashboard answers one question: given a concrete situation in a crewed
 habitat in microgravity, which fire risks have to be considered according to the fire-safety
 investigations in PSI, and which results on the physics of flames in microgravity support
-them? It answers with what each investigation found, with its citation. It has four views:
+them? It answers with what each investigation found, with its citation. It has five views, and
+a chat on the home page:
 
-- **Catalog.** The 24 investigations in three levels that the team assigned by hand: fire <!-- site/data/catalog.json: 24 investigations -->
+- **Overview.** The home page: a guide to using the site in three steps, the key figures of the
+  corpus and four charts (investigations by priority level, pillar by fuel phase, what the PSI
+  records state, and phenomena covered), all counted by the code from the published data files.
+- **Ask the investigations.** The chat of the overview, described under "How it works".
+- **Catalog.** In its own tab. The 24 investigations in three levels that the team assigned by hand: fire <!-- site/data/catalog.json: 24 investigations -->
   safety (12), physical basis (8), and efficiency and propulsion (4). The reason for each one <!-- site/data/catalog.json: level 1 = 12, level 2 = 8, level 3 = 4 -->
   is in `data/levels.csv`. Within a level, the investigations with per-test tables come first.
 - **Investigation card.** A fixed set of fields per investigation. Each field shows the passage
@@ -57,9 +64,9 @@ them? It answers with what each investigation found, with its citation. It has f
   with a chart of the measured points and a CSV download.
 
 **What it does not do.** It does not assess risk and does not order anything by level of risk:
-the PSI records give neither probability nor severity. It does not recommend safety measures
-and does not generate scenarios; that judgment belongs to whoever designs the mission or the
-experiment. It does not match a situation by atmosphere (oxygen, pressure, flow), because most
+the PSI records give neither probability nor severity. It does not generate scenarios, and
+outside the chat it does not recommend safety measures; that judgment belongs to whoever designs
+the mission or the experiment. It does not match a situation by atmosphere (oxygen, pressure, flow), because most
 PSI records do not report those conditions. It does not fit any relation over the FLEX table: <!-- site/data/quant/PSI-69.json: "fit": null -->
 the table is published as read from the sheets.
 
@@ -70,7 +77,20 @@ the passage has to appear literally in the field it names, and every number in t
 to be in that passage. Only the fields that pass are published. Of 159 fields checked, 147 <!-- site/data/verification.json: checked 159, passed 147, dropped 12 -->
 passed and 12 were dropped. Two team members also reviewed a sample of 30 verified fields by <!-- site/data/verification.json: manual_sample n 30, correct 27 -->
 hand, and 27 were correct; the fields found wrong were removed. The site shows these numbers in
-its verification panel. No text on the site is written live by a language model.
+its verification panel. Outside the chat, no text on the site is written live by a language
+model.
+
+The chat sends each question, of up to 500 characters, to a function that asks the Gemini API <!-- functions/api/ask.js: MAX_QUESTION_CHARS = 500 -->
+live, with the catalog and the verified fields of the cards as the only corpus. Before
+answering, the code drops every sentence without a citation, every sentence that cites anything
+other than a verified field of a card, and every sentence with a number that is not in the
+cited fields, with the same rule as the card check. Each kept sentence opens the literal passage
+it cites, taken from the card and not from the model's answer; lists and charts in an answer are
+computed by the code. Safety suggestions inferred by the model go in a separate block marked as
+AI-generated, not as findings: the code checks which passages they rely on, not that the
+inference is correct. The three objectives of the challenge are offered as suggested prompts,
+and if the live service cannot answer, the chat offers the answers saved for them. The rest of
+the site does not depend on the chat.
 
 **Benefits.** A researcher or engineer can see, for a given situation, which investigations
 bear on it and what each one found, and can open the PSI passage behind every statement. What
@@ -81,9 +101,10 @@ for those who design missions and experiments on fire safety in microgravity.
 
 **Tools and languages.** Python, standard library only, for the scripts that take the PSI
 snapshot, read the FLEX test sheets, build and check the cards and build the catalog. Plain
-HTML, CSS and JavaScript, with no third-party library, for the site. Cloudflare Pages hosts the
-site; GitHub hosts the repository and runs a hygiene check on every change. The Gemini API
-drafted the cards before publishing.
+HTML, CSS and JavaScript, with no third-party library, for the site, with the Space Grotesk
+typeface for the brand and the headings. Cloudflare Pages hosts the site and the function of the
+chat; GitHub hosts the repository and runs a hygiene check on every change. The Gemini API
+drafted the cards before publishing and answers the chat live.
 
 ## Use of Super Intelligence (SI)
 
@@ -99,7 +120,11 @@ as follows, and what they produced is marked in the project:
 - **Gemini API (Google), model `gemini-3.5-flash-lite`, free tier.** Drafted the investigation
   cards before publishing; only public NASA text was sent. Each card carries a `generated_by`
   field with the tool, the model and the date, and the site shows it on each card. Only the
-  fields whose passage is found literally in the PSI record are published.
+  fields whose passage is found literally in the PSI record are published. It also answers the
+  chat of the site live: the question of whoever uses the site is sent to it, with the catalog
+  and the verified fields of the cards. Each answer is marked "AI-generated" with the tool, the
+  model, the time and how many sentences the citation check kept and dropped; the saved answers
+  carry a `generated_by` field.
 
 The `ai-log/` folder of the repository records, per team member, what was asked, with which
 tool and model, and what a person checked or corrected. It also carries the mark for files that
@@ -136,6 +161,8 @@ No Space Agency Partner data was used. Data, tools and their licenses or conditi
 - **Claude Code and Claude in Chrome (Anthropic)**: Anthropic's Consumer Terms of Service,
   <https://www.anthropic.com/legal/consumer-terms>, or Commercial Terms of Service,
   <https://www.anthropic.com/legal/commercial-terms>, depending on the account.
+- **Space Grotesk** (typeface, by The Space Grotesk Project Authors): SIL Open Font License 1.1,
+  as stated in its repository, <https://github.com/floriankarsten/space-grotesk>.
 - **Cloudflare Pages**: Cloudflare Self-Serve Subscription Agreement,
   <https://www.cloudflare.com/terms/>.
 - **GitHub and GitHub Actions**: GitHub Terms of Service,
