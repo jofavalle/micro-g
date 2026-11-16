@@ -160,13 +160,13 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 }
 
 /* The brand is "micro-G", with a capital G, after a mark drawn with CSS only: a
-   spherical flame, as a flame burns in microgravity, with a hot core and a blue
-   edge, crossed by a thin orbit whose far side passes behind it. */
+   flame in microgravity, which burns as a blue sphere, brighter at its edge, with
+   a faint warm core. */
 .brand {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding-left: 1.6em;
+  padding-left: 1.55em;
   font-family: var(--mono);
   font-size: 1.7rem;
   font-weight: 500;
@@ -176,32 +176,18 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   text-decoration: none;
 }
 
-.brand::before,
-.brand::after {
+.brand::before {
   content: "";
   position: absolute;
   top: 50%;
+  left: 0.1em;
+  width: 1.12em;
+  height: 1.12em;
+  margin-top: -0.56em;
   border-radius: 50%;
+  background: radial-gradient(circle, #fff1dc 0 5%, #b9cbff 16%, #7ea2ff 32%, #5a84ff 47%, #9db9ff 56%, rgba(80, 115, 255, 0.55) 66%, rgba(70, 100, 240, 0.14) 83%, transparent 100%);
+  box-shadow: 0 0 0.6em rgba(90, 130, 255, 0.5);
   pointer-events: none;
-}
-
-.brand::before {
-  left: 0.26em;
-  width: 0.86em;
-  height: 0.86em;
-  margin-top: -0.43em;
-  background: radial-gradient(circle at 50% 56%, #fff4e6 0 9%, #ffbe7a 22%, #ff8a4c 38%, rgba(124, 92, 255, 0.85) 62%, rgba(111, 157, 255, 0.3) 82%, transparent 100%);
-  box-shadow: 0 0 0.45em rgba(140, 100, 255, 0.45);
-}
-
-.brand::after {
-  left: 0;
-  width: 1.38em;
-  height: 0.46em;
-  margin-top: -0.23em;
-  border: 1.5px solid rgba(190, 160, 255, 0.8);
-  border-top-color: transparent;
-  transform: rotate(-20deg);
 }
 
 .brand:hover { color: var(--text); }
