@@ -976,20 +976,22 @@ async function renderOverview(view, isCurrent) {
   const entries = [...catalog.investigations].sort(compareEntries);
   const grid = pillarFuelGrid(entries);
 
+  // The figures and the charts first; the guide and the provenance, longer to
+  // read, under them.
   view.replaceChildren(
     el("div", { class: "catalog-head overview-head" },
       el("h1", {}, "Overview"),
       el("p", { class: "lead" },
         `What the ${plural(entries.length, "combustion investigation", "combustion investigations")} ` +
-        "of the corpus cover. Every number on this page is counted from the published data files."),
-      provenance(catalog)),
-    usageGuide(entries, grid),
+        "of the corpus cover. Every number on this page is counted from the published data files.")),
     keyFigures(entries),
     el("div", { class: "overview-panels" },
       levelPanel(entries),
       mapPanel(entries, grid),
       fieldsPanel(entries),
-      phenomenaPanel(entries)));
+      phenomenaPanel(entries)),
+    usageGuide(entries, grid),
+    provenance(catalog));
 }
 
 function usageGuide(entries, grid) {
@@ -1223,7 +1225,8 @@ function fieldsPanel(entries) {
       const n = cards.filter((c) => isObject(c.fields[key]) && c.fields[key].status === "verified").length;
       return { label, value: `${n} of ${cards.length}`, share: n / cards.length, gap: n === 0 };
     });
-    body.replaceChildren(unreadNote, barList(rows));
+    // replaceChildren writes a null as the text "null": the note goes only if there is one.
+    body.replaceChildren(...[unreadNote, barList(rows)].filter(Boolean));
   });
   return overviewPanel("chart-fields", "What the PSI records state",
     "For each field of the investigation cards, how many cards have it verified, with a passage " +

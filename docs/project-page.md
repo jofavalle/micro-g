@@ -101,8 +101,8 @@ for those who design missions and experiments on fire safety in microgravity.
 
 **Tools and languages.** Python, standard library only, for the scripts that take the PSI
 snapshot, read the FLEX test sheets, build and check the cards and build the catalog. Plain
-HTML, CSS and JavaScript, with no third-party library, for the site, with the Space Grotesk
-typeface for the brand and the headings. Cloudflare Pages hosts the site and the function of the
+HTML, CSS and JavaScript, with no third-party library, for the site, with the Inter and
+JetBrains Mono typefaces. Cloudflare Pages hosts the site and the function of the
 chat; GitHub hosts the repository and runs a hygiene check on every change. The Gemini API
 drafted the cards before publishing and answers the chat live.
 
@@ -161,8 +161,11 @@ No Space Agency Partner data was used. Data, tools and their licenses or conditi
 - **Claude Code and Claude in Chrome (Anthropic)**: Anthropic's Consumer Terms of Service,
   <https://www.anthropic.com/legal/consumer-terms>, or Commercial Terms of Service,
   <https://www.anthropic.com/legal/commercial-terms>, depending on the account.
-- **Space Grotesk** (typeface, by The Space Grotesk Project Authors): SIL Open Font License 1.1,
-  as stated in its repository, <https://github.com/floriankarsten/space-grotesk>.
+- **Inter** (typeface, by The Inter Project Authors): SIL Open Font License 1.1, as stated in
+  the license file of its Fontsource package, <https://github.com/rsms/inter>.
+- **JetBrains Mono** (typeface, by The JetBrains Mono Project Authors): SIL Open Font License
+  1.1, as stated in the license file of its Fontsource package,
+  <https://github.com/JetBrains/JetBrainsMono>.
 - **Cloudflare Pages**: Cloudflare Self-Serve Subscription Agreement,
   <https://www.cloudflare.com/terms/>.
 - **GitHub and GitHub Actions**: GitHub Terms of Service,
