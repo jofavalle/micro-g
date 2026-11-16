@@ -1,4 +1,4 @@
-<!-- AI-assisted: Claude Code (claude-fable-5-2, claude-opus-5-5), reviewed by jofavalle -->
+<!-- AI-assisted: Claude Code (claude-fable-5-2, claude-opus-5-5), reviewed by jofavalle, cesarp03 -->
 # micro-G
 
 Team project for the NASA Space Apps Challenge 2026,
@@ -15,6 +15,8 @@ kept only if they cite a verified field of a card.
 
 Published site: <https://micro-g.pages.dev/> (the repository and the address keep the
 lowercase name, micro-g)
+
+Demo video (under 30 seconds): <https://youtu.be/e7AWKy-KzHQ>
 
 This project is not affiliated with NASA and is not endorsed by it.
 
@@ -155,6 +157,9 @@ Licenses and conditions were read on each source's own pages on 15 November 2026
 | Inter, by The Inter Project Authors | Typeface of the text and the headings of the site. Served from `site/fonts/Inter-wght.woff2`, the Latin variable file of the package `@fontsource-variable/inter` 5.2.8 (Fontsource), with its license text, `site/fonts/Inter-OFL.txt` | <https://github.com/rsms/inter>, package <https://www.npmjs.com/package/@fontsource-variable/inter> | SIL Open Font License 1.1, as stated in the license file of the package |
 | JetBrains Mono, by The JetBrains Mono Project Authors | Monospaced typeface of the brand, the navigation, the labels and the figures of the site. Served from `site/fonts/JetBrainsMono-wght.woff2`, the Latin variable file of the package `@fontsource-variable/jetbrains-mono` 5.2.8 (Fontsource), with its license text, `site/fonts/JetBrainsMono-OFL.txt` | <https://github.com/JetBrains/JetBrainsMono>, package <https://www.npmjs.com/package/@fontsource-variable/jetbrains-mono> | SIL Open Font License 1.1, as stated in the license file of the package |
 | Cloudflare Pages | Hosts the published site and the functions in `functions/` | <https://pages.cloudflare.com/> | [Cloudflare Self-Serve Subscription Agreement](https://www.cloudflare.com/terms/) |
+| YouTube | Hosts the demo video of the project, a screen recording of the published site narrated in English by a team member | <https://youtu.be/e7AWKy-KzHQ> | [YouTube Terms of Service](https://www.youtube.com/t/terms) |
+| Samsung Camera app, on a Samsung Galaxy S25 | Recorded the footage of the demo video | <https://www.samsung.com/> | Proprietary software of Samsung Electronics, preinstalled on the device, under Samsung's end user license agreement |
+| DaVinci Resolve (Blackmagic Design) | Edited the demo video | <https://www.blackmagicdesign.com/products/davinciresolve> | Proprietary software of Blackmagic Design, under its end user license agreement |
 | GitHub and GitHub Actions | Host the repository and run the hygiene check; `tools/build_cards.py` links to the review comments of this repository | <https://github.com/> | [GitHub Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service). The workflow uses `actions/checkout`, under the [MIT License](https://github.com/actions/checkout/blob/main/LICENSE) |
 | Claude Code (Anthropic) | Assisted in writing code and documentation; the detail is in `ai-log/` | <https://code.claude.com/docs/en/legal-and-compliance> | Anthropic's [Consumer Terms of Service](https://www.anthropic.com/legal/consumer-terms) or [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms), depending on the account |
 | Python | Runs the scripts of `tools/`, `explore/` and `.github/`, with the standard library only in `tools/` and `.github/` | <https://www.python.org/> | [Python Software Foundation License Version 2](https://docs.python.org/3/license.html) |
@@ -179,11 +184,15 @@ AI tools were used in this project, and what they produced is marked:
   the model and the date.
 - **Code and documentation.** Files written with AI assistance carry a header line,
   `AI-assisted: <tool> (<model>), reviewed by <github-user>`.
+- **Demo video.** The [demo video](https://youtu.be/e7AWKy-KzHQ) opens with a one-second clip
+  generated with Claude (`claude-fable-5-2`), marked on screen as AI-generated. The rest is a
+  screen recording of the published site, narrated by a team member; the narration script was
+  drafted with Claude Code and edited by the team.
 - **Log.** [ai-log/](ai-log/README.md) records, per team member, what was asked, with which
   tool and model, and what a person checked or corrected. It also carries the mark for files
   that cannot hold a comment, such as JSON.
 
-No image, video or audio was generated with AI for this repository. The levels of the catalog
+No image, video or audio in this repository was generated with AI. The levels of the catalog
 and the idea of the solution are the team's.
 
 ## License
