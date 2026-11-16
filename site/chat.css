@@ -62,7 +62,7 @@
 
 .ask-row:focus-within {
   border-color: var(--accent, currentColor);
-  box-shadow: 0 0 0 1px var(--accent, currentColor), 0 0 28px rgba(111, 157, 255, 0.18);
+  box-shadow: 0 0 0 1px var(--accent, currentColor), 0 0 28px rgba(130, 110, 255, 0.2);
 }
 
 .ask-input {
