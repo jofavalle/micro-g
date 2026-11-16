@@ -161,7 +161,9 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 
 /* The brand is "micro-G", with a capital G, after a mark drawn with CSS only: a
    flame in microgravity, which burns as a blue sphere, brighter at its edge, with
-   a faint warm core. */
+   a faint warm core. When the page loads, a flame in normal gravity (a yellow drop,
+   drawn upward by buoyancy) rounds out and gives way to that sphere, which then
+   breathes slowly. With reduced motion, only the still sphere is drawn. */
 .brand {
   position: relative;
   display: inline-flex;
@@ -188,6 +190,49 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   background: radial-gradient(circle, #fff1dc 0 5%, #b9cbff 16%, #7ea2ff 32%, #5a84ff 47%, #9db9ff 56%, rgba(80, 115, 255, 0.55) 66%, rgba(70, 100, 240, 0.14) 83%, transparent 100%);
   box-shadow: 0 0 0.6em rgba(90, 130, 255, 0.5);
   pointer-events: none;
+  animation:
+    flame-sphere-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 1.1s both,
+    flame-breathe 3.6s ease-in-out 2.2s infinite;
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0.37em;
+  width: 0.58em;
+  height: 0.92em;
+  margin-top: -0.62em;
+  border-radius: 50% 50% 46% 46% / 64% 64% 36% 36%;
+  background: radial-gradient(ellipse 85% 80% at 50% 72%, #fffbe8 0 12%, #ffe08a 28%, #ffa040 55%, #ff7a30 80%, rgba(255, 100, 40, 0.65) 100%);
+  box-shadow: 0 0 0.45em rgba(255, 140, 50, 0.35);
+  transform-origin: 50% 85%;
+  pointer-events: none;
+  animation: flame-in-gravity 2.2s ease-in both;
+}
+
+@keyframes flame-in-gravity {
+  0% { opacity: 0; transform: scale(0.85, 0.7); }
+  12% { opacity: 1; transform: scale(1, 1); }
+  25% { transform: scale(0.96, 1.06); }
+  38% { transform: scale(1.02, 0.97); }
+  50% { opacity: 1; transform: scale(1, 1.03); }
+  100% { opacity: 0; transform: translateY(0.18em) scale(1.25, 0.7); }
+}
+
+@keyframes flame-sphere-in {
+  from { opacity: 0; transform: scale(0.55); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flame-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0.6em rgba(90, 130, 255, 0.5); }
+  50% { transform: scale(1.07); box-shadow: 0 0 0.85em rgba(90, 130, 255, 0.65); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand::before { animation: none; }
+  .brand::after { display: none; }
 }
 
 .brand:hover { color: var(--text); }
