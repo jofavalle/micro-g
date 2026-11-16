@@ -24,16 +24,16 @@
 
 /* One dark theme, minimal, with a few touches of a terminal: flat surfaces, thin
    borders, monospaced labels and figures, and a thin line that fades from the accent
-   to the flame. Every text colour keeps a contrast of 4.5:1 or more on the surfaces
-   below. Two columns: --narrow for the chat and the verification report, centred,
-   and --wide for the charts and the other views. */
+   to the flame, over a sky of stars. Every text colour keeps a contrast of 4.5:1 or
+   more on the surfaces below. Two columns, both centred: --narrow for the chat and
+   --wide for everything else. */
 :root {
   color-scheme: dark;
-  --bg: #070b16;
-  --surface: #0e1527;
-  --surface-raised: #131c33;
-  --border: #263252;
-  --border-soft: #1b2541;
+  --bg: #04060d;
+  --surface: #0a101e;
+  --surface-raised: #0f1729;
+  --border: #222d4a;
+  --border-soft: #162038;
   --text: #e9eef8;
   --muted: #a6b1c7;
   --link: #8cc0ff;
@@ -52,8 +52,8 @@
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
   --display: var(--sans);
-  --narrow: 48rem;
-  --wide: 72rem;
+  --narrow: 64rem;
+  --wide: 80rem;
   --radius: 12px;
   font-family: var(--sans);
   line-height: 1.6;
@@ -70,8 +70,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Behind the page and as large as the window: one faint glow at the top, where the
-   chat is, and a faint grid that fades out before the text. */
+/* The sky, fixed behind the page and exactly as large as the window: faint nebulae
+   and stars. The stars are dimmer in the middle, where the text is. */
 body::before,
 body::after {
   content: "";
@@ -83,16 +83,23 @@ body::after {
 
 body::before {
   background:
-    radial-gradient(ellipse 60% 38% at 50% -6%, rgba(84, 104, 230, 0.16), transparent 70%),
-    radial-gradient(ellipse 30% 22% at 78% 0%, rgba(255, 140, 70, 0.05), transparent 70%);
+    radial-gradient(ellipse 50% 32% at 50% -6%, rgba(84, 104, 230, 0.12), transparent 70%),
+    radial-gradient(ellipse 55% 40% at 10% 4%, rgba(70, 60, 180, 0.10), transparent 70%),
+    radial-gradient(ellipse 40% 32% at 92% 12%, rgba(150, 70, 170, 0.07), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 65% 100%, rgba(30, 110, 150, 0.06), transparent 70%);
 }
 
 body::after {
   background:
-    linear-gradient(rgba(111, 157, 255, 0.045) 1px, transparent 1px) 0 0 / 56px 56px,
-    linear-gradient(90deg, rgba(111, 157, 255, 0.045) 1px, transparent 1px) 0 0 / 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 45% at 50% 0%, #000, transparent 75%);
-  mask-image: radial-gradient(ellipse 70% 45% at 50% 0%, #000, transparent 75%);
+    radial-gradient(1px 1px at 24px 36px, rgba(255, 255, 255, 0.85), transparent 1.5px) 0 0 / 170px 170px,
+    radial-gradient(1px 1px at 112px 92px, rgba(200, 215, 255, 0.6), transparent 1.5px) 0 0 / 170px 170px,
+    radial-gradient(1.5px 1.5px at 70px 150px, rgba(255, 230, 200, 0.7), transparent 2px) 0 0 / 230px 230px,
+    radial-gradient(1px 1px at 190px 40px, rgba(255, 255, 255, 0.5), transparent 1.5px) 0 0 / 230px 230px,
+    radial-gradient(1px 1px at 40px 210px, rgba(185, 200, 255, 0.5), transparent 1.5px) 0 0 / 290px 290px,
+    radial-gradient(1.5px 1.5px at 250px 120px, rgba(255, 255, 255, 0.6), transparent 2px) 0 0 / 370px 370px,
+    radial-gradient(1px 1px at 300px 330px, rgba(255, 210, 230, 0.45), transparent 1.5px) 0 0 / 370px 370px;
+  -webkit-mask-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0.45) 22%, rgba(0, 0, 0, 0.45) 78%, #000);
+  mask-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0.45) 22%, rgba(0, 0, 0, 0.45) 78%, #000);
 }
 
 h1,
@@ -138,7 +145,7 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   gap: 0.5rem 1.5rem;
   padding: 0.85rem max(1rem, calc((100% - var(--wide)) / 2 + 1rem));
   border-bottom: 1px solid var(--border-soft);
-  background: rgba(7, 11, 22, 0.6);
+  background: rgba(4, 6, 13, 0.7);
 }
 
 .site-header::after {
@@ -155,7 +162,7 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 /* The brand is "micro-G", with a capital G, followed by a still block cursor. */
 .brand {
   font-family: var(--mono);
-  font-size: 1.1rem;
+  font-size: 1.55rem;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -167,9 +174,9 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   content: "";
   display: inline-block;
   width: 0.5em;
-  height: 1.05em;
-  margin-left: 0.2em;
-  vertical-align: -0.18em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: -0.16em;
   background: var(--accent);
   opacity: 0.8;
 }
@@ -197,19 +204,20 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 }
 
 .tagline {
-  width: min(var(--narrow), calc(100% - 2rem));
-  margin: 2.5rem auto 0;
+  width: min(var(--wide), calc(100% - 2rem));
+  margin: 1.25rem auto 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 
-/* Verification report, visible on every view, in the narrow column */
+/* Verification report, at the foot of every view, before the known gaps. On a wide
+   window the numbers and the method sit side by side. */
 
 .verification {
   position: relative;
-  width: min(var(--narrow), calc(100% - 2rem));
-  margin: 2rem auto 3rem;
+  width: min(calc(var(--wide) - 2rem), calc(100% - 2rem));
+  margin: 0 auto 2rem;
   padding: 1.25rem 1.5rem 1.35rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
@@ -270,6 +278,19 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   margin: 1rem 0 0;
   color: var(--muted);
   font-size: 0.88rem;
+}
+
+@media (min-width: 900px) {
+  .verification {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: center;
+  }
+
+  .verification > .eyebrow,
+  .verification > .verification-title { grid-column: 1 / -1; }
+  .verification-method { margin: 0; }
 }
 
 /* Views */
@@ -538,19 +559,29 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 .gap p { margin: 0.25rem 0; }
 .gap-title { font-weight: 600; }
 
-/* Overview: the charts first, in the wide column, and the longer text under them */
+/* Overview: the figures and the charts first, close under the chat so that they are
+   in view without scrolling, and the longer text under them */
 
-.overview-head { margin: 0 auto 2rem; text-align: center; }
-.overview-head h1 { margin-top: 0; }
-.overview-head .lead { max-width: 40rem; margin: 0.25rem auto 0; color: var(--muted); }
+.overview-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+  margin: 1.25rem 0 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.view .overview-head h1 { margin: 0; font-size: 1.35rem; }
+.overview-head .lead { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
 .guide,
 .figures,
-.overview-panels { margin: 0 0 2.5rem; }
+.overview-panels { margin: 0 0 2rem; }
 
 .guide h2,
 .figures h2 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.6rem;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -608,7 +639,7 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 
 .tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
   gap: 0.75rem;
   margin: 0;
   padding: 0;
@@ -617,7 +648,7 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 
 .tile {
   min-width: 0;
-  padding: 1rem 1.1rem;
+  padding: 0.85rem 1rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   background: var(--surface);
@@ -628,7 +659,7 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 
 .tile-value {
   font-family: var(--mono);
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.2;
@@ -751,11 +782,7 @@ a.bar-line:focus-visible .bar-label { text-decoration: underline; text-underline
 
 /* Known gaps and the link to the repository, at the foot of every view (the box comes from .gap) */
 
-.site-footer {
-  margin-top: 1rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-soft);
-}
+.site-footer { padding-bottom: 0.5rem; }
 
 .site-gaps {
   width: min(calc(var(--wide) - 2rem), calc(100% - 2rem));
@@ -772,9 +799,10 @@ a.bar-line:focus-visible .bar-label { text-decoration: underline; text-underline
 }
 
 @media (max-width: 480px) {
+  .brand { font-size: 1.3rem; }
   .site-nav { gap: 0.1rem; }
-  .site-nav a { padding: 0.3rem 0.5rem; }
-  .tagline { margin-top: 1.75rem; }
+  .site-nav a { padding: 0.3rem 0.45rem; font-size: 0.8rem; }
+  .tagline { margin-top: 1.25rem; }
   .verification { padding: 1rem 1.1rem; }
   .bar-line { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.1rem; }
   .bar-label { grid-column: 1 / -1; }

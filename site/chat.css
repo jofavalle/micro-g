@@ -1,21 +1,22 @@
 /* AI-assisted: Claude Code (claude-opus-5-5), reviewed by PabloBernal-CPU, jofavalle */
-/* The chat of the home page (site/chat.js), centred in the narrow column, with a
-   rounded question box in the manner of the chat of an AI web app. It uses the
-   colour variables of style.css, with fallbacks that work on a light or a dark
-   page. The chat is in the flow of the page: nothing in it is fixed or sticky, so
-   a long answer scrolls with the page. */
+/* The chat of the home page (site/chat.js), centred in the narrow column and kept
+   short so that the overview shows under it, with a rounded question box in the
+   manner of the chat of an AI web app. It uses the colour variables of style.css,
+   with fallbacks that work on a light or a dark page. The chat is in the flow of
+   the page: nothing in it is fixed or sticky, so a long answer scrolls with the
+   page. */
 
 .ask {
-  width: min(var(--narrow, 48rem), calc(100% - 2rem));
+  width: min(var(--narrow, 64rem), calc(100% - 2rem));
   margin: 0 auto;
-  padding: 1.25rem 0 0.5rem;
+  padding: 0.75rem 0 0;
 }
 
 .ask[hidden] { display: none; }
 
 .ask-title {
-  margin: 0 0 0.6rem;
-  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.75rem, 3.6vw, 2.3rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.15;
@@ -23,8 +24,9 @@
 }
 
 .ask-lead {
-  max-width: 40rem;
-  margin: 0 auto 1.75rem;
+  max-width: 52rem;
+  margin: 0 auto 1rem;
+  font-size: 0.95rem;
   color: var(--muted, currentColor);
   text-align: center;
 }
@@ -122,34 +124,40 @@
   text-align: center;
 }
 
-.ask-prompts { margin-top: 1.75rem; }
+.ask-prompts { margin-top: 0.75rem; }
 
 .ask-prompts-title {
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.45rem;
   color: var(--muted, currentColor);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
 .ask-prompt-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Short cards: the label and two lines of the objective. The whole objective is
+   still the text of the button, and the answer repeats it as the question. */
 .ask-prompt {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  /* The clamp alone leaves the next line in view inside the bottom padding:
+     clipping at the content box hides it. */
+  overflow: clip;
+  overflow-clip-margin: content-box;
   width: 100%;
-  height: 100%;
-  padding: 0.75rem 0.9rem;
+  padding: 0.55rem 0.8rem;
   border-color: var(--border-soft, var(--border, currentColor));
-  border-radius: 14px;
-  font-size: 0.86rem;
+  border-radius: 12px;
+  color: var(--muted, currentColor);
+  font-size: 0.8rem;
   line-height: 1.45;
   text-align: left;
   white-space: normal;
@@ -160,14 +168,16 @@
 .ask-prompt:hover {
   border-color: var(--border, currentColor);
   background: var(--surface-raised, transparent);
+  color: inherit;
 }
 
 .ask-prompt-label {
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.1rem;
+  line-height: 1.45;
   color: var(--accent, currentColor);
   font-family: var(--mono, monospace);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -293,7 +303,7 @@
 .ask-saved-offer > p { margin: 0 0 0.35rem; }
 
 @media (max-width: 480px) {
-  .ask { padding-top: 1rem; }
+  .ask { padding-top: 0.5rem; }
   .ask-row { padding-left: 0.9rem; }
   .ask-send { padding: 0 0.95rem; }
   .ask-answer:not(:empty) { padding: 1rem; }
