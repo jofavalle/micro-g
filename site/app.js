@@ -1225,7 +1225,8 @@ function fieldsPanel(entries) {
       const n = cards.filter((c) => isObject(c.fields[key]) && c.fields[key].status === "verified").length;
       return { label, value: `${n} of ${cards.length}`, share: n / cards.length, gap: n === 0 };
     });
-    body.replaceChildren(unreadNote, barList(rows));
+    // replaceChildren writes a null as the text "null": the note goes only if there is one.
+    body.replaceChildren(...[unreadNote, barList(rows)].filter(Boolean));
   });
   return overviewPanel("chart-fields", "What the PSI records state",
     "For each field of the investigation cards, how many cards have it verified, with a passage " +
