@@ -20,7 +20,7 @@ at 17:42 and PR #92 (order #87) at 18:49, and at 18:51 the files served by
   situation view (#45); the per-test table of FLEX, downloadable as CSV, which says why no
   relation is fitted (#48, #73); and a footer with the known gaps of partial gravity and
   combustion gases (#74) and a link to the repository. The visible name is "micro-G", with
-  Space Grotesk and a dark theme (#86).
+  Inter, JetBrains Mono and a dark theme (#86, #97).
 - **The decision is in #16**, extended on the afternoon of the 15th by its comment "Ampliación
   del 15 de noviembre por la tarde" (overview, chat and brand). The body of #16 still has to
   be updated with that comment and with point 3, which is done by whoever coordinates.

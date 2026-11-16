@@ -1,13 +1,23 @@
 /* AI-assisted: Claude Code (claude-opus-5-5), reviewed by cesarp03, aalexanderrz, PabloBernal-CPU */
 
-/* Space Grotesk, by The Space Grotesk Project Authors, under the SIL Open Font
-   License 1.1 (fonts/OFL.txt). The variable font fonts/woff2/SpaceGrotesk[wght].woff2
-   of https://github.com/floriankarsten/space-grotesk, commit 03507d0, renamed.
-   It is used for the brand and the headings; the rest keeps the system font. */
+/* Inter, by The Inter Project Authors, and JetBrains Mono, by The JetBrains Mono
+   Project Authors, both under the SIL Open Font License 1.1 (fonts/Inter-OFL.txt,
+   fonts/JetBrainsMono-OFL.txt). Each is the Latin variable file of its Fontsource
+   package, version 5.2.8 (@fontsource-variable/inter and
+   @fontsource-variable/jetbrains-mono), renamed. Inter sets the text and the
+   headings; JetBrains Mono the brand, the navigation, the labels and the figures. */
 @font-face {
-  font-family: "Space Grotesk";
-  src: url("fonts/SpaceGrotesk-wght.woff2") format("woff2");
-  font-weight: 300 700;
+  font-family: "Inter";
+  src: url("fonts/Inter-wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-wght.woff2") format("woff2");
+  font-weight: 100 800;
   font-style: normal;
   font-display: swap;
 }
@@ -34,8 +44,10 @@
   --level-3: #93b8ea;
   --chip-tables: #183a26;
   --chip-tables-text: #a8e0b8;
-  --display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --display: var(--sans);
+  font-family: var(--sans);
   line-height: 1.45;
   accent-color: var(--accent);
 }
@@ -114,8 +126,7 @@ code { font-size: 0.9em; overflow-wrap: anywhere; }
   padding-bottom: 0.75rem;
 }
 
-/* The brand is "micro-G", with a capital G. Space Grotesk stops at weight 700,
-   so a thin stroke of the text colour makes it heavier than the old 700. */
+/* The brand is "micro-G", with a capital G. */
 .brand {
   font-family: var(--display);
   font-size: 2.3rem;
