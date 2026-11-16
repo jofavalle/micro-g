@@ -7,9 +7,11 @@ longer in force is deleted, not piled up.
 
 ## Current state
 
-**2026-11-15, 18:56: the overview and the chat are published.** PR #90 (order #86) was merged
-at 17:42 and PR #92 (order #87) at 18:49, and at 18:51 the files served by
-<https://micro-g.pages.dev/> were the same as those of `main`.
+**2026-11-15, 20:55: the redesign of the site is published.** PR #98 (order #97) was merged
+at 20:40 by cesarp03, after approving it: the one exception to the 20:00 freeze, agreed by
+jofavalle and written in #97. At 20:55 the files served by <https://micro-g.pages.dev/> were
+the same as those of `main`; only the edge cache of Cloudflare still serves the removed Space
+Grotesk font, which no page links.
 
 - **What is published:** the overview, home page of the site, with a guide in three steps, key
   figures and four charts counted from `site/data/` (#86); the chat "Ask the investigations",
@@ -20,17 +22,21 @@ at 17:42 and PR #92 (order #87) at 18:49, and at 18:51 the files served by
   situation view (#45); the per-test table of FLEX, downloadable as CSV, which says why no
   relation is fitted (#48, #73); and a footer with the known gaps of partial gravity and
   combustion gases (#74) and a link to the repository. The visible name is "micro-G", with
-  Inter, JetBrains Mono and a dark theme (#86, #97).
+  a mark drawn with CSS only, in which a flame in normal gravity turns into the blue sphere
+  of a flame in microgravity once a minute; Inter and JetBrains Mono; and a black and purple
+  theme with stars (#86, #97). The home page puts the chat first and the overview and its
+  figures under it; the verification report is at the foot of every view (#97).
 - **The decision is in #16**, extended on the afternoon of the 15th by its comment "Ampliación
   del 15 de noviembre por la tarde" (overview, chat and brand). The body of #16 still has to
   be updated with that comment and with point 3, which is done by whoever coordinates.
 - **Point 3 of #16 is decided:** the FLEX table is delivered without a fit, and the view says
   why, with the count of #48 (#73).
 - **The documentation follows the site:** the `README.md` and the text of the project page,
-  `docs/project-page.md` (#76), describe the overview and the chat since #88.
-- **Still open:** the demo video (#75, with no one assigned at 18:56) and the checks to publish
-  the repository and submit (#77, with no box ticked at 18:56). The repository is still
-  private.
+  `docs/project-page.md` (#76), describe the overview and the chat since #88, and the
+  typefaces since #97.
+- **Still open:** the demo video (#75, taken by cesarp03 at 20:40, after the redesign was
+  merged) and the checks to publish the repository and submit (#77, with no box ticked at
+  20:55). The repository is still private.
 
 ## Next step
 
@@ -39,14 +45,16 @@ at 17:42 and PR #92 (order #87) at 18:49, and at 18:51 the files served by
   history reviewed again after the last merge, each member's confirmation that the name and
   the email address of their own commits can be public, and `main` protected with one
   required approval.
-- **Demo:** a video of 30 seconds or less, recorded from the published URL, by aalexanderrz
-  (#75). The team chooses what it shows (point 6 of #16) and writes it in #75 before recording.
-- **The project page:** jofavalle pastes the text of `docs/project-page.md` after #88 is
-  merged and saves with "Save Progress". It is edited by one person only, because its lock does
-  not block (point 11 of #16).
-- **Checkpoints of Sunday 15:** at 20:00, freeze, and from then on only fixes are merged; at
-  22:00, final submission. Submission closes at 23:59 in the time of the team's local event,
-  which is San Salvador's ([local event schedule][agenda]; [Project Submission Guide][entrega]).
+- **Demo:** a video of 30 seconds or less, recorded from the published URL, by cesarp03, who
+  took #75 at 20:40. The team chooses what it shows (point 6 of #16) and writes it in #75
+  before recording.
+- **The project page:** jofavalle pastes the text of `docs/project-page.md` again, since #97
+  changed its typefaces and its list of licenses, and saves with "Save Progress". It is edited
+  by one person only, because its lock does not block (point 11 of #16).
+- **Checkpoints of Sunday 15:** since 20:00, freeze, and only fixes are merged (#97 was its
+  one exception, merged at 20:40); at 22:00, final submission. Submission closes at 23:59 in
+  the time of the team's local event, which is San Salvador's ([local event
+  schedule][agenda]; [Project Submission Guide][entrega]).
 - **The board:** `gh issue list --label orden` lists the open orders and `gh pr list` the
   review queue.
 - **What does not travel through git:** regenerating the cards against the LLM needs the key in
@@ -109,6 +117,11 @@ at 17:42 and PR #92 (order #87) at 18:49, and at 18:51 the files served by
   CFI (`PSI-39`) is not used (#16, #73).
 - **2026-11-15. The visible name is "micro-G".** The repository, its URL and the address of
   the site keep the lowercase name, micro-g (#86, #88).
+- **2026-11-15. The site has no image file.** The mark, its animation and the stars are
+  colours, gradients and shapes of CSS, and the charts are drawn by code from `site/data/`:
+  the rules ask for a visible watermark on AI-generated images and videos. The typefaces are
+  Inter and JetBrains Mono, under the SIL Open Font License 1.1, served from `site/fonts/`
+  with their license texts (#86, #97).
 - **2026-11-15. The interface reads `site/data/`.** `site/data/fixture/` stays as the
   hand-written example of the data contract; its values are invented and the interface shows
   a notice when it reads them (#54).
