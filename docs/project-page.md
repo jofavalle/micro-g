@@ -33,7 +33,7 @@ endorsed by it.
 
 ## Link to Project Demo
 
-TODO(#75)
+<https://youtu.be/e7AWKy-KzHQ>
 
 ## Link to Final Project
 
@@ -112,9 +112,13 @@ Yes. The idea of the solution and the levels of the catalog are the team's. SI t
 as follows, and what they produced is marked in the project:
 
 - **Claude Code (Anthropic), models `claude-opus-5-5` and `claude-fable-5-2`.** Assisted in
-  writing the code and the documentation. Each file written with its assistance carries a
-  header line `AI-assisted: <tool> (<model>), reviewed by <github-user>`.
-- **Claude in Chrome (Anthropic), model `claude-opus-5-5`.** Read source pages in a browser
+  writing the code and the documentation, and drafted the script of the narration of the demo
+  video, which the team edited. Each file written with its assistance carries a header line
+  `AI-assisted: <tool> (<model>), reviewed by <github-user>`.
+- **Claude (Anthropic), model `claude-fable-5-2`.** Generated the one-second clip that opens
+  the demo video, marked on screen as AI-generated.
+- **Claude in Chrome (Anthropic), models `claude-opus-5-5` and `claude-fable-5-2`.** Read source
+  pages in a browser
   for the team, such as license pages and the PSI passages of the manual sample; a team member
   checked what it returned against the pages.
 - **Gemini API (Google), model `gemini-3.5-flash-lite`, free tier.** Drafted the investigation
@@ -128,7 +132,8 @@ as follows, and what they produced is marked in the project:
 
 The `ai-log/` folder of the repository records, per team member, what was asked, with which
 tool and model, and what a person checked or corrected. It also carries the mark for files that
-cannot hold a comment, such as JSON. No image, video or audio was generated with SI.
+cannot hold a comment, such as JSON. Apart from the one-second clip that opens the demo video,
+no image, video or audio was generated with SI; the narration is the voice of a team member.
 
 ## NASA Data
 
@@ -168,6 +173,13 @@ No Space Agency Partner data was used. Data, tools and their licenses or conditi
   <https://github.com/JetBrains/JetBrainsMono>.
 - **Cloudflare Pages**: Cloudflare Self-Serve Subscription Agreement,
   <https://www.cloudflare.com/terms/>.
+- **YouTube**: hosts the demo video, <https://youtu.be/e7AWKy-KzHQ>; YouTube Terms of
+  Service, <https://www.youtube.com/t/terms>.
+- **Samsung Camera app**, on a Samsung Galaxy S25: recorded the footage of the demo video;
+  proprietary software of Samsung Electronics, under Samsung's end user license agreement.
+- **DaVinci Resolve** (Blackmagic Design): edited the demo video; proprietary software of
+  Blackmagic Design, under its end user license agreement,
+  <https://www.blackmagicdesign.com/products/davinciresolve>.
 - **GitHub and GitHub Actions**: GitHub Terms of Service,
   <https://docs.github.com/en/site-policy/github-terms/github-terms-of-service>; the workflow
   uses `actions/checkout`, MIT License.

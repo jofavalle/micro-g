@@ -7,12 +7,14 @@ longer in force is deleted, not piled up.
 
 ## Current state
 
-**2026-11-15, 20:55: the redesign of the site is published.** PR #98 (order #97) was merged
-at 20:40 by cesarp03, after approving it: the one exception to the 20:00 freeze, agreed by
-jofavalle and written in #97. At 20:55 the files served by <https://micro-g.pages.dev/> were
-the same as those of `main`; only the edge cache of Cloudflare still serves the removed Space
-Grotesk font, which no page links.
+**2026-11-15, 23:21: the project is submitted and closed.** jofavalle pasted the text of
+`docs/project-page.md` on the Space Apps project page and submitted it before the 23:59 close.
+The repository is public since 23:20, and `main` requires one approval since 23:25 (#77). No
+issue is open.
 
+- **What was submitted:** the published site, <https://micro-g.pages.dev/>; the demo video,
+  <https://youtu.be/e7AWKy-KzHQ>, public on YouTube and 29.4 s long (#75); and this
+  repository. `docs/project-page.md` holds the text pasted in each field of the project page.
 - **What is published:** the overview, home page of the site, with a guide in three steps, key
   figures and four charts counted from `site/data/` (#86); the chat "Ask the investigations",
   which asks Gemini live through `functions/api/ask.js` and keeps only the sentences that cite
@@ -26,48 +28,31 @@ Grotesk font, which no page links.
   of a flame in microgravity once a minute; Inter and JetBrains Mono; and a black and purple
   theme with stars (#86, #97). The home page puts the chat first and the overview and its
   figures under it; the verification report is at the foot of every view (#97).
-- **The decision is in #16**, whose body was brought up to date at 23:03 with its comments:
-  point 3 (the FLEX table without a fit, #73), the afternoon extension (overview, chat and
-  brand, #86 to #88) and how the line of the 13:00 checkpoint ended. #16 is closed with this
-  update; what is still open of it lives in #75 and #77.
-- **The documentation follows the site:** the `README.md` and the text of the project page,
-  `docs/project-page.md` (#76), describe the overview and the chat since #88, and the
-  typefaces since #97.
-- **Still open:** the demo video (#75, taken by cesarp03 at 20:40, after the redesign was
-  merged) and the checks to publish the repository and submit (#77, with no box ticked at
-  23:07). The repository is still private.
+- **The demo video** is a screen recording of the published site with an English voice by
+  aalexanderrz, recorded by PabloBernal-CPU and edited by aalexanderrz. It opens with a
+  one-second clip generated with Claude, marked on screen as AI-generated. Its link and its
+  tools reached `main` without a PR, in `dcc802f` (`README.md` and `ai-log/` only); #75 says
+  why and what was checked.
+- **The decision is in #16**, closed at 23:07 with its body up to date. **The checks to
+  publish and submit are in #77**, closed with this update.
 
 ## Next step
 
-- **#77 is the checklist** to make the repository public and submit; each box is ticked by
-  whoever checks it, with a comment that says what they looked at. Before going public: the
-  history reviewed again after the last merge, each member's confirmation that the name and
-  the email address of their own commits can be public, and `main` protected with one
-  required approval.
-- **Demo:** a video of 30 seconds or less, by cesarp03 (#75), with an English voice by
-  aalexanderrz. At 22:59, as jofavalle reported, it was being uploaded to YouTube, and only its
-  link on the project page was missing. #75 still asks for `site/demo.mp4` and a link in the
-  `README.md`: whoever closes it writes there where the video went and what the team chose to
-  show (point 6 of #16).
-- **The project page:** jofavalle pastes the text of `docs/project-page.md` again, since #97
-  changed its typefaces and its list of licenses, and saves with "Save Progress". It is edited
-  by one person only, because its lock does not block (point 11 of #16).
-- **Checkpoints of Sunday 15:** since 20:00, freeze, and only fixes are merged (#97 was its
-  one exception, merged at 20:40); at 22:00, final submission. Submission closes at 23:59 in
-  the time of the team's local event, which is San Salvador's ([local event
-  schedule][agenda]; [Project Submission Guide][entrega]).
-- **The board:** `gh issue list --label orden` lists the open orders and `gh pr list` the
-  review queue.
+- **Nothing is left to build.** What remains is to keep the project working until the
+  announcement of the global winners, on 26 January 2027: the video stays public, the
+  Cloudflare Pages project and its key `LLM_API_KEY` stay in place, and the Gemini project
+  stays without billing. If the chat's function fails, the chat offers its saved answers, and
+  the rest of the site does not depend on it.
+- **A change from here on** is a fix that keeps what was submitted working, through a PR with
+  one approval, which GitHub now requires on `main`.
+- **Optional, for whoever coordinates:** the Project Submission Guide warns that the judges'
+  web filter may block a new website, and suggests asking FortiGuard to classify it; for
+  `https://micro-g.pages.dev/` this has not been done (#75).
 - **What does not travel through git:** regenerating the cards against the LLM needs the key in
   a local `.env`, under the name `LLM_API_KEY`; without it, `tools/build_cards.py` rebuilds them
   from `data/llm_cache/`. The chat reads its key from Cloudflare, also as `LLM_API_KEY`, in
   Production and in Preview. The scripts of `explore/` need a `.venv` with what the
   `requirements.txt` of their folder declares.
-- **Each member:** after every `git pull`, a new Claude Code session; and their quota and
-  their use of AI in `ai-log/`.
-
-[agenda]: https://www.spaceappschallenge.org/2026/local-events/san-salvador/?tab=schedule
-[entrega]: https://www.spaceappschallenge.org/resources/project-submission-guide/
 
 ## Decisions in force
 
@@ -76,7 +61,9 @@ Grotesk font, which no page links.
   personal (`CLAUDE.local.md`, `.claude/settings.local.json`) stays out through `.gitignore`.
 - **2026-11-14. The repository is born private**, and goes public only after its whole history
   has been reviewed. In a public repository, rewriting the history removes nothing: GitHub
-  keeps serving the old commits by SHA.
+  keeps serving the old commits by SHA. It became public on 2026-11-15 at 23:20, after the
+  history and the text of issues and PRs were checked and each member confirmed that the name
+  and the email address of their commits can be public (#77).
 - **2026-11-14. No model and no attribution in the layer.** The project's
   `.claude/settings.json` overrides each member's own: a model set there would bind every
   account, so each one chooses it with `/model`. Attribution is empty and the use of AI is
@@ -90,8 +77,9 @@ Grotesk font, which no page links.
 - **2026-11-14. Merging is done by a person, after approving.** Claude neither approves nor
   merges (`gh pr merge` is denied), and in auto mode the ask rule does not guarantee that a
   commit asks first (#4, #6): the net is human review, with "Approve" selected before the
-  green button (#12). While the repository is private GitHub does not enforce it: of the seven
-  PRs merged on the 14th before #12, only #5, #10 and #11 had an approval.
+  green button (#12). Since 2026-11-15 at 23:25 GitHub enforces one approval on `main` for
+  everyone but the repository's admin (#77); before, while the repository was private, it
+  could not, and `dcc802f` reached `main` without a PR (#75).
 - **2026-11-14. Static site with precomputed data, on Cloudflare Pages.** The project is
   connected through Git from jofavalle's account, because Cloudflare only lists the
   repositories of whoever connects: every merge to `main` publishes itself. Everything except
