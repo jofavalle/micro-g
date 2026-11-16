@@ -26,17 +26,16 @@ Grotesk font, which no page links.
   of a flame in microgravity once a minute; Inter and JetBrains Mono; and a black and purple
   theme with stars (#86, #97). The home page puts the chat first and the overview and its
   figures under it; the verification report is at the foot of every view (#97).
-- **The decision is in #16**, extended on the afternoon of the 15th by its comment "Ampliación
-  del 15 de noviembre por la tarde" (overview, chat and brand). The body of #16 still has to
-  be updated with that comment and with point 3, which is done by whoever coordinates.
-- **Point 3 of #16 is decided:** the FLEX table is delivered without a fit, and the view says
-  why, with the count of #48 (#73).
+- **The decision is in #16**, whose body was brought up to date at 23:03 with its comments:
+  point 3 (the FLEX table without a fit, #73), the afternoon extension (overview, chat and
+  brand, #86 to #88) and how the line of the 13:00 checkpoint ended. #16 is closed with this
+  update; what is still open of it lives in #75 and #77.
 - **The documentation follows the site:** the `README.md` and the text of the project page,
   `docs/project-page.md` (#76), describe the overview and the chat since #88, and the
   typefaces since #97.
 - **Still open:** the demo video (#75, taken by cesarp03 at 20:40, after the redesign was
   merged) and the checks to publish the repository and submit (#77, with no box ticked at
-  20:55). The repository is still private.
+  23:07). The repository is still private.
 
 ## Next step
 
@@ -45,9 +44,11 @@ Grotesk font, which no page links.
   history reviewed again after the last merge, each member's confirmation that the name and
   the email address of their own commits can be public, and `main` protected with one
   required approval.
-- **Demo:** a video of 30 seconds or less, recorded from the published URL, by cesarp03, who
-  took #75 at 20:40. The team chooses what it shows (point 6 of #16) and writes it in #75
-  before recording.
+- **Demo:** a video of 30 seconds or less, by cesarp03 (#75), with an English voice by
+  aalexanderrz. At 22:59, as jofavalle reported, it was being uploaded to YouTube, and only its
+  link on the project page was missing. #75 still asks for `site/demo.mp4` and a link in the
+  `README.md`: whoever closes it writes there where the video went and what the team chose to
+  show (point 6 of #16).
 - **The project page:** jofavalle pastes the text of `docs/project-page.md` again, since #97
   changed its typefaces and its list of licenses, and saves with "Save Progress". It is edited
   by one person only, because its lock does not block (point 11 of #16).
