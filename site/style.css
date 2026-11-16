@@ -161,9 +161,12 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
 
 /* The brand is "micro-G", with a capital G, after a mark drawn with CSS only: a
    flame in microgravity, which burns as a blue sphere, brighter at its edge, with
-   a faint warm core. When the page loads, a flame in normal gravity (a yellow drop,
-   drawn upward by buoyancy) rounds out and gives way to that sphere, which then
-   breathes slowly. With reduced motion, only the still sphere is drawn. */
+   a faint warm core. Once a minute, from the moment the page loads, a flame in
+   normal gravity (a yellow drop, drawn upward by buoyancy) rounds out and gives
+   way to that sphere, which breathes slowly until the minute ends and then fades
+   out for the next turn. Within the minute of 60 s, 1.833 % is 1.1 s and 3.667 %
+   is 2.2 s; the breath lasts 3.75 s, sixteen to the minute. With reduced motion,
+   only the still sphere is drawn. */
 .brand {
   position: relative;
   display: inline-flex;
@@ -191,8 +194,8 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   box-shadow: 0 0 0.6em rgba(90, 130, 255, 0.5);
   pointer-events: none;
   animation:
-    flame-sphere-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 1.1s both,
-    flame-breathe 3.6s ease-in-out 2.2s infinite;
+    flame-sphere-turn 60s linear infinite,
+    flame-breathe 3.75s ease-in-out 2.2s infinite;
 }
 
 .brand::after {
@@ -208,26 +211,29 @@ code { font-family: var(--mono); font-size: 0.86em; overflow-wrap: anywhere; }
   box-shadow: 0 0 0.45em rgba(255, 140, 50, 0.35);
   transform-origin: 50% 85%;
   pointer-events: none;
-  animation: flame-in-gravity 2.2s ease-in both;
+  animation: flame-in-gravity 60s ease-in infinite;
 }
 
 @keyframes flame-in-gravity {
   0% { opacity: 0; transform: scale(0.85, 0.7); }
-  12% { opacity: 1; transform: scale(1, 1); }
-  25% { transform: scale(0.96, 1.06); }
-  38% { transform: scale(1.02, 0.97); }
-  50% { opacity: 1; transform: scale(1, 1.03); }
-  100% { opacity: 0; transform: translateY(0.18em) scale(1.25, 0.7); }
+  0.44% { opacity: 1; transform: scale(1, 1); }
+  0.917% { transform: scale(0.96, 1.06); }
+  1.393% { transform: scale(1.02, 0.97); }
+  1.833% { opacity: 1; transform: scale(1, 1.03); }
+  3.667%, 100% { opacity: 0; transform: translateY(0.18em) scale(1.25, 0.7); }
 }
 
-@keyframes flame-sphere-in {
-  from { opacity: 0; transform: scale(0.55); }
-  to { opacity: 1; transform: scale(1); }
+/* The breath animates the scale property and the turn the transform, so that the
+   two add up instead of one hiding the other. */
+@keyframes flame-sphere-turn {
+  0%, 1.833% { opacity: 0; transform: scale(0.55); animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1); }
+  3.667%, 99.3% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
 }
 
 @keyframes flame-breathe {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0.6em rgba(90, 130, 255, 0.5); }
-  50% { transform: scale(1.07); box-shadow: 0 0 0.85em rgba(90, 130, 255, 0.65); }
+  0%, 100% { scale: 1; box-shadow: 0 0 0.6em rgba(90, 130, 255, 0.5); }
+  50% { scale: 1.07; box-shadow: 0 0 0.85em rgba(90, 130, 255, 0.65); }
 }
 
 @media (prefers-reduced-motion: reduce) {
